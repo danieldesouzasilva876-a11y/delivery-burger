@@ -275,13 +275,25 @@ function updateCart(){
     cart.forEach((item,index)=>{
         cartItems.innerHTML += `
             <div class="cart-item">
-                <span>${item.name}</span>
-                <span>R$ ${item.price.toFixed(2)}</span>
+                <div>
+                    <span>${item.name}</span><br>
+                    <small>R$ ${item.price.toFixed(2)}</small>
+                </div>
+
+                <button onclick="removeItem(${index})" style="width:auto;padding:8px 12px;background:#ff3333;">
+                    Remover
+                </button>
             </div>
         `;
     });
 
     document.getElementById('total').innerHTML = `Total: R$ ${total.toFixed(2)}`;
+}
+
+function removeItem(index){
+    total -= cart[index].price;
+    cart.splice(index,1);
+    updateCart();
 }
 
 function finishOrder(){
