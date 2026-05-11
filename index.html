@@ -247,15 +247,17 @@ footer{
             </select>
 
             <div id="pixArea" style="display:block;background:#222;padding:15px;border-radius:10px;margin-bottom:15px;">
-                <strong>🔑 Chave Pix:</strong><br>
-                pedrolanches@email.com
+                <strong>🔑 Chave Pix CPF:</strong><br>
+                095.449.232-33
+                <br><br>
+                ⚠️ Mandar comprovante no WhatsApp após finalizar o pedido.
             </div>
 
             <div id="trocoArea" style="display:none;">
                 <input type="text" id="troco" placeholder="Troco para quanto?">
             </div>
 
-            <input type="time" id="deliveryTime">
+            
 
             <button class="finish-btn" onclick="finishOrder()">
                 Enviar Pedido no WhatsApp
@@ -352,12 +354,12 @@ function finishOrder(){
     message += '👤 Nome: ' + name + '%0A';
     message += '📞 Telefone: ' + phone + '%0A';
     message += '📍 Endereço: ' + address + '%0A';
-    const deliveryTime = document.getElementById('deliveryTime').value;
+    
 
     message += '💳 Pagamento: ' + payment + '%0A';
     const troco = document.getElementById('troco').value;
 
-    message += '⏰ Horário desejado: ' + deliveryTime + '%0A';
+    
 
     if(payment === 'Dinheiro' && troco !== ''){
         message += '💵 Troco para: R$ ' + troco + '%0A';
