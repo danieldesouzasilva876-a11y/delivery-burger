@@ -174,17 +174,17 @@ footer{
 
     <div class="grid">
 
-        <div class="card"><div class="card-content"><h3>Cachorrinho</h3><div class="price">R$ 10,00</div><button onclick="addCart('Cachorrinho',10)">Adicionar</button></div></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1619740455993-9e612b1af08a?q=80&w=1200&auto=format&fit=crop"><div class="card-content"><h3>Cachorrinho</h3><p>Cachorro quente simples</p><div class="price">R$ 10,00</div><button onclick="addCart('Cachorrinho',10)">Adicionar</button></div></div>
 
-        <div class="card"><div class="card-content"><h3>Cachorrão</h3><div class="price">R$ 12,00</div><button onclick="addCart('Cachorrão',12)">Adicionar</button></div></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1550317138-10000687a72b?q=80&w=1200&auto=format&fit=crop"><div class="card-content"><h3>Cachorrão</h3><p>Cachorro quente completo</p><div class="price">R$ 12,00</div><button onclick="addCart('Cachorrão',12)">Adicionar</button></div></div>
 
-        <div class="card"><div class="card-content"><h3>Misto Quente</h3><div class="price">R$ 5,00</div><button onclick="addCart('Misto Quente',5)">Adicionar</button></div></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=1200&auto=format&fit=crop"><div class="card-content"><h3>Misto Quente</h3><p>Pão, queijo e presunto</p><div class="price">R$ 5,00</div><button onclick="addCart('Misto Quente',5)">Adicionar</button></div></div>
 
-        <div class="card"><div class="card-content"><h3>Misto com Carne</h3><div class="price">R$ 9,00</div><button onclick="addCart('Misto com Carne',9)">Adicionar</button></div></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=1200&auto=format&fit=crop"><div class="card-content"><h3>Misto com Carne</h3><p>Misto recheado com carne</p><div class="price">R$ 9,00</div><button onclick="addCart('Misto com Carne',9)">Adicionar</button></div></div>
 
-        <div class="card"><div class="card-content"><h3>Bauri</h3><div class="price">R$ 10,00</div><button onclick="addCart('Bauri',10)">Adicionar</button></div></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=1200&auto=format&fit=crop"><div class="card-content"><h3>Bauri</h3><p>Pão, queijo e carne especial</p><div class="price">R$ 10,00</div><button onclick="addCart('Bauri',10)">Adicionar</button></div></div>
 
-        <div class="card"><div class="card-content"><h3>X-Egg</h3><div class="price">R$ 10,00</div><button onclick="addCart('X-Egg',10)">Adicionar</button></div></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop"><div class="card-content"><h3>X-Egg</h3><p>Hambúrguer com ovo e queijo</p><div class="price">R$ 10,00</div><button onclick="addCart('X-Egg',10)">Adicionar</button></div></div>
 
         <div class="card"><div class="card-content"><h3>X-Burguer</h3><div class="price">R$ 14,00</div><button onclick="addCart('X-Burguer',14)">Adicionar</button></div></div>
 
@@ -206,7 +206,7 @@ footer{
 
     <div class="grid">
 
-        <div class="card"><div class="card-content"><h3>Coca-Cola Lata</h3><div class="price">R$ 5,00</div><button onclick="addCart('Coca-Cola Lata',5)">Adicionar</button></div></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=1200&auto=format&fit=crop"><div class="card-content"><h3>Coca-Cola Lata</h3><p>Refrigerante coca-cola lata</p><div class="price">R$ 5,00</div><button onclick="addCart('Coca-Cola Lata',5)">Adicionar</button></div></div>
 
         <div class="card"><div class="card-content"><h3>Fanta Lata</h3><div class="price">R$ 5,00</div><button onclick="addCart('Fanta Lata',5)">Adicionar</button></div></div>
 
@@ -220,7 +220,7 @@ footer{
 
         <div class="card"><div class="card-content"><h3>Suco Cajá</h3><div class="price">R$ 5,00</div><button onclick="addCart('Suco Cajá',5)">Adicionar</button></div></div>
 
-        <div class="card"><div class="card-content"><h3>Suco Goiaba</h3><div class="price">R$ 5,00</div><button onclick="addCart('Suco Goiaba',5)">Adicionar</button></div></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=1200&auto=format&fit=crop"><div class="card-content"><h3>Suco Goiaba</h3><p>Suco de goiaba natural</p><div class="price">R$ 5,00</div><button onclick="addCart('Suco Goiaba',5)">Adicionar</button></div></div>
 
         <div class="card"><div class="card-content"><h3>Coca-Cola 1L</h3><div class="price">R$ 8,00</div><button onclick="addCart('Coca-Cola 1L',8)">Adicionar</button></div></div>
 
@@ -386,7 +386,7 @@ function finishOrder(){
 
     message += '%0A💰 *Total: R$ ' + total.toFixed(2) + '*';
 
-    const phoneNumber = '559481367779';
+    const phoneNumber = '5594981367779';
 
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
