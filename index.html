@@ -93,15 +93,18 @@ h2{
 }
 
 button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:#ff0000;
+    background:#ff3131;
     color:white;
-    font-size:1rem;
+    border:none;
+    padding:10px;
+    border-radius:10px;
     cursor:pointer;
-    transition:0.3s;
+    transition:0.2s;
+}
+
+button:active{
+    transform:scale(0.95);
+    opacity:0.7;
 }
 
 button:hover{
@@ -287,7 +290,20 @@ let cart = [];
 let total = 0;
 
 function addCart(name, price){
-    cart.push({name, price});
+
+    const existingItem = cart.find(item => item.name === name);
+
+    if(existingItem){
+        existingItem.quantity += 1;
+    }
+    else{
+        cart.push({
+            name,
+            price,
+            quantity:1
+        });
+    }
+
     total += price;
     updateCart();
 }
@@ -297,21 +313,49 @@ function updateCart(){
     cartItems.innerHTML = '';
 
     cart.forEach((item,index)=>{
+
         cartItems.innerHTML += `
             <div class="cart-item">
                 <div>
                     <span>${item.name}</span><br>
-                    <small>R$ ${item.price.toFixed(2)}</small>
+                    <small>Quantidade: ${item.quantity}</small><br>
+                    <small>R$ ${(item.price * item.quantity).toFixed(2)}</small>
                 </div>
 
-                <button onclick="removeItem(${index})" style="width:auto;padding:8px 12px;background:#ff3333;">
-                    Remover
-                </button>
+                <div style="display:flex;gap:10px;align-items:center;">
+
+                    <button onclick="decreaseItem(${index})" style="width:auto;padding:8px 12px;background:#444;">
+                        -
+                    </button>
+
+                    <button onclick="increaseItem(${index})" style="width:auto;padding:8px 12px;background:#00aa44;">
+                        +
+                    </button>
+
+                </div>
             </div>
         `;
     });
 
     document.getElementById('total').innerHTML = `Total: R$ ${total.toFixed(2)}`;
+}
+
+function increaseItem(index){
+    cart[index].quantity += 1;
+    total += cart[index].price;
+    updateCart();
+}
+
+function decreaseItem(index){
+
+    cart[index].quantity -= 1;
+    total -= cart[index].price;
+
+    if(cart[index].quantity <= 0){
+        cart.splice(index,1);
+    }
+
+    updateCart();
 }
 
 function removeItem(index){
