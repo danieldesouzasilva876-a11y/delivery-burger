@@ -163,7 +163,7 @@ footer{
 
 <header>
     <h1>🍔 Pedro Lanches</h1>
-    <p>O melhor hambúrguer da cidade!</p>
+    <p>Peça sem sair de casa 🍔</p>
 </header>
 
 <div class="banner"></div>
@@ -217,7 +217,7 @@ footer{
         <div class="card">
             <img src="https://images.unsplash.com/photo-1629203851122-3726ecdf080e?q=80&w=1200&auto=format&fit=crop">
             <div class="card-content">
-                <h3>Pepsi 2L</h3>
+                <h3>Coca-Cola 2L</h3>
                 <p>Refrigerante gelado.</p>
                 <div class="price">R$ 12,00</div>
                 <button onclick="addCart('Coca-Cola 2L',12)">Adicionar</button>
@@ -240,14 +240,25 @@ footer{
             <input type="text" id="phone" placeholder="Seu telefone">
             <textarea id="address" placeholder="Seu endereço"></textarea>
 
-            <select id="payment">
+            <select id="payment" onchange="paymentOptions()">
                 <option>Pix</option>
                 <option>Dinheiro</option>
                 <option>Cartão</option>
             </select>
 
+            <div id="pixArea" style="display:block;background:#222;padding:15px;border-radius:10px;margin-bottom:15px;">
+                <strong>🔑 Chave Pix:</strong><br>
+                pedrolanches@email.com
+            </div>
+
+            <div id="trocoArea" style="display:none;">
+                <input type="text" id="troco" placeholder="Troco para quanto?">
+            </div>
+
+            <input type="time" id="deliveryTime">
+
             <button class="finish-btn" onclick="finishOrder()">
-                Finalizar Pedido no WhatsApp
+                Enviar Pedido no WhatsApp
             </button>
         </div>
     </div>
@@ -255,7 +266,7 @@ footer{
 </div>
 
 <footer>
-    © 2026 Delivery Burger - Todos os direitos reservados.
+    © 2026 Pedro Lanches - Todos os direitos reservados.
 </footer>
 
 <script>
@@ -296,6 +307,26 @@ function removeItem(index){
     updateCart();
 }
 
+function paymentOptions(){
+    const payment = document.getElementById('payment').value;
+
+    const pixArea = document.getElementById('pixArea');
+    const trocoArea = document.getElementById('trocoArea');
+
+    if(payment === 'Pix'){
+        pixArea.style.display = 'block';
+        trocoArea.style.display = 'none';
+    }
+    else if(payment === 'Dinheiro'){
+        pixArea.style.display = 'none';
+        trocoArea.style.display = 'block';
+    }
+    else{
+        pixArea.style.display = 'none';
+        trocoArea.style.display = 'none';
+    }
+}
+
 function finishOrder(){
 
     if(cart.length === 0){
@@ -313,12 +344,30 @@ function finishOrder(){
         return;
     }
 
-    let message = '🍔 *NOVO PEDIDO*%0A%0A';
+    const orderNumber = Math.floor(Math.random() * 10000);
+
+    let message = '🍔 *NOVO PEDIDO*%0A';
+    message += '🧾 Pedido Nº: ' + orderNumber + '%0A%0A';
 
     message += '👤 Nome: ' + name + '%0A';
     message += '📞 Telefone: ' + phone + '%0A';
     message += '📍 Endereço: ' + address + '%0A';
-    message += '💳 Pagamento: ' + payment + '%0A%0A';
+    const deliveryTime = document.getElementById('deliveryTime').value;
+
+    message += '💳 Pagamento: ' + payment + '%0A';
+    const troco = document.getElementById('troco').value;
+
+    message += '⏰ Horário desejado: ' + deliveryTime + '%0A';
+
+    if(payment === 'Dinheiro' && troco !== ''){
+        message += '💵 Troco para: R$ ' + troco + '%0A';
+    }
+
+    if(payment === 'Pix'){
+        message += '🔑 Cliente pagará via Pix%0A';
+    }
+
+    message += '%0A';
 
     message += '📦 *Pedido:*%0A';
 
@@ -328,7 +377,7 @@ function finishOrder(){
 
     message += '%0A💰 *Total: R$ ' + total.toFixed(2) + '*';
 
-    const phoneNumber = '5594981367779';
+    const phoneNumber = '5591999999999';
 
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
