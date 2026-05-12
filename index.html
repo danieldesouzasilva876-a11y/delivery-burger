@@ -160,9 +160,12 @@ button:hover{
 footer{
     margin-top:40px;
     text-align:center;
-    padding:20px;
+    padding:30px 20px;
     background:#0a0a0a;
-    color:#777;
+    color:#fff;
+    font-size:1rem;
+    line-height:1.8;
+    border-top:2px solid #ff3131;
 }
 
 .toast{
@@ -300,7 +303,10 @@ footer{
 </div>
 
 <footer>
-    © 2026 Pedro Lanches - Todos os direitos reservados.
+    © 2026 Pedro Lanches - Todos os direitos reservados.<br><br>
+    Daniel DEV<br>
+    @dn_sza<br>
+    WhatsApp: 94 98136-7779
 </footer>
 
 <div id="toast" class="toast">
@@ -469,7 +475,7 @@ function finishOrder(){
 
     message += '%0A💰 *Total: R$ ' + total.toFixed(2) + '*';
 
-    const phoneNumber = '559481367779';
+    const phoneNumber = '5594981367779';
 
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
