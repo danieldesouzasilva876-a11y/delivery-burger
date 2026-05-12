@@ -164,6 +164,24 @@ footer{
     background:#0a0a0a;
     color:#777;
 }
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#00aa44;
+    color:white;
+    padding:15px 20px;
+    border-radius:10px;
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s;
+    z-index:999;
+}
+
+.toast.show{
+    opacity:1;
+}
 </style>
 </head>
 <body>
@@ -285,6 +303,10 @@ footer{
     © 2026 Pedro Lanches - Todos os direitos reservados.
 </footer>
 
+<div id="toast" class="toast">
+    Produto adicionado ao carrinho
+</div>
+
 <script>
 let cart = [];
 let total = 0;
@@ -306,6 +328,8 @@ function addCart(name, price){
 
     total += price;
     updateCart();
+
+    showToast();
 }
 
 function updateCart(){
@@ -338,6 +362,17 @@ function updateCart(){
     });
 
     document.getElementById('total').innerHTML = `Total: R$ ${total.toFixed(2)}`;
+}
+
+function showToast(){
+
+    const toast = document.getElementById('toast');
+
+    toast.classList.add('show');
+
+    setTimeout(()=>{
+        toast.classList.remove('show');
+    },2000);
 }
 
 function increaseItem(index){
