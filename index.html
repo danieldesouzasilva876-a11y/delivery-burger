@@ -3,621 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Curso DoGo Block - Escola Presidente Médici</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2563eb',
-                        secondary: '#7c3aed',
-                        success: '#10b981',
-                        danger: '#ef4444',
-                        warning: '#f59e0b',
-                        light: '#f8fafc',
-                        dark: '#1e293b'
-                    },
-                    fontFamily: {
-                        sans: ['Nunito', 'sans-serif'],
-                    },
-                }
-            }
+    <title>Mini Curso DoGoBlock</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fb;
         }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .card-hover {
-                transition: all 0.3s ease;
-            }
-            .card-hover:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-            }
-            .typing-text {
-                border-right: 2px solid transparent;
-                white-space: pre-wrap;
-                overflow: hidden;
-            }
-            .typing-cursor {
-                border-right-color: #2563eb;
-                animation: blink 0.75s step-end infinite;
-            }
-            @keyframes blink {
-                from, to { border-color: transparent }
-                50% { border-color: #2563eb; }
-            }
-            .avatar-bounce {
-                animation: bounce 1s ease infinite alternate;
-            }
-            @keyframes bounce {
-                from { transform: translateY(0); }
-                to { transform: translateY(-8px); }
-            }
-            .avatar-wave {
-                animation: wave 2s ease infinite;
-                transform-origin: bottom center;
-            }
-            @keyframes wave {
-                0% { transform: rotate(0deg); }
-                25% { transform: rotate(15deg); }
-                50% { transform: rotate(0deg); }
-                75% { transform: rotate(-15deg); }
-                100% { transform: rotate(0deg); }
-            }
-            .fade-in {
-                animation: fadeIn 0.6s ease forwards;
-                opacity: 0;
-            }
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            .tab-content {
-                display: none;
-            }
-            .tab-content.active {
-                display: block;
-            }
-            .progress-bar {
-                height: 12px;
-                border-radius: 9999px;
-                background-color: #e2e8f0;
-                overflow: hidden;
-            }
-            .progress-fill {
-                height: 100%;
-                transition: width 0.5s ease;
-            }
+
+        .screen {
+            display: none;
+            padding: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .avatar {
+            width: 180px;
+            max-width: 90%;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .avatar-area {
+            text-align: center;
+        }
+
+        .intro-text {
+            margin-top: 20px;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .coordenadores {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .nome-area {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #mensagemBoasVindas {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            min-height: 80px;
+            line-height: 1.5;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 25px;
+            background: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #4caf50;
+            transition: .4s;
+        }
+
+        .modulo-content {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .imagem-modulo {
+            width: 100%;
+            max-width: 700px;
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        .nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #alternativas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .alt-btn {
+            padding: 15px;
+            font-size: 16px;
+            text-align: left;
+            background-color: white;
+            color: #333;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .alt-btn:hover {
+            background-color: #e6f2ff;
+            color: #007bff;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 40px;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-sky-50 to-indigo-50 min-h-screen font-sans text-dark">
-    <div class="container mx-auto px-3 py-5 max-w-4xl">
-        <!-- Cabeçalho -->
-        <header class="mb-6 text-center fade-in">
-            <h1 class="text-2xl md:text-4xl font-extrabold text-primary text-shadow mb-2">Mini Curso de Introdução ao DoGo Block</h1>
-            <div class="bg-white rounded-xl shadow-md p-3 mb-3">
-                <p class="text-sm md:text-base"><span class="font-semibold">Coordenador Geral:</span> Silvio Giovan</p>
-                <p class="text-sm md:text-base"><span class="font-semibold">Coordenadores de Oficina:</span> Lilizne Oliveira e Yardley Bandeira</p>
+<body>
+    <div id="app">
+        <section id="intro" class="screen active">
+            <h1>Mini Curso de Introdução ao DoGoBlock</h1>
+            <div class="avatar-area">
+                <img src="avatar1.png" class="avatar" alt="Avatar">
             </div>
-        </header>
-
-        <!-- Conteúdo Principal -->
-        <main class="bg-white rounded-2xl shadow-xl overflow-hidden fade-in" style="animation-delay: 0.2s">
-            <!-- Abas de Navegação -->
-            <div class="flex overflow-x-auto bg-gray-50 border-b sticky top-0 z-10">
-                <button id="tab-intro-btn" class="tab-btn px-4 py-3 font-semibold text-sm whitespace-nowrap bg-primary text-white">
-                    <i class="fa fa-home mr-1"></i> Introdução
-                </button>
-                <div id="tabs-modulos-container" class="hidden md:flex">
-                    <!-- Gerado dinamicamente -->
-                </div>
-                <button id="tab-questionario-btn" class="tab-btn px-4 py-3 font-semibold text-sm whitespace-nowrap bg-gray-200 text-gray-700 opacity-50 cursor-not-allowed">
-                    <i class="fa fa-question-circle mr-1"></i> Avaliação
-                </button>
-                <button id="tab-resultado-btn" class="tab-btn px-4 py-3 font-semibold text-sm whitespace-nowrap bg-gray-200 text-gray-700 opacity-50 cursor-not-allowed">
-                    <i class="fa fa-trophy mr-1"></i> Resultado
-                </button>
+            <div class="intro-text">
+                <p>Olá, meu nome é Daniel, sou monitor de tecnologia da Escola Presidente Médici em Vila Ligação.</p>
+                <p>Seja bem-vindo a este mini curso de introdução ao DoGoBlock.</p>
+                <p>Serão 26 módulos de muito aprendizado + questionário.</p>
             </div>
+            <div class="coordenadores">
+                <h3>Coordenação</h3>
+                <p><b>Coordenador Geral:</b> Silvio Giovan</p>
+                <p><b>Coordenadores de Oficina:</b></p>
+                <p>Lilizne Oliveira</p>
+                <p>Yardley Bandeira</p>
+            </div>
+            <div class="nome-area">
+                <input type="text" id="nomeAluno" placeholder="Digite seu nome">
+                <button onclick="confirmarNome()">OK</button>
+            </div>
+            <div id="mensagemBoasVindas"></div>
+            <button id="btnIniciar" class="hidden" onclick="iniciarCurso()">Iniciar</button>
+        </section>
 
-            <!-- Conteúdo das Abas -->
-            <div class="p-5">
-                <!-- Aba Introdução -->
-                <div id="tab-intro" class="tab-content active">
-                    <div class="flex flex-col md:flex-row gap-6 items-center">
-                        <div class="md:w-2/3">
-                            <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r-lg mb-6">
-                                <p class="text-lg font-medium text-primary">Olá, meu nome é Daniel, sou monitor de tecnologia da Escola Presidente Médici em Vila Ligação.</p>
-                                <p class="mt-3 text-gray-700">Seja bem vindo a este mini curso de introdução ao DoGo Block, serão 26 módulos de muito aprendizado + questionário.</p>
-                            </div>
-
-                            <div id="nome-aluno-container" class="mb-6">
-                                <label for="nome-aluno" class="block text-gray-700 font-medium mb-2">Digite seu nome completo:</label>
-                                <div class="flex gap-2">
-                                    <input type="text" id="nome-aluno" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Seu nome aqui">
-                                    <button id="btn-ok-nome" class="bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-lg font-medium transition-colors">OK</button>
-                                </div>
-                            </div>
-
-                            <div id="mensagem-boas-vindas" class="hidden">
-                                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-100 relative overflow-hidden">
-                                    <div id="texto-digitacao" class="typing-text text-gray-800 text-lg leading-relaxed"></div>
-                                    <button id="btn-iniciar-curso" class="mt-5 bg-success hover:bg-success/90 text-white px-8 py-3 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-md">
-                                        <i class="fa fa-play mr-2"></i> Iniciar Curso
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:w-1/3 flex justify-center">
-                            <div class="avatar-wave">
-                                <img src="avatar1.png" alt="Avatar Daniel cumprimentando" class="w-48 h-auto drop-shadow-lg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Abas dos Módulos -->
-                <div id="tabs-modulos" class="tab-content">
-                    <div id="conteudo-modulo-atual"></div>
-                    <div class="flex justify-between mt-8 pt-4 border-t">
-                        <button id="btn-modulo-anterior" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-2 rounded-lg font-medium transition-colors opacity-50 cursor-not-allowed">
-                            <i class="fa fa-arrow-left mr-2"></i> Anterior
-                        </button>
-                        <div class="text-sm text-gray-500 self-center">Módulo <span id="num-modulo-atual">1</span> de 26</div>
-                        <button id="btn-modulo-proximo" class="bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-lg font-medium transition-colors">
-                            Próximo <i class="fa fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Aba Questionário -->
-                <div id="tab-questionario" class="tab-content">
-                    <div class="mb-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm font-medium text-gray-600">Progresso da Avaliação</span>
-                            <span class="text-sm font-medium text-primary"><span id="num-pergunta-atual">1</span> de 30</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div id="progresso-questionario" class="progress-fill bg-primary" style="width: 3.3%"></div>
-                        </div>
-                    </div>
-
-                    <div id="conteudo-pergunta-atual" class="mb-6"></div>
-                    
-                    <div id="feedback-pergunta" class="hidden p-5 rounded-xl text-center mb-4"></div>
-                </div>
-
-                <!-- Aba Resultado -->
-                <div id="tab-resultado" class="tab-content">
-                    <div id="senha-container" class="text-center py-8">
-                        <div class="mb-6">
-                            <img src="avatar4.png" alt="Avatar Daniel" class="w-32 h-auto mx-auto mb-4 opacity-70">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">Quase lá!</h3>
-                            <p class="text-gray-600 mb-4">Chame o professor para digitar a senha e conferir seu resultado final.</p>
-                        </div>
-                        <div class="max-w-xs mx-auto">
-                            <label for="senha-professor" class="block text-gray-700 font-medium mb-2">Senha do Professor:</label>
-                            <div class="flex gap-2">
-                                <input type="password" id="senha-professor" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-center text-xl tracking-widest font-bold" maxlength="4" placeholder="****">
-                                <button id="btn-verificar-senha" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors">Verificar</button>
-                            </div>
-                            <p id="mensagem-senha-erro" class="text-danger text-sm mt-2 hidden">Senha incorreta. Tente novamente.</p>
-                        </div>
-                    </div>
-
-                    <div id="resultado-final-container" class="hidden text-center py-4">
-                        <div id="icone-resultado" class="text-6xl mb-4"></div>
-                        <h2 id="titulo-resultado" class="text-3xl font-bold mb-3"></h2>
-                        <div class="bg-gray-50 rounded-xl p-5 mb-6 max-w-md mx-auto">
-                            <p class="text-gray-700 mb-2">Você acertou <span id="acertos-totais" class="font-bold text-primary text-xl">0</span> de 30 questões</p>
-                            <div class="progress-bar my-3">
-                                <div id="progresso-geral" class="progress-fill" style="width: 0%"></div>
-                            </div>
-                            <p class="text-lg font-semibold mb-1">Seu aproveitamento: <span id="porcentagem-aproveitamento" class="text-primary">0%</span></p>
-                            <p id="mensagem-resultado" class="text-lg font-medium mt-4"></p>
-                        </div>
-                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                            <button id="btn-refazer-curso" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-bold transition-all transform hover:scale-105 shadow">
-                                <i class="fa fa-redo mr-2"></i> Refazer Curso Completo
-                            </button>
-                            <button id="btn-refazer-prova" class="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-xl font-bold transition-all transform hover:scale-105 shadow">
-                                <i class="fa fa-question-circle mr-2"></i> Responder Questões Novamente
-                            </button>
-                        </div>
-                    </div>
+        <section id="modulos" class="screen">
+            <div class="topo">
+                <h2 id="tituloModulo"></h2>
+                <div class="progress-container">
+                    <div id="progressModulo" class="progress-bar"></div>
                 </div>
             </div>
-        </main>
+            <div class="modulo-content">
+                <img id="imagemModulo" class="imagem-modulo" alt="Imagem do Módulo">
+                <div id="textoModulo"></div>
+            </div>
+            <div id="avatarModuloArea"></div>
+            <div class="nav">
+                <button onclick="moduloAnterior()">⬅ Anterior</button>
+                <button onclick="proximoModulo()">Próximo ➡</button>
+            </div>
+        </section>
 
-        <footer class="mt-8 text-center text-gray-500 text-sm fade-in">
-            <p>© 2025 Escola Presidente Médici - Projeto Educacional DoGo Block</p>
-            <p class="mt-1">Desenvolvido com carinho para nossos alunos</p>
-        </footer>
+        <section id="quiz" class="screen">
+            <h2 id="tituloQuestao"></h2>
+            <div class="progress-container">
+                <div id="progressQuiz" class="progress-bar"></div>
+            </div>
+            <div id="textoQuestao"></div>
+            <div id="alternativas"></div>
+            <div id="feedback"></div>
+        </section>
+
+        <section id="senhaProfessor" class="screen">
+            <h2>Fim da Avaliação</h2>
+            <p>Chame o professor para saber o resultado.</p>
+            <input type="password" id="senhaInput" placeholder="Senha do professor">
+            <button onclick="verificarSenha()">Ver Resultado</button>
+        </section>
+
+        <section id="resultado" class="screen">
+            <h1 id="resultadoTitulo"></h1>
+            <img id="resultadoAvatar" class="avatar" alt="Resultado Avatar">
+            <h2 id="resultadoPorcentagem"></h2>
+            
+            <div class="progress-container" style="margin-bottom: 20px;">
+                <div id="barraFinal" class="progress-bar"></div>
+            </div>
+
+            <button onclick="reiniciarCurso()">Refazer Curso</button>
+            <button onclick="refazerQuestoes()">Responder Novamente</button>
+        </section>
     </div>
 
     <script>
-        // Dados do Curso - 26 Módulos
+        let nomeAluno = "";
+        let moduloAtual = 0;
+        let questaoAtual = 0;
+        let acertos = 0;
+
         const modulos = [
-            {
-                titulo: "1. Arquivo",
-                descricao: `A função Arquivo se encontra na barra de menu que fica localizada no canto superior esquerdo, nele contém tudo relacionado aos arquivos.<br><br>
-                <strong>Exemplos:</strong><br>
-                <span class="font-medium text-primary">Novo:</span> O "novo" abre um novo arquivo<br>
-                <span class="font-medium text-primary">Abrir projeto:</span> O "abrir projeto" executa a função de abrir algum projeto salvo no computador<br>
-                <span class="font-medium text-primary">Salvar projeto:</span> O "salvar projeto" atualiza o arquivo atual, salva as alterações no mesmo arquivo e no mesmo local. Se o projeto já se chama MEU_ROBO, ele continuará com esse nome.<br>
-                <span class="font-medium text-primary">Salvar projeto Como:</span> O "Salvar projeto como" cria uma nova cópia do projeto, permite escolher outro nome ou outra pasta, o projeto original permanece intacto.<br>
-                <span class="font-medium text-primary">Importar imagem:</span> Você pega uma imagem que está no computador e coloca dentro do projeto. Exemplo: importar uma foto PNG ou JPG para usar como desenho de referência.<br>
-                <span class="font-medium text-primary">Exportar imagem:</span> Você pega uma imagem que está dentro do projeto e salva como um arquivo no computador, Exemplo: Criar um desenho no DoGo Block e exportar como PNG.`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "2. Editar",
-                descricao: `A função Editar que fica localizada na barra de menu tem as funções relacionadas à edição do projeto.<br><br>
-                <strong>Exemplos:</strong><br>
-                <span class="font-medium text-primary">Anular a Eliminação:</span> Você apagou um bloco, um sprite, um traje, um objeto, ai percebe que não queria apagar, clica em anular a eliminação e o item apagado volta.<br>
-                <span class="font-medium text-primary">Ocultar o palco:</span> Ocultar palco significa esconder a área onde o projeto é executado ou mostrado. No DoGoBlock, o palco é a região onde os personagens aparecem e as animações acontecem.<br>
-                <span class="font-medium text-primary">Disposição com palco pequeno:</span> Disposição com o palco pequeno significa que a interface do programa será organizada para deixar o palco menor e aumentar a área disponível para programação.<br>
-                <span class="font-medium text-primary">Modo turbo:</span> Faz os blocos executarem o mais rápido possível. Remove ou reduz as pausas usadas para mostrar a animação passo a passo. Útil para cálculos, testes ou programas longos. A animação pode parecer "pular" etapas porque tudo acontece muito rápido. Exemplo: um laço que repete 1000 vezes termina quase instantaneamente.<br>
-                <span class="font-medium text-primary">Modo Arduino:</span> Ativa os recursos para programar placas Arduino. Aparecem blocos para controlar portas digitais, analógicas, sensores, LEDs, motores, etc. Permite enviar o programa para um Arduino compatível ou comunicar-se com ele. Exemplo: acender um LED no pino 13 ou ler um sensor de temperatura.`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "3. Conectar",
-                descricao: `A função conectar que está localizada na barra de menu tem as funções relacionadas às conexões do DoGoBlock.<br><br>
-                <strong>Exemplos:</strong><br>
-                <span class="font-medium text-primary">Porta Serial (COM):</span> Conecta o programa a uma porta USB serial do computador. Exemplo: Arduino Uno conectado via USB - COM3, COM4, etc.<br>
-                <span class="font-medium text-primary">Bluetooth:</span> Permite conectar a uma placa via Bluetooth sem fio<br>
-                <span class="font-medium text-primary">2.4G Serial:</span> Conexão serial sem fio usando módulos de rádio 2,4 GHz<br>
-                <span class="font-medium text-primary">Rede:</span> Conecta a dispositivos pela rede local (Wi-Fi ou Ethernet).<br>
-                <span class="font-medium text-primary">Atualizar Firmware:</span> Instala ou atualiza o firmware que permite ao DoGoBlock conversar com a placa.<br>
-                <span class="font-medium text-primary">Reiniciar programa padrão:</span> Restaura o firmware padrão da placa ou reinicia o programa que já está nela.<br>
-                <span class="font-medium text-primary">Set FirmWare Mode:</span> Coloca a placa em modo de gravação/atualização de firmware.<br>
-                <span class="font-medium text-primary">Ver código:</span> Mostra o código gerado pelos blocos. (É ótimo para aprender programação)<br>
-                <span class="font-medium text-primary">Instalar Driver do Arduino:</span> Instala os drivers necessários para o computador reconhecer a placa, sem os drivers, a porta COM pode nem aparecer.`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "4. Placas",
-                descricao: `A opção Placas no DoGoBlock é o menu onde você escolhe qual hardware vai usar.<br><br>
-                <strong>Por exemplo, nele podem aparecer placas como:</strong><br>
-                • Arduino Uno<br>
-                • Arduino Nano<br>
-                • Arduino Leonardo<br>
-                • Outras placas compatíveis<br><br>
-                <strong>Para que serve?</strong><br>
-                Quando você seleciona uma placa:<br>
-                ✅ O programa carrega os blocos compatíveis com ela.<br>
-                ✅ Ajusta as portas e recursos disponíveis.<br>
-                ✅ Gera o código correto para aquele hardware.<br>
-                ✅ Permite gravar firmware específico da placa.`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "5. Extensões",
-                descricao: `As opções que existem dentro da aba extensões servem para adicionar recursos extras ao DogoBlock.<br><br>
-                <strong>Exemplos:</strong><br>
-                <span class="font-medium text-primary">Gerenciar Extensões:</span> Permite instalar, ativar, desativar ou remover extensões.<br>
-                <span class="font-medium text-primary">Restaurar Extensões:</span> Restaura as extensões padrão do programa caso alguma tenha sido removida ou corrompida.<br>
-                <span class="font-medium text-primary">Limpar Cache:</span> Apaga arquivos temporários das extensões. Pode ajudar quando alguma extensão está apresentando erros<br>
-                <span class="font-medium text-primary">Smart Servo tools:</span> Ferramentas para configurar e testar servomotores inteligentes.<br>
-                <span class="font-medium text-primary">LCD:</span> Adiciona blocos para controlar telas LCD. Exemplos: (LCD 16x2, Exibir textos e valores de sensores)<br>
-                <span class="font-medium text-primary">ARDUINO:</span> Adiciona os blocos de programação para Arduino<br>
-                <span class="font-medium text-primary">Joystick (arduino Mode only):</span> Adiciona blocos para usar joysticks com Arduino.<br>
-                <span class="font-medium text-primary">Microsoft cognitive Services:</span> Permite usar serviços de inteligência artificial da Microsoft.<br>
-                <span class="font-medium text-primary">Smart servo:</span> Adiciona blocos para controlar servomotores inteligentes diretamente nos projetos.<br>
-                <span class="font-medium text-primary">Communcation:</span> Adiciona blocos de comunicação`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "6. Idioma",
-                descricao: `A opção Idioma serve para mudar a língua da interface do DoGoBlock.<br><br>
-                <strong>Por exemplo, você pode encontrar opções como:</strong><br>
-                🇧🇷 Português<br>
-                🇺🇸 English (Inglês)<br>
-                🇪🇸 Español (Espanhol)<br>
-                🇨🇳 中文 (Chinês)<br><br>
-                <strong>Quando você altera o idioma:</strong><br>
-                ✅ Os menus mudam de idioma.<br>
-                ✅ Os nomes dos blocos podem mudar.<br>
-                ✅ Mensagens e avisos aparecem na língua escolhida.<br><br>
-                <strong>Exemplo:</strong><br>
-                Se você mudar para Português:<br>
-                File → Arquivo | Edit → Editar | Connect → Conectar<br><br>
-                Se mudar para English:<br>
-                Arquivo → File | Editar → Edit | Conectar → Connect`,
-                avatar: "avatar1.png"
-            },
-            {
-                titulo: "7. Créditos",
-                descricao: `Esses créditos mostram de onde o DoGoBlock veio e quem participou do desenvolvimento dele:<br><br>
-                • <span class="font-medium">MIT Media Lab</span> → Criou o Scratch, a plataforma de programação em blocos que inspirou muitos programas educacionais.<br>
-                • <span class="font-medium">Scratch</span> → É a base conceitual da interface de blocos que você vê.<br>
-                • <span class="font-medium">Maker Works Technology Co. Ltd</span> → Criou o mBlock, um programa baseado no Scratch para Arduino, robótica e eletrônica.<br>
-                • <span class="font-medium">mBlock</span> → Adicionou recursos de Arduino, robótica e dispositivos físicos ao conceito do Scratch.<br>
-                • <span class="font-medium">DoGo Maker</span> → Responsável pelo DoGoBlock e pela adaptação da plataforma para os produtos e projetos da DoGo Maker.<br>
-                • <span class="font-medium">Instituto EducarBr</span> → Participou da parte educacional e de disseminação da ferramenta.<br><br>
-                <strong>Na prática:</strong> O DoGoBlock parece ser uma plataforma construída sobre ideias e tecnologias que vieram do Scratch e do mBlock, adaptadas pela DoGo Maker para uso em educação, Arduino e robótica. Por isso você encontra menus e blocos muito parecidos com os do Scratch, mas com recursos extras para placas eletrônicas.`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "8. Atores (Sprites)",
-                descricao: `A área Atores fica no canto inferior esquerdo.<br>
-                Na sua imagem aparece o ator M-Panda.<br><br>
-                <strong>O ator é qualquer objeto que pode:</strong><br>
-                • Se mover<br>
-                • Falar<br>
-                • Tocar sons<br>
-                • Trocar de traje<br>
-                • Interagir com outros objetos<br><br>
-                <strong>Exemplos:</strong><br>
-                Panda, Robô, Carro, Bola, Personagem de jogo<br><br>
-                <strong>Botões de ator:</strong><br>
-                Ao lado de "Novo ator" você tem:<br>
-                🖌️ Desenhar novo ator<br>
-                📂 Importar ator do computador<br>
-                📷 Tirar foto para criar ator`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "9. Cenários",
-                descricao: `Logo abaixo do palco existe a área Palco / Cenário.<br><br>
-                <strong>O cenário é o fundo do projeto.</strong><br><br>
-                <strong>Exemplos:</strong><br>
-                Floresta, Cidade, Sala de aula, Espaço sideral<br><br>
-                Você sabia que um projeto pode ter <strong>vários cenários</strong>?<br>
-                E o melhor: Você pode trocar o cenário usando blocos de programação durante a execução! 🤯<br><br>
-                <strong>Botões do cenário:</strong><br>
-                🖌️ Desenhar cenário<br>
-                📂 Importar cenário<br>
-                📷 Tirar foto para cenário`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "10. Trajes",
-                descricao: `A aba Traje controla a aparência do ator.<br><br>
-                Na sua imagem o Panda possui:<br>
-                • Panda-a<br>
-                • Panda-b<br><br>
-                Esses são dois trajes diferentes. <strong>Quando alternamos entre eles rapidamente, criamos animação!</strong><br><br>
-                <strong>Exemplo prático:</strong><br>
-                Traje A → pé esquerdo para frente<br>
-                Traje B → pé direito para frente<br>
-                Alternando: A → B → A → B<br>
-                Parece que o panda está realmente andando! Incrível não é mesmo?`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "11. Ferramentas de edição",
-                descricao: `Na aba Traje existe uma barra de ferramentas poderosa para criar o que você imaginar:<br><br>
-                ✏️ <strong>Seleção:</strong> Serve para selecionar partes do desenho.<br>
-                📏 <strong>Linha:</strong> Desenha linhas retas.<br>
-                ⬜ <strong>Retângulo:</strong> Desenha quadrados e retângulos.<br>
-                ⭕ <strong>Elipse:</strong> Desenha círculos e ovais perfeitos.<br>
-                📝 <strong>Texto:</strong> Escreve textos personalizados.<br>
-                🎨 <strong>Preenchimento:</strong> Pinta áreas fechadas com cor.<br>
-                🧹 <strong>Borracha:</strong> Apaga partes do desenho.<br>
-                🖨️ <strong>Carimbo:</strong> Duplica elementos rapidamente.<br><br>
-                <strong>Nessa aba existem dois modos especiais:</strong> modo Vetorial e modo Bitmap. Você vai aprender a diferença nos próximos módulos!`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "12. Modo Vetorial",
-                descricao: `Este é um modo muito especial e poderoso!<br><br>
-                No modo vetorial, o desenho é formado por: <strong>Linhas, Curvas e Formas matemáticas</strong>. Não são pontos coloridos, são instruções de como desenhar!<br><br>
-                <strong>✅ Vantagens incríveis:</strong><br>
-                ✅ Pode ampliar infinitamente sem perder qualidade<br>
-                ✅ Sempre nítido, não fica pixelado<br>
-                ✅ Excelente para criar logos<br>
-                ✅ Perfeito para CNC e máquinas de corte<br>
-                ✅ Ideal para desenhos com contornos limpos (lineart)<br><br>
-                Quando você cria um robô ou personagem para usar em projetos grandes, prefira o modo vetorial!`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "13. Modo Bitmap",
-                descricao: `O modo bitmap funciona de forma diferente do vetorial.<br><br>
-                Aqui, o desenho passa a ser formado por <strong>pequenos pontos coloridos chamados pixels</strong>. É exatamente como uma fotografia digital!<br><br>
-                <strong>✅ Vantagens:</strong><br>
-                ✅ Melhor para fotografias reais<br>
-                ✅ Melhor para pinturas com muitos detalhes<br>
-                ✅ Melhor para imagens complexas e com texturas<br><br>
-                <strong>❌ Desvantagens:</strong><br>
-                ❌ Ao ampliar muito, perde qualidade e fica serrilhado<br>
-                ❌ Não é o ideal para usar em CNC<br><br>
-                <strong>Conversões:</strong><br>
-                🔄 <strong>Vetorial → Bitmap:</strong> Você perde a facilidade de editar curvas depois.<br>
-                🔄 <strong>Bitmap → Vetorial:</strong> Funciona melhor com desenhos simples preto e branco, pior com fotos.`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "14. Sons",
-                descricao: `Na aba Sons você controla tudo sobre áudio no seu projeto!<br><br>
-                Você verá o <strong>nome do som</strong>, sua <strong>forma de onda</strong> e botões de controle.<br>
-                O Panda do exemplo tem um som chamado "eat" (comer).<br><br>
-                <strong>O que é a forma de onda?</strong><br>
-                A linha preta mostra visualmente como é o áudio:<br>
-                🔊 Picos grandes = Som alto<br>
-                🔉 Picos pequenos = Som baixo<br><br>
-                <strong>Botões importantes:</strong><br>
-                ▶️ Reproduzir | ⏹️ Parar | 🔴 Gravar seu próprio som<br><br>
-                <strong>Ferramentas de Edição:</strong><br>
-                Desfazer, Refazer, Cortar, Copiar, Colar, Apagar, Selecionar tudo<br>
-                <strong>Efeitos especiais:</strong><br>
-                Aumentar gradualmente, Diminuir gradualmente, Tornar mais forte, Suavizar, Silêncio, Inverter o som.`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "15. Palco",
-                descricao: `A área grande branca do lado esquerdo da tela é chamada de <strong>Palco</strong>!<br><br>
-                É o coração visível do seu projeto: <strong>tudo o que acontece é mostrado ali</strong>.<br>
-                É como o "cenário principal" de uma peça de teatro ou filme.<br><br>
-                Na imagem do exemplo, você vê o 🐼 Panda sendo exibido no palco, é lá que ele vai se mover, dançar e interagir!<br><br>
-                <strong>Dois botões super importantes no topo:</strong><br>
-                🚩 <strong>Bandeira Verde:</strong> Quando você clica nela, o programa começa a ser executado!<br>
-                🛑 <strong>Botão Vermelho:</strong> Quando clica nele, o programa para imediatamente.`,
-                avatar: "avatar1.png"
-            },
-            {
-                titulo: "16. Códigos",
-                descricao: `A área Códigos é o <strong>coração do DoGoBlock</strong>! É nela que você monta os blocos coloridos para criar animações, jogos completos, controlar robôs e placas Arduino.<br><br>
-                <strong>Ferramentas úteis na área de códigos:</strong><br>
-                📋 <strong>Duplicar:</strong> Cria uma cópia exata do bloco ou conjunto de blocos. Exemplo: Você fez um programa grande e quer outro parecido, usa duplicar e economiza muito tempo!<br><br>
-                🗑️ <strong>Apagar:</strong> Remove o bloco selecionado que não quer mais usar.<br><br>
-                🔍 <strong>Aumentar:</strong> Aumenta o tamanho visual dos blocos. Muito útil para telas pequenas, para crianças pequenas ou durante apresentações em quadros digitais.<br><br>
-                🔎 <strong>Reduzir:</strong> Diminui o tamanho visual dos blocos, permitindo ver mais código na tela de uma vez.<br><br>
-                🔄 <strong>Zoom:</strong> Controla o nível de aproximação. Não altera seu programa, apenas como você o vê.`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "17. Movimentos",
-                descricao: `Os blocos de <strong>Movimentos</strong> são os responsáveis por fazer seus atores se moverem pela tela! 🚶💨<br><br>
-                <strong>Exemplos de blocos:</strong><br>
-                • <span class="text-primary font-medium">Mover 10 passos</span> → Anda para frente<br>
-                • <span class="text-primary font-medium">Girar 15° para direita/esquerda</span> → Vira o personagem<br>
-                • <span class="text-primary font-medium">Ir para posição X:___ Y:___</span> → Vai direto para um ponto específico<br>
-                • <span class="text-primary font-medium">Deslizar até posição...</span> → Movimento suave como se estivesse deslizando no gelo<br>
-                • <span class="text-primary font-medium">Apontar para direção ___°</span> → Define para onde ele está olhando<br><br>
-                <strong>Uso prático:</strong> Usamos esses blocos para fazer personagens andarem, carros se moverem, bolas quicando e objetos mudarem de posição durante o jogo.`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "18. Aparência",
-                descricao: `Os blocos de <strong>Aparência</strong> controlam como os atores e cenários parecem! É a parte visual do seu programa 👀✨<br><br>
-                <strong>Exemplos de blocos:</strong><br>
-                • <span class="text-primary font-medium">Dizer "mensagem" por 2 segundos</span> → Balão de fala<br>
-                • <span class="text-primary font-medium">Pensar "mensagem"</span> → Balão de pensamento<br>
-                • <span class="text-primary font-medium">Trocar traje para ___</span> → Muda a roupa/aparência<br>
-                • <span class="text-primary font-medium">Trocar cenário para ___</span> → Muda o fundo<br>
-                • <span class="text-primary font-medium">Mostrar / Esconder</span> → Aparece ou desaparece da tela<br>
-                • <span class="text-primary font-medium">Alterar tamanho em ___</span> → Cresce ou diminui<br><br>
-                <strong>Uso prático:</strong> Criar balões de fala, fazer animações de andar, mudar roupas, trocar o fundo do jogo e dar vida aos personagens!`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "19. Som",
-                descricao: `Os blocos de <strong>Som</strong> controlam tudo relacionado aos áudios do seu projeto! Dão vida e emoção aos seus jogos 🎵🔊<br><br>
-                <strong>Exemplos de blocos:</strong><br>
-                • <span class="text-primary font-medium">Tocar som ___ até acabar</span> → Toca um som completo<br>
-                • <span class="text-primary font-medium">Parar todos os sons</span> → Silencia tudo de uma vez<br>
-                • <span class="text-primary font-medium">Aumentar volume em ___</span> → Fica mais alto<br>
-                • <span class="text-primary font-medium">Diminuir volume em ___</span> → Fica mais baixo<br>
-                • <span class="text-primary font-medium">Definir volume para ___%</span> → Define o nível exato<br><br>
-                <strong>Uso prático:</strong> Adicionar música de fundo, efeitos sonoros de pulo, explosão, vitória, derrotas e até narração para explicar o que está acontecendo no jogo.`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "20. Caneta",
-                descricao: `Os blocos da <strong>Caneta</strong> são muito especiais e extremamente importantes para projetos de Desenho Técnico, CNC e máquinas de corte ✍️🤖<br><br>
-                Eles permitem que os atores desenhem linhas e formas diretamente no palco enquanto se movem!<br><br>
-                <strong>Exemplos de blocos:</strong><br>
-                • <span class="text-primary font-medium">Baixar caneta</span> → Começa a desenhar ao se mover<br>
-                • <span class="text-primary font-medium">Levantar caneta</span> → Para de desenhar ao se mover<br>
-                • <span class="text-primary font-medium">Limpar desenhos</span> → Apaga tudo que foi desenhado<br>
-                • <span class="text-primary font-medium">Alterar cor da caneta</span> → Troca a cor do traço<br>
-                • <span class="text-primary font-medium">Alterar espessura em ___</span> → Deixa o traço mais grosso ou fino<br><br>
-                <strong>Uso prático:</strong> Criar desenhos automáticos, formas geométricas perfeitas, simulações de máquinas plotter e preparar caminhos para máquinas CNC reais!`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "21. Dados & Blocos",
-                descricao: `Esta é uma área muito poderosa, usada para <strong>guardar informações e criar seus próprios comandos</strong> personalizados 🧠💾<br><br>
-                <strong>📦 Criar uma Variável</strong><br>
-                Uma variável é como uma caixa com nome que guarda um valor. Esse valor pode mudar durante o jogo!<br>
-                <strong>Exemplo:</strong><br>
-                Variável: <span class="font-medium text-primary">Pontos = 0</span><br>
-                Depois de acertar algo: <span class="font-medium text-primary">Pontos = Pontos + 1</span><br>
-                Resultado: 0 → 1 → 2 → 3 ... aumentando sozinho!<br>
-                <strong>Uso:</strong> Contar pontuação, medir tempo, armazenar temperatura ou distância.<br><br>
-                <strong>📋 Criar uma Lista</strong><br>
-                Uma lista guarda vários valores diferentes, como uma prateleira com várias caixas!<br>
-                <strong>Exemplo:</strong> Lista Frutas: Maçã, Banana, Uva, Manga<br>
-                <strong>Uso:</strong> Guardar histórico de ações, nomes, comandos ou leituras de sensores.<br><br>
-                <strong>🧩 Criar um Bloco</strong><br>
-                Você pode criar seus próprios blocos personalizados! Exemplo: Cria o bloco "Desenhar Quadrado" e depois usa ele quantas vezes quiser com apenas um clique. Essencial para projetos grandes!`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "22. Eventos",
-                descricao: `Os blocos de <strong>Eventos</strong> definem <strong>QUANDO algo vai acontecer</strong> no seu programa! São os "gatilhos" 🚀⏱️<br><br>
-                Sempre ficam na parte superior das sequências de blocos, pois é por eles que tudo começa.<br><br>
-                <strong>Exemplos de blocos:</strong><br>
-                • <span class="text-primary font-medium">Quando clicar na bandeira verde</span> → O mais usado: inicia tudo ao clicar no botão principal<br>
-                • <span class="text-primary font-medium">Quando tecla [espaço] for pressionada</span> → Faz algo ao apertar uma tecla do teclado<br>
-                • <span class="text-primary font-medium">Quando este ator for clicado</span> → Reage quando o jogador clica no personagem<br>
-                • <span class="text-primary font-medium">Quando receber mensagem ___</span> → Reage quando outro ator manda um aviso especial<br><br>
-                <strong>Uso prático:</strong> Definir como o jogo começa, como ele reage aos comandos do jogador e como diferentes partes do programa conversam entre si.`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "23. Controle",
-                descricao: `Os blocos de <strong>Controle</strong> são os "cérebros lógicos" do seu programa. Eles controlam a ordem e as regras de funcionamento 🧠⚙️<br><br>
-                São fundamentais para dar inteligência aos seus projetos!<br><br>
-                <strong>Exemplos de blocos:</strong><br>
-                • <span class="text-primary font-medium">Esperar ___ segundos</span> → Faz uma pausa antes de continuar<br>
-                • <span class="text-primary font-medium">Repetir ___ vezes</span> → Executa tudo dentro do bloco várias vezes automaticamente<br>
-                • <span class="text-primary font-medium">Para sempre</span> → Executa tudo dentro dele sem parar, até o jogo acabar<br>
-                • <span class="text-primary font-medium">Se ___ então</span> → Toma uma decisão: "Se algo for verdadeiro, faça tal coisa"<br>
-                • <span class="text-primary font-medium">Se ___ então senão</span> → Decide entre duas opções: "Se sim faça A, senão faça B"<br>
-                • <span class="text-primary font-medium">Parar ___</span> → Interrompe partes ou todo o programa<br><br>
-                <strong>Uso prático:</strong> Criar decisões lógicas, contagens, loops infinitos e regras complexas como: "Se tocar na borda, volte para trás" ou "Se a pontuação chegar a 100, ganhe o jogo".`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "24. Sensores",
-                descricao: `Os blocos de <strong>Sensores</strong> permitem que seu programa <strong>obtenha informações do ambiente e do jogador</strong> ao seu redor 👁️📡<br><br>
-                É como dar olhos, ouvidos e tato ao seu personagem! No modo Arduino, esses sensores podem ser físicos reais conectados à placa.<br><br>
-                <strong>Exemplos de blocos:</strong><br>
-                • <span class="text-primary font-medium">Tecla ___ pressionada?</span> → Verifica se o jogador está apertando alguma tecla<br>
-                • <span class="text-primary font-medium">Mouse tocando no ator?</span> → Detecta se o ponteiro do mouse está passando por cima<br>
-                • <span class="text-primary font-medium">Distância até ___</span> → Mede o quanto está longe de algo<br>
-                • <span class="text-primary font-medium">Valor do cronômetro</span> → Diz quanto tempo passou desde o início<br>
-                • <span class="text-primary font-medium">Posição do mouse X/Y</span> → Onde exatamente está o ponteiro do mouse<br><br>
-                <strong>Uso prático:</strong> Fazer programas que reagem ao jogador, detectar colisões, medir tempo de reação e ler dados de sensores de luz, temperatura ou toque em robôs reais.`,
-                avatar: "avatar2.png"
-            },
-            {
-                titulo: "25. Operadores",
-                descricao: `Os blocos de <strong>Operadores</strong> servem para fazer <strong>cálculos matemáticos e comparações lógicas</strong>. Sem eles, as decisões seriam impossíveis ➕➗📐<br><br>
-                Parecem difíceis, mas são super fáceis de usar e muito poderosos!<br><br>
-                <strong>Exemplos de blocos:</strong><br>
-                • <span class="text-primary font-medium">Operações básicas:</span> Soma (+), Subtração (-), Multiplicação (×), Divisão (÷), Resto da divisão, Número aleatório entre ___ e ___<br>
-                • <span class="text-primary font-medium">Comparações:</span> ___ < ___ (menor que), ___ = ___ (igual a), ___ > ___ (maior que)<br>
-                • <span class="text-primary font-medium">Lógica:</span> ___ E ___ (as duas condições devem ser verdadeiras), ___ OU ___ (pelo menos uma deve ser verdadeira), NÃO ___ (inverte o resultado)<br><br>
-                <strong>Exemplo prático completo:</strong><br>
-                Usando blocos juntos: <br>
-                "Se <span class="font-medium text-primary">temperatura > 30</span> <span class="font-medium text-primary">E</span> <span class="font-medium text-primary">está dia</span> <br>
-                Então <span class="font-medium text-primary">ligar ventilador</span>"<br>
-                Veja como é fácil criar regras inteligentes!`,
-                avatar: "avatar3.png"
-            },
-            {
-                titulo: "26. Robôs",
-                descricao: `Chegamos à parte que faz toda a diferença! Os blocos de <strong>Robôs</strong> é o que separa o DoGoBlock do Scratch tradicional 🤖🚀<br><br>
-                Eles contêm todos os blocos necessários para controlar <strong>hardware físico real</strong> conectado ao computador!<br><br>
-                Dependendo da placa selecionada (como vimos no módulo 4), podem aparecer blocos para controlar:<br>
-                💡 LEDs e Lâmpadas<br>
-                ⚙️ Servomotores<br>
-                🚗 Motores de corrente contínua<br>
-                🌡️ Sensores de temperatura<br>
-                🔊 Buzzer (apito)<br>
-                📺 Telas LCD<br>
-                📶 Comunicação Bluetooth<br>
-                📡 Conexão Wi-Fi<br>
-                📊 Sensores analógicos diversos<br><br>
-                <strong>Uso prático:</strong> É com esses blocos que criamos <strong>robôs móveis, carrinhos controlados, braços mecânicos, plotters desenhistas, máquinas CNC e sistemas inteligentes com sensores reais</strong>. É a magia da robótica acontecendo de verdade!`,
-                avatar: "avatar1.png"
-            }
+            { titulo:"Módulo 1 - Arquivo", imagem:"modulo1.png", avatar:"avatar2.png", texto:"A função Arquivo se encontra na barra de menu localizada no canto superior esquerdo.<br><br><b>Novo:</b> Abre um novo arquivo.<br><b>Abrir Projeto:</b> Abre um projeto salvo anteriormente.<br><b>Salvar Projeto:</b> Atualiza o arquivo atual mantendo o mesmo nome.<br><b>Salvar Projeto Como:</b> Cria uma nova cópia do projeto permitindo escolher outro nome ou pasta.<br><b>Importar Imagem:</b> Traz uma imagem do computador para dentro do projeto.<br><b>Exportar Imagem:</b> Salva uma imagem criada no DoGoBlock para o computador." },
+            { titulo:"Módulo 2 - Editar", imagem:"modulo2.png", avatar:"avatar2.png", texto:"A opção Editar contém ferramentas relacionadas à edição do projeto.<br><br><b>Anular a Eliminação:</b> Recupera itens apagados.<br><b>Ocultar Palco:</b> Esconde a área de execução para aumentar o espaço de programação.<br><b>Disposição com Palco Pequeno:</b> Reduz o palco e aumenta a área de trabalho.<br><b>Modo Turbo:</b> Executa os blocos mais rapidamente.<br><b>Modo Arduino:</b> Ativa recursos para programação de placas Arduino." },
+            { titulo:"Módulo 3 - Conectar", imagem:"modulo3.png", avatar:"avatar2.png", texto:"A opção Conectar permite estabelecer comunicação com placas eletrônicas.<br><br>Porta Serial (COM), Bluetooth, 2.4G Serial, Rede.<br>Atualizar Firmware, Reiniciar Programa Padrão, Set Firmware Mode, Ver Código, Instalar Driver do Arduino.<br>Essas opções permitem comunicação e configuração das placas." },
+            { titulo:"Módulo 4 - Placas", imagem:"modulo4.png", avatar:"avatar2.png", texto:"A opção Placas permite selecionar o hardware utilizado.<br><br><b>Exemplos:</b> Arduino Uno, Arduino Nano, Arduino Leonardo.<br><br>Quando uma placa é selecionada:<br>Os blocos compatíveis são carregados. As portas são configuradas. O código correto é gerado. O firmware adequado pode ser instalado." },
+            { titulo:"Módulo 5 - Extensões", imagem:"modulo5.png", avatar:"avatar2.png", texto:"As extensões adicionam novos recursos ao DoGoBlock.<br><br>Gerenciar Extensões, Restaurar Extensões, Limpar Cache, Smart Servo Tools, LCD ARDUINO, Joystick, Microsoft Cognitive Services, Smart Servo Communication." },
+            { titulo:"Módulo 6 - Idioma", imagem:"modulo6.png", avatar:"avatar2.png", texto:"A opção Idioma permite alterar a linguagem da interface.<br><br><b>Exemplos:</b> Português, English, Español, 中文.<br><br>Ao alterar o idioma: Os menus mudam, os nomes dos blocos podem mudar e as mensagens aparecem na língua escolhida." },
+            { titulo:"Módulo 7 - Créditos", imagem:"modulo7.png", avatar:"avatar2.png", texto:"Os créditos mostram quem participou do desenvolvimento da plataforma.<br><br>MIT Media Lab, Scratch, Maker Works Technology, mBlock, DoGo Maker, Instituto EducarBr.<br>Essas organizações contribuíram para a criação e evolução do DoGoBlock." },
+            { titulo:"Módulo 8 - Atores", imagem:"modulo8.png", avatar:"avatar3.png", texto:"Os atores são personagens ou objetos do projeto.<br><br>Eles podem: Se mover, Falar, Tocar sons, Trocar de traje, Interagir com outros objetos.<br><br><b>Exemplos:</b> Panda, Robô, Carro, Bola, Personagem de jogo." },
+            { titulo:"Módulo 9 - Cenários", imagem:"modulo9.png", avatar:"avatar3.png", texto:"Os cenários representam o fundo do projeto.<br><br><b>Exemplos:</b> Floresta, Cidade, Sala de Aula, Espaço.<br><br>É possível utilizar vários cenários e alternar entre eles usando blocos." },
+            { titulo:"Módulo 10 - Trajes", imagem:"modulo10.png", avatar:"avatar3.png", texto:"Os trajes controlam a aparência dos atores.<br><br><b>Exemplo:</b> Panda-a, Panda-b.<br>Ao alternar rapidamente os trajes, criamos animações." },
+            { titulo:"Módulo 11 - Ferramentas de Edição", imagem:"modulo11.png", avatar:"avatar3.png", texto:"Ferramentas disponíveis na área de desenho:<br>Seleção, Linha, Retângulo, Elipse, Texto, Preenchimento, Borracha, Carimbo.<br>Nesta área também encontramos os modos Vetorial e Bitmap." },
+            { titulo:"Módulo 12 - Modo Vetorial", imagem:"modulo12.png", avatar:"avatar4.png", texto:"O modo vetorial utiliza: Linhas, Curvas, Formas matemáticas.<br><br><b>Vantagens:</b> Não perde qualidade, permite ampliações. Ideal para logos, excelente para CNC e excelente para lineart." },
+            { titulo:"Módulo 13 - Modo Bitmap", imagem:"modulo13.png", avatar:"avatar4.png", texto:"O modo bitmap utiliza pixels.<br><br><b>Vantagens:</b> Melhor para fotos, melhor para pinturas, melhor para imagens complexas.<br><b>Desvantagens:</b> Perde qualidade ao ampliar (pode ficar serrilhado).<br><br>É possível converter entre Bitmap e Vetorial." },
+            { titulo:"Módulo 14 - Sons", imagem:"modulo14.png", avatar:"avatar4.png", texto:"Na aba Sons encontramos: Nome do som, Forma de onda, Botões de reprodução.<br>A forma de onda mostra a intensidade do áudio (Picos grandes = Som alto | Picos pequenos = Som baixo).<br><br><b>Botões:</b> Reproduzir, Parar, Gravar.<br><b>Ferramentas:</b> Desfazer, Refazer, Cortar, Copiar, Colar, Apagar, Selecionar Tudo, Inverter.<br><b>Efeitos:</b> Aumentar/Diminuir gradualmente, Maior intensidade, Suavizar, Silêncio, Inverter." },
+            { titulo:"Módulo 15 - Palco", imagem:"modulo15.png", avatar:"avatar4.png", texto:"O palco é a área onde tudo acontece. É nele que os atores aparecem.<br><br>Quando clicamos na <b>bandeira verde</b>: O projeto inicia.<br>Quando clicamos no <b>botão vermelho</b>: O projeto para.<br>O palco mostra o resultado visual prático de toda a sua programação." },
+            { titulo:"Módulo 16 - Códigos", imagem:"modulo16.png", avatar:"avatar5.png", texto:"A área de códigos é o coração do DoGoBlock.<br><br><b>Ferramentas de suporte:</b> Duplicar, Apagar, Aumentar Zoom, Reduzir Zoom.<br>Essas ferramentas ajudam muito na organização e na visualização clara dos blocos empilhados." },
+            { titulo:"Módulo 17 - Movimentos", imagem:"modulo17.png", avatar:"avatar5.png", texto:"Os blocos de movimento controlam fisicamente os atores.<br><br><b>Exemplos:</b> Mover 10 passos, Girar 15 graus, Ir para posição X:Y, Deslizar até posição, Apontar para direção.<br><b>Uso comum:</b> Movimentar personagens, carros, robôs e objetos pela tela." },
+            { titulo:"Módulo 18 - Aparência", imagem:"modulo18.png", avatar:"avatar5.png", texto:"Controla a estética e o visual dos atores.<br><br><b>Exemplos:</b> Dizer mensagem, Pensar mensagem, Trocar traje, Trocar cenário, Mostrar, Esconder, Alterar tamanho.<br><b>Uso comum:</b> Criar animações, diálogos e efeitos visuais na tela." },
+            { titulo:"Módulo 19 - Som", imagem:"modulo19.png", avatar:"avatar5.png", texto:"Controla a execução de áudios no projeto.<br><br><b>Exemplos:</b> Tocar som, Parar som, Alterar volume, Definir volume.<br><b>Uso comum:</b> Inserir músicas de fundo, narrações de voz e efeitos sonoros para ações específicas." },
+            { titulo:"Módulo 20 - Caneta", imagem:"modulo20.png", avatar:"avatar5.png", texto:"A aba Caneta permite que o ator desenhe caminhos diretamente no palco enquanto se move.<br><br><b>Exemplos:</b> Baixar caneta, Levantar caneta, Limpar desenhos, Alterar cor, Alterar espessura.<br><b>Uso comum:</b> Desenhos automáticos, formas geométricas e simulação de plotters." },
+            { titulo:"Módulo 21 - Dados & Blocos", imagem:"modulo21.png", avatar:"avatar5.png", texto:"Permite gerenciar e armazenar informações do sistema.<br><br><b>Criar Variável:</b> Armazena um dado (Ex: Pontos = 0).<br><b>Criar Lista:</b> Guarda um conjunto de valores (Ex: Maçã, Banana, Uva).<br><b>Criar Bloco:</b> Permite criar comandos customizados personalizados. Muito útil em projetos grandes." },
+            { titulo:"Módulo 22 - Eventos", imagem:"modulo22.png", avatar:"avatar5.png", texto:"Os eventos definem o 'gatilho', ou seja, quando algo deve acontecer.<br><br><b>Exemplos:</b> Quando clicar na bandeira verde, Quando tecla for pressionada, Quando ator for clicado, Quando receber mensagem.<br><b>Uso comum:</b> Iniciar ações e coordenar partes do programa." },
+            { titulo:"Módulo 23 - Controle", imagem:"modulo23.png", avatar:"avatar5.png", texto:"Controla o fluxo e a lógica estrutural do programa.<br><br><b>Exemplos:</b> Esperar X segundos, Repetir X vezes, Para Sempre, Se [condição] Então, Se/Senão, Parar.<br><b>Uso comum:</b> Criar tomadas de decisões e loops de repetição." },
+            { titulo:"Módulo 24 - Sensores", imagem:"modulo24.png", avatar:"avatar5.png", texto:"Obtém e lê informações do ambiente interno ou externo.<br><br><b>Exemplos:</b> Tecla pressionada?, Mouse tocando em?, Distância até..., Cronômetro.<br>No modo Arduino, também serve para ler pinos e sensores físicos conectados.<br><b>Uso comum:</b> Criar jogos e projetos interativos." },
+            { titulo:"Módulo 25 - Operadores", imagem:"modulo25.png", avatar:"avatar5.png", texto:"Contém blocos de funções matemáticas e lógica booleana.<br><br><b>Exemplos:</b> Operações (+, -, ×, ÷), Comparações (<, =, >), Lógica (E, OU, NÃO).<br><b>Uso comum:</b> Realizar cálculos complexos, pontuações e validações condicionais." },
+            { titulo:"Módulo 26 - Robôs", imagem:"modulo26.png", avatar:"avatar7.png", texto:"A aba Robôs permite fazer a integração direta com o hardware externo.<br><br><b>Exemplos:</b> Controle de LEDs, Servos, Motores, Sensores Físicos, Buzzer, LCD, Bluetooth, Wi-Fi.<br><b>Uso comum:</b> Desenvolvimento de Robôs, Carrinhos seguidores de linha, Plotters e Projetos de Automação." }
         ];
 
-        // Dados da Avaliação - 30 Questões
-        const perguntas = [
-            {
-                enunciado: "1. Como é chamada a área onde ficam as op
+        const questoes = [
+            { pergunta:"1. Como é chamada a área onde ficam as opções Arquivo, Editar e Conectar?", alternativas:[ "Barra de ferramentas", "Barra de menus", "Palco", "Área de atores" ], correta:1 },
+            { pergunta:"2. Qual opção permite salvar as alterações no arquivo atual?", alternativas:[ "Salvar Projeto", "Exportar Projeto", "Salvar Projeto Como", "Importar Projeto" ], correta:0 },
+            { pergunta:"3. Qual opção permite criar uma cópia do projeto com outro nome?", alternativas:[ "Salvar Projeto", "Salvar Projeto Como", "Exportar", "Reverter" ], correta:1 },
+            { pergunta:"4. O que significa importar uma imagem?", alternativas:[ "Salvar uma imagem", "Apagar uma imagem", "Trazer uma imagem para dentro do projeto", "Compartilhar uma imagem" ], correta:2 },
+            { pergunta:"5. O que significa exportar uma imagem?", alternativas:[ "Abrir uma imagem", "Salvar uma imagem do projeto em um arquivo", "Apagar uma imagem", "Copiar uma imagem" ], correta:1 },
+            { pergunta:"6. Para que serve a opção Reverter?", alternativas:[ "Copiar um bloco", "Trocar o idioma", "Voltar para a última versão salva", "Apagar um ator" ], correta:2 },
+            { pergunta:"7. O que faz a opção Anular a eliminação?", alternativas:[ "Salva o projeto", "Recupera algo apagado", "Fecha o programa", "Limpa o palco" ], correta:1 },
+            { pergunta:"8. O que é o palco?", alternativas:[ "Área de códigos", "Área de sons", "Local onde o projeto é exibido", "Lista de atores" ], correta:2 },
+            { pergunta:"9. O que acontece ao ocultar o palco?", alternativas:[ "O projeto é apagado", "O ator desaparece", "O palco é escondido para aumentar a área de programação", "O programa fecha" ], correta:2 },
+            { pergunta:"10. Para que serve o Modo Turbo?", alternativas:[ "Programar Arduino", "Executar os blocos mais rapidamente", "Desenhar imagens", "Tocar sons" ], correta:1 },
+            { pergunta:"11. Para que serve o Modo Arduino?", alternativas:[ "Tocar músicas", "Criar cenários", "Programar e controlar placas Arduino", "Alterar idiomas" ], correta:2 },
+            { pergunta:"12. Qual opção conecta a placa pela USB?", alternativas:[ "Bluetooth", "Rede", "Porta Serial (COM)", "LCD" ], correta:2 },
+            { pergunta:"13. O que faz a opção Atualizar Firmware?", alternativas:[ "Troca o idioma", "Atualiza o programa interno da placa", "Salva o projeto", "Cria um ator" ], correta:1 },
+            { pergunta:"14. Qual opção mostra o código gerado pelos blocos?", alternativas:[ "Rede", "Smart Servo", "Ver Código", "Idioma" ], correta:2 },
+            { pergunta:"15. Para que serve o menu Placas?", alternativas:[ "Trocar o cenário", "Alterar o som", "Escolher a placa que será utilizada", "Salvar projetos" ], correta:2 },
+            { pergunta:"16. Qual extensão adiciona recursos para telas LCD?", alternativas:[ "Communication", "LCD", "Smart Servo", "Bluetooth" ], correta:1 },
+            { pergunta:"17. O que faz a extensão Communication?", alternativas:[ "Edita imagens", "Cria cenários", "Adiciona recursos de comunicação", "Apaga blocos" ], correta:2 },
+            { pergunta:"18. O que é um actor (ator)?", alternativas:[ "Um fundo", "Um som", "Um personagem ou objeto do projeto", "Um bloco" ], correta:2 },
+            { pergunta:"19. O que é um cenário?", alternativas:[ "Um personagem", "O fundo do projeto", "Um som", "Um bloco" ], correta:1 },
+            { pergunta:"20. Para que servem os trajes?", alternativas:[ "Criar sons", "Criar listas", "Alterar a aparência do ator", "Trocar o idioma" ], correta:2 },
+            { pergunta:"21. Qual modo é melhor para desenhos usados em CNC?", alternativas:[ "Bitmap", "Vetorial", "Som", "Controle" ], correta:1 },
+            { pergunta:"22. Qual modo é formado por pixels?", alternativas:[ "Bitmap", "Vetorial", "Turbo", "Arduino" ], correta:0 },
+            { pergunta:"23. Qual aba contém os blocos para movimentar atores?", alternativas:[ "Movimentos", "Sensores", "Operadores", "Eventos" ], correta:0 },
+            { pergunta:"24. Em qual aba ficam os blocos para tocar sons?", alternativas:[ "Aparência", "Som", "Controle", "Robôs" ], correta:1 },
+            { pergunta:"25. Em qual aba ficam os blocos para desenhar no palco?", alternativas:[ "Eventos", "Sensores", "Caneta", "Operadores" ], correta:2 },
+            { pergunta:"26. O que é uma variável?", alternativas:[ "Uma imagem", "Um ator", "Um local para armazenar um valor", "Um cenário" ], correta:2 },
+            { pergunta:"27. O que é uma lista?", alternativas:[ "Um som", "Um conjunto de vários valores armazenados", "Um palco", "Um ator" ], correta:1 },
+            { pergunta:"28. Em qual aba ficam os blocos 'Quando clicar na bandeira verde'?", alternativas:[ "Controle", "Operadores", "Eventos", "Robôs" ], correta:2 },
+            { pergunta:"29. Em qual aba ficam os blocos 'Se' e 'Repetir'?", alternativas:[ "Aparência", "Sensores", "Controle", "Som" ], correta:2 },
+            { pergunta:"30. Em qual aba ficam os blocos para controlar motores, LEDs e sensores?", alternativas:[ "Operadores", "Aparência", "Eventos", "Robôs" ], correta:3 }
+        ];
+
+        function confirmarNome(){
+            const nome = document.getElementById("nomeAluno").value.trim();
+            if(nome === ""){
+                alert("Digite seu nome.");
+                return;
+            }
+            nomeAluno = nome;
+            
+            digitarMensagem(`Olá, ${nomeAluno}! Estou muito feliz de te ver por aqui. Aproveite ao máximo este curso. Clique em iniciar para começar. Opa, quase me esqueço. Qualquer dúvida, chame um professor. Tenha uma ótima aula.`);
+        }
+
+        function digitarMensagem(texto){
+            const area = document.getElementById("mensagemBoasVindas");
+            area.innerHTML = "";
+            let i = 0;
+            const intervalo = setInterval(()=>{
+                area.innerHTML += texto.charAt(i);
+                i++;
+                if(i >= texto.length){
+                    clearInterval(intervalo);
+                    document.getElementById("btnIniciar").classList.remove("hidden");
+                }
+            }, 30);
+        }
+
+        function iniciarCurso(){
+            document.getElementById("intro").classList.remove("active");
+            document.getElementById("modulos").classList.add("active");
+            carregarModulo();
+        }
+
+        function carregarModulo(){
+            const modulo = modulos[moduloAtual];
+            document.getElementById("tituloModulo").innerHTML = modulo.titulo;
+            document.getElementById("imagemModulo").src = modulo.imagem;
+            document.getElementById("textoModulo").innerHTML = modulo.texto;
+            document.getElementById("avatarModuloArea").innerHTML = `<img src="${modulo.avatar}" class="avatar" alt="Avatar Módulo">`;
+            document.getElementById("progressModulo").style.width = ((moduloAtual + 1) / 26) * 100 + "%";
+        }
+
+        function proximoModulo(){
+            if(moduloAtual < modulos.length - 1){
+                moduloAtual++;
+                carregarModulo();
+                return;
+            }
+            document.getElementById("modulos").classList.remove("active");
+            document.getElementById("quiz").classList.add("active");
+            carregarQuestao();
+        }
+
+        function moduloAnterior(){
+            if(moduloAtual > 0){
+                moduloAtual--;
+                carregarModulo();
+            }
+        }
+
+        function carregarQuestao(){
+            const q = questoes[questaoAtual];
+            document.getElementById("tituloQuestao").innerHTML = `Questão ${questaoAtual + 1} de 30`;
+            document.getElementById("textoQuestao").innerHTML = q.pergunta;
+            document.getElementById("feedback").innerHTML = "";
+            document.getElementById("alternativas").innerHTML = "";
+            document.getElementById("progressQuiz").style.width = ((questaoAtual + 1) / 30) * 100 + "%";
+            
+            q.alternativas.forEach((alt, index) => {
+                const btn = document.createElement("button");
+                btn.className = "alt-btn";
+                btn.innerHTML = alt;
+                btn.onclick = () => {
+                    responderQuestao(index);
+                };
+                document.getElementById("alternativas").appendChild(btn);
+            });
+        }
+
+        function responderQuestao(indice){
+            const q = questoes[questaoAtual];
+            const feedback = document.getElementById("feedback");
+            
+            const botoes = document.querySelectorAll(".alt-btn");
+            botoes.forEach(b => b.disabled = true);
+
+            if(indice === q.correta){
+                acertos++;
+                feedback.innerHTML = `👏 Parabéns! Você acertou.`;
+                feedback.style.color = "green";
+            } else {
+                feedback.innerHTML = `😢 Errou, mais cuidado na próxima.`;
+                feedback.style.color = "red";
+            }
+            
+            setTimeout(() => {
+                questaoAtual++;
+                if(questaoAtual < questoes.length){
+                    carregarQuestao();
+                } else {
+                    document.getElementById("quiz").classList.remove("active");
+                    document.getElementById("senhaProfessor").classList.add("active");
+                }
+            }, 2500);
+        }
+
+        function verificarSenha(){
+            const senha = document.getElementById("senhaInput").value;
+            if(senha !== "2026"){
+                alert("Senha incorreta.");
+                return;
+            }
+            mostrarResultado();
+        }
+
+        function mostrarResultado(){
+            document.getElementById("senhaProfessor").classList.remove("active");
+            document.getElementById("resultado").classList.add("active");
+            
+            const percentual = Math.round((acertos / 30) * 100);
+            let titulo = ""; 
+            let avatar = "";
+            
+            if(acertos >= 16){
+                titulo = `🎉 Parabéns ${nomeAluno}! Você passou!`;
+                avatar = "avatar_aprovado.png";
+            } else {
+                titulo = `😔 Infelizmente ${nomeAluno}, você reprovou.`;
+                avatar = "avatar_reprovado.png";
+            }
+            
+            document.getElementById("resultadoTitulo").innerHTML = titulo;
+            document.getElementById("resultadoAvatar").src = avatar;
+            document.getElementById("resultadoPorcentagem").innerHTML = `Acertos: ${acertos}/30 <br><br> Aproveitamento: ${percentual}%`;
+            document.getElementById("barraFinal").style.width = percentual + "%";
+        }
+
+        function reiniciarCurso(){
+            location.reload();
+        }
+
+        function refazerQuestoes(){
+            questaoAtual = 0;
+            acertos = 0;
+            document.getElementById("senhaInput").value = ""; 
+            document.getElementById("resultado").classList.remove("active");
+            document.getElementById("quiz").classList.add("active");
+            carregarQuestao();
+        }
+    </script>
+</body>
+</html>
