@@ -1,8 +1,3 @@
-🚀 Curso Interativo DoGo Block – Versão Completa
- 
-Código HTML/CSS/JS completo, responsivo, para alunos do 6º ao 9º ano, com todas as suas regras, avatares, fotos por módulo, navegação controlada e senha do professor.
- 
-html  
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -250,4 +245,379 @@ html
 
     <script>
         // Dados do Curso - 26 Módulos
-        const modulos =
+        const modulos = [
+            {
+                titulo: "1. Arquivo",
+                descricao: `A função Arquivo se encontra na barra de menu que fica localizada no canto superior esquerdo, nele contém tudo relacionado aos arquivos.<br><br>
+                <strong>Exemplos:</strong><br>
+                <span class="font-medium text-primary">Novo:</span> O "novo" abre um novo arquivo<br>
+                <span class="font-medium text-primary">Abrir projeto:</span> O "abrir projeto" executa a função de abrir algum projeto salvo no computador<br>
+                <span class="font-medium text-primary">Salvar projeto:</span> O "salvar projeto" atualiza o arquivo atual, salva as alterações no mesmo arquivo e no mesmo local. Se o projeto já se chama MEU_ROBO, ele continuará com esse nome.<br>
+                <span class="font-medium text-primary">Salvar projeto Como:</span> O "Salvar projeto como" cria uma nova cópia do projeto, permite escolher outro nome ou outra pasta, o projeto original permanece intacto.<br>
+                <span class="font-medium text-primary">Importar imagem:</span> Você pega uma imagem que está no computador e coloca dentro do projeto. Exemplo: importar uma foto PNG ou JPG para usar como desenho de referência.<br>
+                <span class="font-medium text-primary">Exportar imagem:</span> Você pega uma imagem que está dentro do projeto e salva como um arquivo no computador, Exemplo: Criar um desenho no DoGo Block e exportar como PNG.`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "2. Editar",
+                descricao: `A função Editar que fica localizada na barra de menu tem as funções relacionadas à edição do projeto.<br><br>
+                <strong>Exemplos:</strong><br>
+                <span class="font-medium text-primary">Anular a Eliminação:</span> Você apagou um bloco, um sprite, um traje, um objeto, ai percebe que não queria apagar, clica em anular a eliminação e o item apagado volta.<br>
+                <span class="font-medium text-primary">Ocultar o palco:</span> Ocultar palco significa esconder a área onde o projeto é executado ou mostrado. No DoGoBlock, o palco é a região onde os personagens aparecem e as animações acontecem.<br>
+                <span class="font-medium text-primary">Disposição com palco pequeno:</span> Disposição com o palco pequeno significa que a interface do programa será organizada para deixar o palco menor e aumentar a área disponível para programação.<br>
+                <span class="font-medium text-primary">Modo turbo:</span> Faz os blocos executarem o mais rápido possível. Remove ou reduz as pausas usadas para mostrar a animação passo a passo. Útil para cálculos, testes ou programas longos. A animação pode parecer "pular" etapas porque tudo acontece muito rápido. Exemplo: um laço que repete 1000 vezes termina quase instantaneamente.<br>
+                <span class="font-medium text-primary">Modo Arduino:</span> Ativa os recursos para programar placas Arduino. Aparecem blocos para controlar portas digitais, analógicas, sensores, LEDs, motores, etc. Permite enviar o programa para um Arduino compatível ou comunicar-se com ele. Exemplo: acender um LED no pino 13 ou ler um sensor de temperatura.`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "3. Conectar",
+                descricao: `A função conectar que está localizada na barra de menu tem as funções relacionadas às conexões do DoGoBlock.<br><br>
+                <strong>Exemplos:</strong><br>
+                <span class="font-medium text-primary">Porta Serial (COM):</span> Conecta o programa a uma porta USB serial do computador. Exemplo: Arduino Uno conectado via USB - COM3, COM4, etc.<br>
+                <span class="font-medium text-primary">Bluetooth:</span> Permite conectar a uma placa via Bluetooth sem fio<br>
+                <span class="font-medium text-primary">2.4G Serial:</span> Conexão serial sem fio usando módulos de rádio 2,4 GHz<br>
+                <span class="font-medium text-primary">Rede:</span> Conecta a dispositivos pela rede local (Wi-Fi ou Ethernet).<br>
+                <span class="font-medium text-primary">Atualizar Firmware:</span> Instala ou atualiza o firmware que permite ao DoGoBlock conversar com a placa.<br>
+                <span class="font-medium text-primary">Reiniciar programa padrão:</span> Restaura o firmware padrão da placa ou reinicia o programa que já está nela.<br>
+                <span class="font-medium text-primary">Set FirmWare Mode:</span> Coloca a placa em modo de gravação/atualização de firmware.<br>
+                <span class="font-medium text-primary">Ver código:</span> Mostra o código gerado pelos blocos. (É ótimo para aprender programação)<br>
+                <span class="font-medium text-primary">Instalar Driver do Arduino:</span> Instala os drivers necessários para o computador reconhecer a placa, sem os drivers, a porta COM pode nem aparecer.`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "4. Placas",
+                descricao: `A opção Placas no DoGoBlock é o menu onde você escolhe qual hardware vai usar.<br><br>
+                <strong>Por exemplo, nele podem aparecer placas como:</strong><br>
+                • Arduino Uno<br>
+                • Arduino Nano<br>
+                • Arduino Leonardo<br>
+                • Outras placas compatíveis<br><br>
+                <strong>Para que serve?</strong><br>
+                Quando você seleciona uma placa:<br>
+                ✅ O programa carrega os blocos compatíveis com ela.<br>
+                ✅ Ajusta as portas e recursos disponíveis.<br>
+                ✅ Gera o código correto para aquele hardware.<br>
+                ✅ Permite gravar firmware específico da placa.`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "5. Extensões",
+                descricao: `As opções que existem dentro da aba extensões servem para adicionar recursos extras ao DogoBlock.<br><br>
+                <strong>Exemplos:</strong><br>
+                <span class="font-medium text-primary">Gerenciar Extensões:</span> Permite instalar, ativar, desativar ou remover extensões.<br>
+                <span class="font-medium text-primary">Restaurar Extensões:</span> Restaura as extensões padrão do programa caso alguma tenha sido removida ou corrompida.<br>
+                <span class="font-medium text-primary">Limpar Cache:</span> Apaga arquivos temporários das extensões. Pode ajudar quando alguma extensão está apresentando erros<br>
+                <span class="font-medium text-primary">Smart Servo tools:</span> Ferramentas para configurar e testar servomotores inteligentes.<br>
+                <span class="font-medium text-primary">LCD:</span> Adiciona blocos para controlar telas LCD. Exemplos: (LCD 16x2, Exibir textos e valores de sensores)<br>
+                <span class="font-medium text-primary">ARDUINO:</span> Adiciona os blocos de programação para Arduino<br>
+                <span class="font-medium text-primary">Joystick (arduino Mode only):</span> Adiciona blocos para usar joysticks com Arduino.<br>
+                <span class="font-medium text-primary">Microsoft cognitive Services:</span> Permite usar serviços de inteligência artificial da Microsoft.<br>
+                <span class="font-medium text-primary">Smart servo:</span> Adiciona blocos para controlar servomotores inteligentes diretamente nos projetos.<br>
+                <span class="font-medium text-primary">Communcation:</span> Adiciona blocos de comunicação`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "6. Idioma",
+                descricao: `A opção Idioma serve para mudar a língua da interface do DoGoBlock.<br><br>
+                <strong>Por exemplo, você pode encontrar opções como:</strong><br>
+                🇧🇷 Português<br>
+                🇺🇸 English (Inglês)<br>
+                🇪🇸 Español (Espanhol)<br>
+                🇨🇳 中文 (Chinês)<br><br>
+                <strong>Quando você altera o idioma:</strong><br>
+                ✅ Os menus mudam de idioma.<br>
+                ✅ Os nomes dos blocos podem mudar.<br>
+                ✅ Mensagens e avisos aparecem na língua escolhida.<br><br>
+                <strong>Exemplo:</strong><br>
+                Se você mudar para Português:<br>
+                File → Arquivo | Edit → Editar | Connect → Conectar<br><br>
+                Se mudar para English:<br>
+                Arquivo → File | Editar → Edit | Conectar → Connect`,
+                avatar: "avatar1.png"
+            },
+            {
+                titulo: "7. Créditos",
+                descricao: `Esses créditos mostram de onde o DoGoBlock veio e quem participou do desenvolvimento dele:<br><br>
+                • <span class="font-medium">MIT Media Lab</span> → Criou o Scratch, a plataforma de programação em blocos que inspirou muitos programas educacionais.<br>
+                • <span class="font-medium">Scratch</span> → É a base conceitual da interface de blocos que você vê.<br>
+                • <span class="font-medium">Maker Works Technology Co. Ltd</span> → Criou o mBlock, um programa baseado no Scratch para Arduino, robótica e eletrônica.<br>
+                • <span class="font-medium">mBlock</span> → Adicionou recursos de Arduino, robótica e dispositivos físicos ao conceito do Scratch.<br>
+                • <span class="font-medium">DoGo Maker</span> → Responsável pelo DoGoBlock e pela adaptação da plataforma para os produtos e projetos da DoGo Maker.<br>
+                • <span class="font-medium">Instituto EducarBr</span> → Participou da parte educacional e de disseminação da ferramenta.<br><br>
+                <strong>Na prática:</strong> O DoGoBlock parece ser uma plataforma construída sobre ideias e tecnologias que vieram do Scratch e do mBlock, adaptadas pela DoGo Maker para uso em educação, Arduino e robótica. Por isso você encontra menus e blocos muito parecidos com os do Scratch, mas com recursos extras para placas eletrônicas.`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "8. Atores (Sprites)",
+                descricao: `A área Atores fica no canto inferior esquerdo.<br>
+                Na sua imagem aparece o ator M-Panda.<br><br>
+                <strong>O ator é qualquer objeto que pode:</strong><br>
+                • Se mover<br>
+                • Falar<br>
+                • Tocar sons<br>
+                • Trocar de traje<br>
+                • Interagir com outros objetos<br><br>
+                <strong>Exemplos:</strong><br>
+                Panda, Robô, Carro, Bola, Personagem de jogo<br><br>
+                <strong>Botões de ator:</strong><br>
+                Ao lado de "Novo ator" você tem:<br>
+                🖌️ Desenhar novo ator<br>
+                📂 Importar ator do computador<br>
+                📷 Tirar foto para criar ator`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "9. Cenários",
+                descricao: `Logo abaixo do palco existe a área Palco / Cenário.<br><br>
+                <strong>O cenário é o fundo do projeto.</strong><br><br>
+                <strong>Exemplos:</strong><br>
+                Floresta, Cidade, Sala de aula, Espaço sideral<br><br>
+                Você sabia que um projeto pode ter <strong>vários cenários</strong>?<br>
+                E o melhor: Você pode trocar o cenário usando blocos de programação durante a execução! 🤯<br><br>
+                <strong>Botões do cenário:</strong><br>
+                🖌️ Desenhar cenário<br>
+                📂 Importar cenário<br>
+                📷 Tirar foto para cenário`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "10. Trajes",
+                descricao: `A aba Traje controla a aparência do ator.<br><br>
+                Na sua imagem o Panda possui:<br>
+                • Panda-a<br>
+                • Panda-b<br><br>
+                Esses são dois trajes diferentes. <strong>Quando alternamos entre eles rapidamente, criamos animação!</strong><br><br>
+                <strong>Exemplo prático:</strong><br>
+                Traje A → pé esquerdo para frente<br>
+                Traje B → pé direito para frente<br>
+                Alternando: A → B → A → B<br>
+                Parece que o panda está realmente andando! Incrível não é mesmo?`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "11. Ferramentas de edição",
+                descricao: `Na aba Traje existe uma barra de ferramentas poderosa para criar o que você imaginar:<br><br>
+                ✏️ <strong>Seleção:</strong> Serve para selecionar partes do desenho.<br>
+                📏 <strong>Linha:</strong> Desenha linhas retas.<br>
+                ⬜ <strong>Retângulo:</strong> Desenha quadrados e retângulos.<br>
+                ⭕ <strong>Elipse:</strong> Desenha círculos e ovais perfeitos.<br>
+                📝 <strong>Texto:</strong> Escreve textos personalizados.<br>
+                🎨 <strong>Preenchimento:</strong> Pinta áreas fechadas com cor.<br>
+                🧹 <strong>Borracha:</strong> Apaga partes do desenho.<br>
+                🖨️ <strong>Carimbo:</strong> Duplica elementos rapidamente.<br><br>
+                <strong>Nessa aba existem dois modos especiais:</strong> modo Vetorial e modo Bitmap. Você vai aprender a diferença nos próximos módulos!`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "12. Modo Vetorial",
+                descricao: `Este é um modo muito especial e poderoso!<br><br>
+                No modo vetorial, o desenho é formado por: <strong>Linhas, Curvas e Formas matemáticas</strong>. Não são pontos coloridos, são instruções de como desenhar!<br><br>
+                <strong>✅ Vantagens incríveis:</strong><br>
+                ✅ Pode ampliar infinitamente sem perder qualidade<br>
+                ✅ Sempre nítido, não fica pixelado<br>
+                ✅ Excelente para criar logos<br>
+                ✅ Perfeito para CNC e máquinas de corte<br>
+                ✅ Ideal para desenhos com contornos limpos (lineart)<br><br>
+                Quando você cria um robô ou personagem para usar em projetos grandes, prefira o modo vetorial!`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "13. Modo Bitmap",
+                descricao: `O modo bitmap funciona de forma diferente do vetorial.<br><br>
+                Aqui, o desenho passa a ser formado por <strong>pequenos pontos coloridos chamados pixels</strong>. É exatamente como uma fotografia digital!<br><br>
+                <strong>✅ Vantagens:</strong><br>
+                ✅ Melhor para fotografias reais<br>
+                ✅ Melhor para pinturas com muitos detalhes<br>
+                ✅ Melhor para imagens complexas e com texturas<br><br>
+                <strong>❌ Desvantagens:</strong><br>
+                ❌ Ao ampliar muito, perde qualidade e fica serrilhado<br>
+                ❌ Não é o ideal para usar em CNC<br><br>
+                <strong>Conversões:</strong><br>
+                🔄 <strong>Vetorial → Bitmap:</strong> Você perde a facilidade de editar curvas depois.<br>
+                🔄 <strong>Bitmap → Vetorial:</strong> Funciona melhor com desenhos simples preto e branco, pior com fotos.`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "14. Sons",
+                descricao: `Na aba Sons você controla tudo sobre áudio no seu projeto!<br><br>
+                Você verá o <strong>nome do som</strong>, sua <strong>forma de onda</strong> e botões de controle.<br>
+                O Panda do exemplo tem um som chamado "eat" (comer).<br><br>
+                <strong>O que é a forma de onda?</strong><br>
+                A linha preta mostra visualmente como é o áudio:<br>
+                🔊 Picos grandes = Som alto<br>
+                🔉 Picos pequenos = Som baixo<br><br>
+                <strong>Botões importantes:</strong><br>
+                ▶️ Reproduzir | ⏹️ Parar | 🔴 Gravar seu próprio som<br><br>
+                <strong>Ferramentas de Edição:</strong><br>
+                Desfazer, Refazer, Cortar, Copiar, Colar, Apagar, Selecionar tudo<br>
+                <strong>Efeitos especiais:</strong><br>
+                Aumentar gradualmente, Diminuir gradualmente, Tornar mais forte, Suavizar, Silêncio, Inverter o som.`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "15. Palco",
+                descricao: `A área grande branca do lado esquerdo da tela é chamada de <strong>Palco</strong>!<br><br>
+                É o coração visível do seu projeto: <strong>tudo o que acontece é mostrado ali</strong>.<br>
+                É como o "cenário principal" de uma peça de teatro ou filme.<br><br>
+                Na imagem do exemplo, você vê o 🐼 Panda sendo exibido no palco, é lá que ele vai se mover, dançar e interagir!<br><br>
+                <strong>Dois botões super importantes no topo:</strong><br>
+                🚩 <strong>Bandeira Verde:</strong> Quando você clica nela, o programa começa a ser executado!<br>
+                🛑 <strong>Botão Vermelho:</strong> Quando clica nele, o programa para imediatamente.`,
+                avatar: "avatar1.png"
+            },
+            {
+                titulo: "16. Códigos",
+                descricao: `A área Códigos é o <strong>coração do DoGoBlock</strong>! É nela que você monta os blocos coloridos para criar animações, jogos completos, controlar robôs e placas Arduino.<br><br>
+                <strong>Ferramentas úteis na área de códigos:</strong><br>
+                📋 <strong>Duplicar:</strong> Cria uma cópia exata do bloco ou conjunto de blocos. Exemplo: Você fez um programa grande e quer outro parecido, usa duplicar e economiza muito tempo!<br><br>
+                🗑️ <strong>Apagar:</strong> Remove o bloco selecionado que não quer mais usar.<br><br>
+                🔍 <strong>Aumentar:</strong> Aumenta o tamanho visual dos blocos. Muito útil para telas pequenas, para crianças pequenas ou durante apresentações em quadros digitais.<br><br>
+                🔎 <strong>Reduzir:</strong> Diminui o tamanho visual dos blocos, permitindo ver mais código na tela de uma vez.<br><br>
+                🔄 <strong>Zoom:</strong> Controla o nível de aproximação. Não altera seu programa, apenas como você o vê.`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "17. Movimentos",
+                descricao: `Os blocos de <strong>Movimentos</strong> são os responsáveis por fazer seus atores se moverem pela tela! 🚶💨<br><br>
+                <strong>Exemplos de blocos:</strong><br>
+                • <span class="text-primary font-medium">Mover 10 passos</span> → Anda para frente<br>
+                • <span class="text-primary font-medium">Girar 15° para direita/esquerda</span> → Vira o personagem<br>
+                • <span class="text-primary font-medium">Ir para posição X:___ Y:___</span> → Vai direto para um ponto específico<br>
+                • <span class="text-primary font-medium">Deslizar até posição...</span> → Movimento suave como se estivesse deslizando no gelo<br>
+                • <span class="text-primary font-medium">Apontar para direção ___°</span> → Define para onde ele está olhando<br><br>
+                <strong>Uso prático:</strong> Usamos esses blocos para fazer personagens andarem, carros se moverem, bolas quicando e objetos mudarem de posição durante o jogo.`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "18. Aparência",
+                descricao: `Os blocos de <strong>Aparência</strong> controlam como os atores e cenários parecem! É a parte visual do seu programa 👀✨<br><br>
+                <strong>Exemplos de blocos:</strong><br>
+                • <span class="text-primary font-medium">Dizer "mensagem" por 2 segundos</span> → Balão de fala<br>
+                • <span class="text-primary font-medium">Pensar "mensagem"</span> → Balão de pensamento<br>
+                • <span class="text-primary font-medium">Trocar traje para ___</span> → Muda a roupa/aparência<br>
+                • <span class="text-primary font-medium">Trocar cenário para ___</span> → Muda o fundo<br>
+                • <span class="text-primary font-medium">Mostrar / Esconder</span> → Aparece ou desaparece da tela<br>
+                • <span class="text-primary font-medium">Alterar tamanho em ___</span> → Cresce ou diminui<br><br>
+                <strong>Uso prático:</strong> Criar balões de fala, fazer animações de andar, mudar roupas, trocar o fundo do jogo e dar vida aos personagens!`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "19. Som",
+                descricao: `Os blocos de <strong>Som</strong> controlam tudo relacionado aos áudios do seu projeto! Dão vida e emoção aos seus jogos 🎵🔊<br><br>
+                <strong>Exemplos de blocos:</strong><br>
+                • <span class="text-primary font-medium">Tocar som ___ até acabar</span> → Toca um som completo<br>
+                • <span class="text-primary font-medium">Parar todos os sons</span> → Silencia tudo de uma vez<br>
+                • <span class="text-primary font-medium">Aumentar volume em ___</span> → Fica mais alto<br>
+                • <span class="text-primary font-medium">Diminuir volume em ___</span> → Fica mais baixo<br>
+                • <span class="text-primary font-medium">Definir volume para ___%</span> → Define o nível exato<br><br>
+                <strong>Uso prático:</strong> Adicionar música de fundo, efeitos sonoros de pulo, explosão, vitória, derrotas e até narração para explicar o que está acontecendo no jogo.`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "20. Caneta",
+                descricao: `Os blocos da <strong>Caneta</strong> são muito especiais e extremamente importantes para projetos de Desenho Técnico, CNC e máquinas de corte ✍️🤖<br><br>
+                Eles permitem que os atores desenhem linhas e formas diretamente no palco enquanto se movem!<br><br>
+                <strong>Exemplos de blocos:</strong><br>
+                • <span class="text-primary font-medium">Baixar caneta</span> → Começa a desenhar ao se mover<br>
+                • <span class="text-primary font-medium">Levantar caneta</span> → Para de desenhar ao se mover<br>
+                • <span class="text-primary font-medium">Limpar desenhos</span> → Apaga tudo que foi desenhado<br>
+                • <span class="text-primary font-medium">Alterar cor da caneta</span> → Troca a cor do traço<br>
+                • <span class="text-primary font-medium">Alterar espessura em ___</span> → Deixa o traço mais grosso ou fino<br><br>
+                <strong>Uso prático:</strong> Criar desenhos automáticos, formas geométricas perfeitas, simulações de máquinas plotter e preparar caminhos para máquinas CNC reais!`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "21. Dados & Blocos",
+                descricao: `Esta é uma área muito poderosa, usada para <strong>guardar informações e criar seus próprios comandos</strong> personalizados 🧠💾<br><br>
+                <strong>📦 Criar uma Variável</strong><br>
+                Uma variável é como uma caixa com nome que guarda um valor. Esse valor pode mudar durante o jogo!<br>
+                <strong>Exemplo:</strong><br>
+                Variável: <span class="font-medium text-primary">Pontos = 0</span><br>
+                Depois de acertar algo: <span class="font-medium text-primary">Pontos = Pontos + 1</span><br>
+                Resultado: 0 → 1 → 2 → 3 ... aumentando sozinho!<br>
+                <strong>Uso:</strong> Contar pontuação, medir tempo, armazenar temperatura ou distância.<br><br>
+                <strong>📋 Criar uma Lista</strong><br>
+                Uma lista guarda vários valores diferentes, como uma prateleira com várias caixas!<br>
+                <strong>Exemplo:</strong> Lista Frutas: Maçã, Banana, Uva, Manga<br>
+                <strong>Uso:</strong> Guardar histórico de ações, nomes, comandos ou leituras de sensores.<br><br>
+                <strong>🧩 Criar um Bloco</strong><br>
+                Você pode criar seus próprios blocos personalizados! Exemplo: Cria o bloco "Desenhar Quadrado" e depois usa ele quantas vezes quiser com apenas um clique. Essencial para projetos grandes!`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "22. Eventos",
+                descricao: `Os blocos de <strong>Eventos</strong> definem <strong>QUANDO algo vai acontecer</strong> no seu programa! São os "gatilhos" 🚀⏱️<br><br>
+                Sempre ficam na parte superior das sequências de blocos, pois é por eles que tudo começa.<br><br>
+                <strong>Exemplos de blocos:</strong><br>
+                • <span class="text-primary font-medium">Quando clicar na bandeira verde</span> → O mais usado: inicia tudo ao clicar no botão principal<br>
+                • <span class="text-primary font-medium">Quando tecla [espaço] for pressionada</span> → Faz algo ao apertar uma tecla do teclado<br>
+                • <span class="text-primary font-medium">Quando este ator for clicado</span> → Reage quando o jogador clica no personagem<br>
+                • <span class="text-primary font-medium">Quando receber mensagem ___</span> → Reage quando outro ator manda um aviso especial<br><br>
+                <strong>Uso prático:</strong> Definir como o jogo começa, como ele reage aos comandos do jogador e como diferentes partes do programa conversam entre si.`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "23. Controle",
+                descricao: `Os blocos de <strong>Controle</strong> são os "cérebros lógicos" do seu programa. Eles controlam a ordem e as regras de funcionamento 🧠⚙️<br><br>
+                São fundamentais para dar inteligência aos seus projetos!<br><br>
+                <strong>Exemplos de blocos:</strong><br>
+                • <span class="text-primary font-medium">Esperar ___ segundos</span> → Faz uma pausa antes de continuar<br>
+                • <span class="text-primary font-medium">Repetir ___ vezes</span> → Executa tudo dentro do bloco várias vezes automaticamente<br>
+                • <span class="text-primary font-medium">Para sempre</span> → Executa tudo dentro dele sem parar, até o jogo acabar<br>
+                • <span class="text-primary font-medium">Se ___ então</span> → Toma uma decisão: "Se algo for verdadeiro, faça tal coisa"<br>
+                • <span class="text-primary font-medium">Se ___ então senão</span> → Decide entre duas opções: "Se sim faça A, senão faça B"<br>
+                • <span class="text-primary font-medium">Parar ___</span> → Interrompe partes ou todo o programa<br><br>
+                <strong>Uso prático:</strong> Criar decisões lógicas, contagens, loops infinitos e regras complexas como: "Se tocar na borda, volte para trás" ou "Se a pontuação chegar a 100, ganhe o jogo".`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "24. Sensores",
+                descricao: `Os blocos de <strong>Sensores</strong> permitem que seu programa <strong>obtenha informações do ambiente e do jogador</strong> ao seu redor 👁️📡<br><br>
+                É como dar olhos, ouvidos e tato ao seu personagem! No modo Arduino, esses sensores podem ser físicos reais conectados à placa.<br><br>
+                <strong>Exemplos de blocos:</strong><br>
+                • <span class="text-primary font-medium">Tecla ___ pressionada?</span> → Verifica se o jogador está apertando alguma tecla<br>
+                • <span class="text-primary font-medium">Mouse tocando no ator?</span> → Detecta se o ponteiro do mouse está passando por cima<br>
+                • <span class="text-primary font-medium">Distância até ___</span> → Mede o quanto está longe de algo<br>
+                • <span class="text-primary font-medium">Valor do cronômetro</span> → Diz quanto tempo passou desde o início<br>
+                • <span class="text-primary font-medium">Posição do mouse X/Y</span> → Onde exatamente está o ponteiro do mouse<br><br>
+                <strong>Uso prático:</strong> Fazer programas que reagem ao jogador, detectar colisões, medir tempo de reação e ler dados de sensores de luz, temperatura ou toque em robôs reais.`,
+                avatar: "avatar2.png"
+            },
+            {
+                titulo: "25. Operadores",
+                descricao: `Os blocos de <strong>Operadores</strong> servem para fazer <strong>cálculos matemáticos e comparações lógicas</strong>. Sem eles, as decisões seriam impossíveis ➕➗📐<br><br>
+                Parecem difíceis, mas são super fáceis de usar e muito poderosos!<br><br>
+                <strong>Exemplos de blocos:</strong><br>
+                • <span class="text-primary font-medium">Operações básicas:</span> Soma (+), Subtração (-), Multiplicação (×), Divisão (÷), Resto da divisão, Número aleatório entre ___ e ___<br>
+                • <span class="text-primary font-medium">Comparações:</span> ___ < ___ (menor que), ___ = ___ (igual a), ___ > ___ (maior que)<br>
+                • <span class="text-primary font-medium">Lógica:</span> ___ E ___ (as duas condições devem ser verdadeiras), ___ OU ___ (pelo menos uma deve ser verdadeira), NÃO ___ (inverte o resultado)<br><br>
+                <strong>Exemplo prático completo:</strong><br>
+                Usando blocos juntos: <br>
+                "Se <span class="font-medium text-primary">temperatura > 30</span> <span class="font-medium text-primary">E</span> <span class="font-medium text-primary">está dia</span> <br>
+                Então <span class="font-medium text-primary">ligar ventilador</span>"<br>
+                Veja como é fácil criar regras inteligentes!`,
+                avatar: "avatar3.png"
+            },
+            {
+                titulo: "26. Robôs",
+                descricao: `Chegamos à parte que faz toda a diferença! Os blocos de <strong>Robôs</strong> é o que separa o DoGoBlock do Scratch tradicional 🤖🚀<br><br>
+                Eles contêm todos os blocos necessários para controlar <strong>hardware físico real</strong> conectado ao computador!<br><br>
+                Dependendo da placa selecionada (como vimos no módulo 4), podem aparecer blocos para controlar:<br>
+                💡 LEDs e Lâmpadas<br>
+                ⚙️ Servomotores<br>
+                🚗 Motores de corrente contínua<br>
+                🌡️ Sensores de temperatura<br>
+                🔊 Buzzer (apito)<br>
+                📺 Telas LCD<br>
+                📶 Comunicação Bluetooth<br>
+                📡 Conexão Wi-Fi<br>
+                📊 Sensores analógicos diversos<br><br>
+                <strong>Uso prático:</strong> É com esses blocos que criamos <strong>robôs móveis, carrinhos controlados, braços mecânicos, plotters desenhistas, máquinas CNC e sistemas inteligentes com sensores reais</strong>. É a magia da robótica acontecendo de verdade!`,
+                avatar: "avatar1.png"
+            }
+        ];
+
+        // Dados da Avaliação - 30 Questões
+        const perguntas = [
+            {
+                enunciado: "1. Como é chamada a área onde ficam as op
