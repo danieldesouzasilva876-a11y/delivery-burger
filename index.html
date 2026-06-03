@@ -1,485 +1,253 @@
+🚀 Curso Interativo DoGo Block – Versão Completa
+ 
+Código HTML/CSS/JS completo, responsivo, para alunos do 6º ao 9º ano, com todas as suas regras, avatares, fotos por módulo, navegação controlada e senha do professor.
+ 
+html  
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedro Lanches</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
-body{
-    background:#111;
-    color:white;
-}
-
-header{
-    background:linear-gradient(135deg,#ff0000,#990000);
-    padding:40px 20px;
-    text-align:center;
-}
-
-header h1{
-    font-size:3rem;
-    margin-bottom:10px;
-}
-
-header p{
-    font-size:1.2rem;
-}
-
-.banner{
-    width:100%;
-    height:250px;
-    background:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop') center/cover;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:20px;
-}
-
-h2{
-    margin-bottom:20px;
-    color:#ff4d4d;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:20px;
-}
-
-
-
-.card{
-    display:flex;
-    align-items:center;
-    background:#1b1b1b;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 0 10px rgba(0,0,0,0.5);
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:scale(1.03);
-}
-
-.card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-}
-
-.card-content{
-    padding:15px;
-}
-
-.card h3{
-    margin-bottom:10px;
-}
-
-.price{
-    color:#00ff88;
-    font-size:1.2rem;
-    margin-bottom:15px;
-}
-
-button{
-    background:#ff3131;
-    color:white;
-    border:none;
-    padding:10px;
-    border-radius:10px;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-button:active{
-    transform:scale(0.95);
-    opacity:0.7;
-}
-
-button:hover{
-    background:#cc0000;
-}
-
-.cart{
-    margin-top:40px;
-    background:#1b1b1b;
-    padding:20px;
-    border-radius:15px;
-}
-
-.cart-item{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:10px;
-    border-bottom:1px solid #333;
-    padding-bottom:10px;
-}
-
-.total{
-    margin-top:20px;
-    font-size:1.5rem;
-    color:#00ff88;
-}
-
-.form{
-    margin-top:20px;
-}
-
-.form input,
-.form textarea,
-.form select{
-    width:100%;
-    padding:12px;
-    margin-bottom:15px;
-    border:none;
-    border-radius:10px;
-    background:#2b2b2b;
-    color:white;
-}
-
-.finish-btn{
-    background:#00aa44;
-    font-size:1.2rem;
-}
-
-.finish-btn:hover{
-    background:#008833;
-}
-
-footer{
-    margin-top:40px;
-    text-align:center;
-    padding:30px 20px;
-    background:#0a0a0a;
-    color:#fff;
-    font-size:1rem;
-    line-height:1.8;
-    border-top:2px solid #ff3131;
-}
-
-.toast{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#00aa44;
-    color:white;
-    padding:15px 20px;
-    border-radius:10px;
-    opacity:0;
-    pointer-events:none;
-    transition:0.3s;
-    z-index:999;
-}
-
-.toast.show{
-    opacity:1;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Curso DoGo Block - Escola Presidente Médici</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#7c3aed',
+                        success: '#10b981',
+                        danger: '#ef4444',
+                        warning: '#f59e0b',
+                        light: '#f8fafc',
+                        dark: '#1e293b'
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            }
+            .typing-text {
+                border-right: 2px solid transparent;
+                white-space: pre-wrap;
+                overflow: hidden;
+            }
+            .typing-cursor {
+                border-right-color: #2563eb;
+                animation: blink 0.75s step-end infinite;
+            }
+            @keyframes blink {
+                from, to { border-color: transparent }
+                50% { border-color: #2563eb; }
+            }
+            .avatar-bounce {
+                animation: bounce 1s ease infinite alternate;
+            }
+            @keyframes bounce {
+                from { transform: translateY(0); }
+                to { transform: translateY(-8px); }
+            }
+            .avatar-wave {
+                animation: wave 2s ease infinite;
+                transform-origin: bottom center;
+            }
+            @keyframes wave {
+                0% { transform: rotate(0deg); }
+                25% { transform: rotate(15deg); }
+                50% { transform: rotate(0deg); }
+                75% { transform: rotate(-15deg); }
+                100% { transform: rotate(0deg); }
+            }
+            .fade-in {
+                animation: fadeIn 0.6s ease forwards;
+                opacity: 0;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .tab-content {
+                display: none;
+            }
+            .tab-content.active {
+                display: block;
+            }
+            .progress-bar {
+                height: 12px;
+                border-radius: 9999px;
+                background-color: #e2e8f0;
+                overflow: hidden;
+            }
+            .progress-fill {
+                height: 100%;
+                transition: width 0.5s ease;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-sky-50 to-indigo-50 min-h-screen font-sans text-dark">
+    <div class="container mx-auto px-3 py-5 max-w-4xl">
+        <!-- Cabeçalho -->
+        <header class="mb-6 text-center fade-in">
+            <h1 class="text-2xl md:text-4xl font-extrabold text-primary text-shadow mb-2">Mini Curso de Introdução ao DoGo Block</h1>
+            <div class="bg-white rounded-xl shadow-md p-3 mb-3">
+                <p class="text-sm md:text-base"><span class="font-semibold">Coordenador Geral:</span> Silvio Giovan</p>
+                <p class="text-sm md:text-base"><span class="font-semibold">Coordenadores de Oficina:</span> Lilizne Oliveira e Yardley Bandeira</p>
+            </div>
+        </header>
 
-<header>
-    <h1>🍔Pedro Lanches🍔</h1>
-    <p>Peça sem sair de casa 🍔</p>
-</header>
-
-<div class="banner"></div>
-
-<div class="container">
-
-    <h2>🍔 Comidas</h2>
-
-    <div class="grid">
-
-        <div class="card"><div class="card-content"><h3>Cachorrinho</h3><p>Cachorro quente simples</p><div class="price">R$ 10,00</div><button onclick="addCart('Cachorrinho',10)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Cachorrão</h3><p>Cachorro quente completo</p><div class="price">R$ 12,00</div><button onclick="addCart('Cachorrão',12)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Misto Quente</h3><p>Pão, queijo e presunto</p><div class="price">R$ 5,00</div><button onclick="addCart('Misto Quente',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Misto com Carne</h3><p>Misto recheado com carne</p><div class="price">R$ 9,00</div><button onclick="addCart('Misto com Carne',9)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Bauri</h3><p>Pão, queijo e carne especial</p><div class="price">R$ 10,00</div><button onclick="addCart('Bauri',10)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>X-Egg</h3><p>Hambúrguer com ovo e queijo</p><div class="price">R$ 10,00</div><button onclick="addCart('X-Egg',10)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>X-Burguer</h3><p>Hambúrguer artesanal com queijo</p><div class="price">R$ 14,00</div><button onclick="addCart('X-Burguer',14)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Americano</h3><div class="price">R$ 14,00</div><button onclick="addCart('Americano',14)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>X-Calabresa</h3><div class="price">R$ 15,00</div><button onclick="addCart('X-Calabresa',15)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>X-Bacon</h3><p>Hambúrguer com bacon crocante</p><div class="price">R$ 16,00</div><button onclick="addCart('X-Bacon',16)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>X-Banana</h3><div class="price">R$ 18,00</div><button onclick="addCart('X-Banana',18)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>X-Tudo</h3><p>Hambúrguer completo especial</p><div class="price">R$ 20,00</div><button onclick="addCart('X-Tudo',20)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>X-Tudo Duplo</h3><p>Dois hambúrgueres e recheio duplo</p><div class="price">R$ 30,00</div><button onclick="addCart('X-Tudo Duplo',30)">Adicionar</button></div></div>
-
-    </div>
-
-    <h2 style="margin-top:40px;">🥤 Bebidas</h2>
-
-    <div class="grid">
-
-        <div class="card"><div class="card-content"><h3>Coca-Cola Lata</h3><p>Refrigerante coca-cola lata</p><div class="price">R$ 5,00</div><button onclick="addCart('Coca-Cola Lata',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Fanta Lata</h3><div class="price">R$ 5,00</div><button onclick="addCart('Fanta Lata',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Guaraná Lata</h3><div class="price">R$ 5,00</div><button onclick="addCart('Guaraná Lata',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Suco Maracujá</h3><div class="price">R$ 5,00</div><button onclick="addCart('Suco Maracujá',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Suco Cupuaçu</h3><div class="price">R$ 5,00</div><button onclick="addCart('Suco Cupuaçu',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Suco Acerola</h3><div class="price">R$ 5,00</div><button onclick="addCart('Suco Acerola',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Suco Cajá</h3><div class="price">R$ 5,00</div><button onclick="addCart('Suco Cajá',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Suco Goiaba</h3><p>Suco de goiaba natural</p><div class="price">R$ 5,00</div><button onclick="addCart('Suco Goiaba',5)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Coca-Cola 1L</h3><div class="price">R$ 8,00</div><button onclick="addCart('Coca-Cola 1L',8)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Coca-Cola 2L</h3><p>Refrigerante Coca-Cola 2 litros</p><div class="price">R$ 12,00</div><button onclick="addCart('Coca-Cola 2L',12)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Pepsi 2L</h3><p>Refrigerante Pepsi 2 litros</p><div class="price">R$ 12,00</div><button onclick="addCart('Pepsi 2L',12)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>Fanta 2L</h3><div class="price">R$ 12,00</div><button onclick="addCart('Fanta 2L',12)">Adicionar</button></div></div>
-
-        <div class="card"><div class="card-content"><h3>River 2L</h3><div class="price">R$ 12,00</div><button onclick="addCart('River 2L',12)">Adicionar</button></div></div>
-
-    </div>
-
-    <div class="cart">
-        <h2>🛒 Carrinho</h2>
-
-        <div id="cart-items"></div>
-
-        <div class="total" id="total">
-            Total: R$ 0,00
-        </div>
-
-        <div class="form">
-            <input type="text" id="name" placeholder="Seu nome">
-            <input type="text" id="phone" placeholder="Seu telefone">
-            <textarea id="address" placeholder="Seu endereço"></textarea>
-
-            <select id="payment" onchange="paymentOptions()">
-                <option>Pix</option>
-                <option>Dinheiro</option>
-            </select>
-
-            <div id="pixArea" style="display:block;background:#222;padding:15px;border-radius:10px;margin-bottom:15px;">
-                <strong>🔑 Chave Pix CPF:</strong><br>
-                095.449.232-33
-                <br><br>
-                ⚠️ Mandar comprovante no WhatsApp após finalizar o pedido.
+        <!-- Conteúdo Principal -->
+        <main class="bg-white rounded-2xl shadow-xl overflow-hidden fade-in" style="animation-delay: 0.2s">
+            <!-- Abas de Navegação -->
+            <div class="flex overflow-x-auto bg-gray-50 border-b sticky top-0 z-10">
+                <button id="tab-intro-btn" class="tab-btn px-4 py-3 font-semibold text-sm whitespace-nowrap bg-primary text-white">
+                    <i class="fa fa-home mr-1"></i> Introdução
+                </button>
+                <div id="tabs-modulos-container" class="hidden md:flex">
+                    <!-- Gerado dinamicamente -->
+                </div>
+                <button id="tab-questionario-btn" class="tab-btn px-4 py-3 font-semibold text-sm whitespace-nowrap bg-gray-200 text-gray-700 opacity-50 cursor-not-allowed">
+                    <i class="fa fa-question-circle mr-1"></i> Avaliação
+                </button>
+                <button id="tab-resultado-btn" class="tab-btn px-4 py-3 font-semibold text-sm whitespace-nowrap bg-gray-200 text-gray-700 opacity-50 cursor-not-allowed">
+                    <i class="fa fa-trophy mr-1"></i> Resultado
+                </button>
             </div>
 
-            <div id="trocoArea" style="display:none;">
-                <input type="text" id="troco" placeholder="Troco para quanto?">
-            </div>
+            <!-- Conteúdo das Abas -->
+            <div class="p-5">
+                <!-- Aba Introdução -->
+                <div id="tab-intro" class="tab-content active">
+                    <div class="flex flex-col md:flex-row gap-6 items-center">
+                        <div class="md:w-2/3">
+                            <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r-lg mb-6">
+                                <p class="text-lg font-medium text-primary">Olá, meu nome é Daniel, sou monitor de tecnologia da Escola Presidente Médici em Vila Ligação.</p>
+                                <p class="mt-3 text-gray-700">Seja bem vindo a este mini curso de introdução ao DoGo Block, serão 26 módulos de muito aprendizado + questionário.</p>
+                            </div>
 
-            
+                            <div id="nome-aluno-container" class="mb-6">
+                                <label for="nome-aluno" class="block text-gray-700 font-medium mb-2">Digite seu nome completo:</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="nome-aluno" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Seu nome aqui">
+                                    <button id="btn-ok-nome" class="bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-lg font-medium transition-colors">OK</button>
+                                </div>
+                            </div>
 
-            <button class="finish-btn" onclick="finishOrder()">
-                Enviar Pedido no WhatsApp
-            </button>
-        </div>
-    </div>
-
-</div>
-
-<footer>
-    © 2026 Pedro Lanches - Todos os direitos reservados.<br>
-    Site criado por @dn_sza
-</footer>
-
-<div id="toast" class="toast">
-    Produto adicionado ao carrinho
-</div>
-
-<script>
-let cart = [];
-let total = 0;
-
-function addCart(name, price){
-
-    const existingItem = cart.find(item => item.name === name);
-
-    if(existingItem){
-        existingItem.quantity += 1;
-    }
-    else{
-        cart.push({
-            name,
-            price,
-            quantity:1
-        });
-    }
-
-    total += price;
-    updateCart();
-
-    showToast();
-}
-
-function updateCart(){
-    const cartItems = document.getElementById('cart-items');
-    cartItems.innerHTML = '';
-
-    cart.forEach((item,index)=>{
-
-        cartItems.innerHTML += `
-            <div class="cart-item">
-                <div>
-                    <span>${item.name}</span><br>
-                    <small>Quantidade: ${item.quantity}</small><br>
-                    <small>R$ ${(item.price * item.quantity).toFixed(2)}</small>
+                            <div id="mensagem-boas-vindas" class="hidden">
+                                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-100 relative overflow-hidden">
+                                    <div id="texto-digitacao" class="typing-text text-gray-800 text-lg leading-relaxed"></div>
+                                    <button id="btn-iniciar-curso" class="mt-5 bg-success hover:bg-success/90 text-white px-8 py-3 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-md">
+                                        <i class="fa fa-play mr-2"></i> Iniciar Curso
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/3 flex justify-center">
+                            <div class="avatar-wave">
+                                <img src="avatar1.png" alt="Avatar Daniel cumprimentando" class="w-48 h-auto drop-shadow-lg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="display:flex;gap:10px;align-items:center;">
+                <!-- Abas dos Módulos -->
+                <div id="tabs-modulos" class="tab-content">
+                    <div id="conteudo-modulo-atual"></div>
+                    <div class="flex justify-between mt-8 pt-4 border-t">
+                        <button id="btn-modulo-anterior" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-2 rounded-lg font-medium transition-colors opacity-50 cursor-not-allowed">
+                            <i class="fa fa-arrow-left mr-2"></i> Anterior
+                        </button>
+                        <div class="text-sm text-gray-500 self-center">Módulo <span id="num-modulo-atual">1</span> de 26</div>
+                        <button id="btn-modulo-proximo" class="bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-lg font-medium transition-colors">
+                            Próximo <i class="fa fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
 
-                    <button onclick="decreaseItem(${index})" style="width:auto;padding:8px 12px;background:#444;">
-                        -
-                    </button>
+                <!-- Aba Questionário -->
+                <div id="tab-questionario" class="tab-content">
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-medium text-gray-600">Progresso da Avaliação</span>
+                            <span class="text-sm font-medium text-primary"><span id="num-pergunta-atual">1</span> de 30</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progresso-questionario" class="progress-fill bg-primary" style="width: 3.3%"></div>
+                        </div>
+                    </div>
 
-                    <button onclick="increaseItem(${index})" style="width:auto;padding:8px 12px;background:#00aa44;">
-                        +
-                    </button>
+                    <div id="conteudo-pergunta-atual" class="mb-6"></div>
+                    
+                    <div id="feedback-pergunta" class="hidden p-5 rounded-xl text-center mb-4"></div>
+                </div>
 
+                <!-- Aba Resultado -->
+                <div id="tab-resultado" class="tab-content">
+                    <div id="senha-container" class="text-center py-8">
+                        <div class="mb-6">
+                            <img src="avatar4.png" alt="Avatar Daniel" class="w-32 h-auto mx-auto mb-4 opacity-70">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Quase lá!</h3>
+                            <p class="text-gray-600 mb-4">Chame o professor para digitar a senha e conferir seu resultado final.</p>
+                        </div>
+                        <div class="max-w-xs mx-auto">
+                            <label for="senha-professor" class="block text-gray-700 font-medium mb-2">Senha do Professor:</label>
+                            <div class="flex gap-2">
+                                <input type="password" id="senha-professor" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-center text-xl tracking-widest font-bold" maxlength="4" placeholder="****">
+                                <button id="btn-verificar-senha" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors">Verificar</button>
+                            </div>
+                            <p id="mensagem-senha-erro" class="text-danger text-sm mt-2 hidden">Senha incorreta. Tente novamente.</p>
+                        </div>
+                    </div>
+
+                    <div id="resultado-final-container" class="hidden text-center py-4">
+                        <div id="icone-resultado" class="text-6xl mb-4"></div>
+                        <h2 id="titulo-resultado" class="text-3xl font-bold mb-3"></h2>
+                        <div class="bg-gray-50 rounded-xl p-5 mb-6 max-w-md mx-auto">
+                            <p class="text-gray-700 mb-2">Você acertou <span id="acertos-totais" class="font-bold text-primary text-xl">0</span> de 30 questões</p>
+                            <div class="progress-bar my-3">
+                                <div id="progresso-geral" class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <p class="text-lg font-semibold mb-1">Seu aproveitamento: <span id="porcentagem-aproveitamento" class="text-primary">0%</span></p>
+                            <p id="mensagem-resultado" class="text-lg font-medium mt-4"></p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                            <button id="btn-refazer-curso" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-bold transition-all transform hover:scale-105 shadow">
+                                <i class="fa fa-redo mr-2"></i> Refazer Curso Completo
+                            </button>
+                            <button id="btn-refazer-prova" class="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-xl font-bold transition-all transform hover:scale-105 shadow">
+                                <i class="fa fa-question-circle mr-2"></i> Responder Questões Novamente
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        `;
-    });
+        </main>
 
-    document.getElementById('total').innerHTML = `Total: R$ ${total.toFixed(2)}`;
-}
+        <footer class="mt-8 text-center text-gray-500 text-sm fade-in">
+            <p>© 2025 Escola Presidente Médici - Projeto Educacional DoGo Block</p>
+            <p class="mt-1">Desenvolvido com carinho para nossos alunos</p>
+        </footer>
+    </div>
 
-function showToast(){
-
-    const toast = document.getElementById('toast');
-
-    toast.classList.add('show');
-
-    setTimeout(()=>{
-        toast.classList.remove('show');
-    },2000);
-}
-
-function increaseItem(index){
-    cart[index].quantity += 1;
-    total += cart[index].price;
-    updateCart();
-}
-
-function decreaseItem(index){
-
-    cart[index].quantity -= 1;
-    total -= cart[index].price;
-
-    if(cart[index].quantity <= 0){
-        cart.splice(index,1);
-    }
-
-    updateCart();
-}
-
-function removeItem(index){
-    total -= cart[index].price;
-    cart.splice(index,1);
-    updateCart();
-}
-
-function paymentOptions(){
-    const payment = document.getElementById('payment').value;
-
-    const pixArea = document.getElementById('pixArea');
-    const trocoArea = document.getElementById('trocoArea');
-
-    if(payment === 'Pix'){
-        pixArea.style.display = 'block';
-        trocoArea.style.display = 'none';
-    }
-    else if(payment === 'Dinheiro'){
-        pixArea.style.display = 'none';
-        trocoArea.style.display = 'block';
-    }
-    else{
-        pixArea.style.display = 'none';
-        trocoArea.style.display = 'none';
-    }
-}
-
-function finishOrder(){
-
-    if(cart.length === 0){
-        alert('Adicione itens no carrinho!');
-        return;
-    }
-
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const address = document.getElementById('address').value;
-    const payment = document.getElementById('payment').value;
-
-    if(name === '' || phone === '' || address === ''){
-        alert('Preencha todos os campos!');
-        return;
-    }
-
-    const orderNumber = Math.floor(Math.random() * 10000);
-
-    let message = '🍔 *NOVO PEDIDO*%0A';
-    message += '🧾 Pedido Nº: ' + orderNumber + '%0A%0A';
-
-    message += '👤 Nome: ' + name + '%0A';
-    message += '📞 Telefone: ' + phone + '%0A';
-    message += '📍 Endereço: ' + address + '%0A';
-    
-
-    message += '💳 Pagamento: ' + payment + '%0A';
-    const troco = document.getElementById('troco').value;
-
-    
-
-    if(payment === 'Dinheiro' && troco !== ''){
-        message += '💵 Troco para: R$ ' + troco + '%0A';
-    }
-
-    if(payment === 'Pix'){
-        message += '🔑 Cliente pagará via Pix%0A';
-    }
-
-    message += '%0A';
-
-    message += '📦 *Pedido:*%0A';
-
-    cart.forEach(item=>{
-        message += '- ' + item.name + ' - R$ ' + item.price.toFixed(2) + '%0A';
-    });
-
-    message += '%0A💰 *Total: R$ ' + total.toFixed(2) + '*';
-
-    const phoneNumber = '559481367779';
-
-    const url = `https://wa.me/${phoneNumber}?text=${message}`;
-
-    window.open(url,'_blank');
-}
-</script>
-
-</body>
-</html>
+    <script>
+        // Dados do Curso - 26 Módulos
+        const modulos =
