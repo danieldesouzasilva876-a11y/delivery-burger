@@ -6,1225 +6,1308 @@
 <title>Mundo da Leitura — Prof. Daniel</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --azul:#3B82F6; --azul-d:#1D4ED8; --azul-l:#DBEAFE;
-  --verde:#22C55E; --verde-d:#15803D; --verde-l:#DCFCE7;
-  --amarelo:#FBBF24; --amarelo-d:#D97706; --amarelo-l:#FEF3C7;
-  --rosa:#F472B6; --rosa-d:#BE185D; --rosa-l:#FCE7F3;
-  --roxo:#A78BFA; --roxo-d:#6D28D9; --roxo-l:#EDE9FE;
-  --laranja:#F97316; --laranja-d:#C2410C;
-  --branco:#FFFDF7; --cinza:#F1F5F9; --texto:#1E293B;
-  --sombra:0 4px 20px rgba(0,0,0,.12);
-  --sombra2:0 8px 32px rgba(0,0,0,.18);
+:root{
+  --az:#3B82F6;--azd:#1D4ED8;--azl:#DBEAFE;
+  --vd:#22C55E;--vdd:#15803D;--vdl:#DCFCE7;
+  --am:#FBBF24;--amd:#D97706;--aml:#FEF3C7;
+  --ro:#F472B6;--rod:#BE185D;--rol:#FCE7F3;
+  --rx:#A78BFA;--rxd:#6D28D9;--rxl:#EDE9FE;
+  --la:#F97316;--lad:#C2410C;
+  --br:#FFFDF7;--ci:#F1F5F9;--tx:#1E293B;
+  --sh:0 4px 20px rgba(0,0,0,.12);
+  --sh2:0 8px 32px rgba(0,0,0,.18);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:var(--branco);color:var(--texto);min-height:100vh;overflow-x:hidden}
+body{font-family:'Nunito',sans-serif;background:var(--br);color:var(--tx);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,#EDE9FE 0%,transparent 50%),radial-gradient(circle at 80% 80%,#DBEAFE 0%,transparent 50%);z-index:-1;pointer-events:none}
 
-/* ── STARS BG ── */
-body::before{
-  content:'';position:fixed;inset:0;
-  background:radial-gradient(circle at 20% 20%,#EDE9FE 0%,transparent 50%),
-             radial-gradient(circle at 80% 80%,#DBEAFE 0%,transparent 50%),
-             radial-gradient(circle at 50% 50%,#FEF3C7 0%,transparent 70%);
-  z-index:-1;pointer-events:none;
-}
+/* TELA INICIAL */
+#tela-ini{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 20px}
+.hero{background:#fff;border-radius:32px;box-shadow:var(--sh2);padding:40px 36px;max-width:520px;width:100%;text-align:center;border-top:6px solid var(--az);animation:up .6s ease}
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.av{font-size:5rem;display:inline-block;animation:fl 3s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.tag{display:inline-block;background:var(--azl);color:var(--azd);font-size:.78rem;font-weight:800;padding:4px 14px;border-radius:50px;text-transform:uppercase;margin-bottom:12px}
+.hero h1{font-family:'Baloo 2',sans-serif;font-size:2rem;background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.hero h2{font-size:1.1rem;font-weight:700;color:#6B7280;margin-bottom:20px}
+.div{height:2px;background:linear-gradient(90deg,transparent,var(--azl),transparent);margin:20px 0}
+.hero p{font-size:1rem;color:#374151;line-height:1.7;margin-bottom:24px}
+.ig{display:flex;flex-direction:column;gap:10px;align-items:center}
+.ig label{font-size:.9rem;font-weight:700;color:var(--azd)}
+.ni{width:100%;max-width:320px;padding:14px 20px;border-radius:50px;border:3px solid var(--azl);font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:700;text-align:center;outline:none;transition:border-color .2s,box-shadow .2s}
+.ni:focus{border-color:var(--az);box-shadow:0 0 0 4px rgba(59,130,246,.15)}
+.ni::placeholder{color:#CBD5E1;font-weight:600}
+.btn-en{margin-top:6px;padding:14px 36px;border-radius:50px;border:none;background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:#fff;font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 16px rgba(59,130,246,.4)}
+.btn-en:hover{transform:scale(1.05);box-shadow:0 6px 24px rgba(59,130,246,.5)}
+.frow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+.fchip{background:var(--ci);border-radius:50px;padding:6px 14px;font-size:.82rem;font-weight:700;color:#475569}
 
-/* ══════════════════════════════════════════
-   TELA INICIAL
-══════════════════════════════════════════ */
-#tela-inicial{
-  min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;padding:30px 20px;gap:0;
-}
+/* BOAS VINDAS */
+#tela-bv{display:none;min-height:100vh;align-items:center;justify-content:center;flex-direction:column;padding:30px 20px}
+.bv{background:#fff;border-radius:32px;box-shadow:var(--sh2);padding:48px 40px;max-width:480px;width:100%;text-align:center;border-top:6px solid var(--vd)}
+.bvem{font-size:5rem;animation:bv2 1s ease infinite}
+@keyframes bv2{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-12px) rotate(5deg)}}
+.bv h2{font-family:'Baloo 2',sans-serif;font-size:2.2rem;color:var(--vdd);margin:16px 0 8px}
+.bv p{font-size:1.05rem;color:#374151;line-height:1.7;margin-bottom:28px}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.sc{padding:14px;border-radius:18px;border:3px solid;cursor:pointer;font-weight:800;font-size:.95rem;transition:transform .15s,box-shadow .15s;text-align:center}
+.sc:hover{transform:scale(1.04);box-shadow:var(--sh)}
+.sc span{display:block;font-size:1.8rem;margin-bottom:4px}
+.sc.s1{background:var(--azl);border-color:#93C5FD;color:var(--azd)}
+.sc.s2{background:var(--vdl);border-color:#86EFAC;color:var(--vdd)}
+.sc.s3{background:var(--aml);border-color:#FDE68A;color:var(--amd)}
+.sc.s4{background:var(--rol);border-color:#F9A8D4;color:var(--rod)}
+.sc.s5{background:var(--rxl);border-color:#C4B5FD;color:var(--rxd)}
 
-.hero-card{
-  background:#fff;border-radius:32px;box-shadow:var(--sombra2);
-  padding:40px 36px;max-width:520px;width:100%;text-align:center;
-  border-top:6px solid var(--azul);
-  animation:slideUp .6s ease;
-}
-@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
-.prof-avatar{
-  font-size:5rem;line-height:1;margin-bottom:8px;
-  display:inline-block;animation:float 3s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-.hero-card .tag{
-  display:inline-block;background:var(--azul-l);color:var(--azul-d);
-  font-size:.78rem;font-weight:800;padding:4px 14px;border-radius:50px;
-  letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px;
-}
-.hero-card h1{
-  font-family:'Baloo 2',sans-serif;font-size:2rem;
-  background:linear-gradient(135deg,#3B82F6,#8B5CF6);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:4px;
-}
-.hero-card h2{font-size:1.1rem;font-weight:700;color:#6B7280;margin-bottom:20px}
-
-.divider{height:2px;background:linear-gradient(90deg,transparent,var(--azul-l),transparent);margin:20px 0}
-
-.hero-card .welcome-text{font-size:1rem;color:#374151;line-height:1.7;margin-bottom:24px}
-
-.input-group{display:flex;flex-direction:column;gap:10px;align-items:center}
-.input-group label{font-size:.9rem;font-weight:700;color:var(--azul-d)}
-.nome-input{
-  width:100%;max-width:320px;padding:14px 20px;border-radius:50px;
-  border:3px solid var(--azul-l);font-family:'Nunito',sans-serif;
-  font-size:1.1rem;font-weight:700;text-align:center;outline:none;
-  transition:border-color .2s,box-shadow .2s;
-}
-.nome-input:focus{border-color:var(--azul);box-shadow:0 0 0 4px rgba(59,130,246,.15)}
-.nome-input::placeholder{color:#CBD5E1;font-weight:600}
-
-.btn-entrar{
-  margin-top:6px;padding:14px 36px;border-radius:50px;border:none;
-  background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:#fff;
-  font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;
-  cursor:pointer;transition:transform .15s,box-shadow .15s;
-  box-shadow:0 4px 16px rgba(59,130,246,.4);
-}
-.btn-entrar:hover{transform:scale(1.05);box-shadow:0 6px 24px rgba(59,130,246,.5)}
-
-.features-row{
-  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px;
-}
-.feat-chip{
-  background:var(--cinza);border-radius:50px;padding:6px 14px;
-  font-size:.82rem;font-weight:700;color:#475569;
-}
-
-/* ══════════════════════════════════════════
-   BOAS-VINDAS
-══════════════════════════════════════════ */
-#tela-bv{
-  display:none;min-height:100vh;align-items:center;justify-content:center;
-  flex-direction:column;padding:30px 20px;
-}
-.bv-card{
-  background:#fff;border-radius:32px;box-shadow:var(--sombra2);
-  padding:48px 40px;max-width:480px;width:100%;text-align:center;
-  border-top:6px solid var(--verde);
-}
-.bv-emoji{font-size:5rem;animation:bounce2 1s ease infinite}
-@keyframes bounce2{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-12px) rotate(5deg)}}
-.bv-card h2{
-  font-family:'Baloo 2',sans-serif;font-size:2.2rem;
-  color:var(--verde-d);margin:16px 0 8px;
-}
-.bv-card p{font-size:1.05rem;color:#374151;line-height:1.7;margin-bottom:28px}
-.serie-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
-.serie-card{
-  padding:14px;border-radius:18px;border:3px solid;cursor:pointer;
-  font-weight:800;font-size:.95rem;transition:transform .15s,box-shadow .15s;
-  text-align:center;
-}
-.serie-card:hover{transform:scale(1.04);box-shadow:var(--sombra)}
-.serie-card.s1{background:var(--azul-l);border-color:#93C5FD;color:var(--azul-d)}
-.serie-card.s2{background:var(--verde-l);border-color:#86EFAC;color:var(--verde-d)}
-.serie-card.s3{background:var(--amarelo-l);border-color:#FDE68A;color:var(--amarelo-d)}
-.serie-card.s4{background:var(--rosa-l);border-color:#F9A8D4;color:var(--rosa-d)}
-.serie-card.s5{background:var(--roxo-l);border-color:#C4B5FD;color:var(--roxo-d)}
-.serie-card span{display:block;font-size:1.8rem;margin-bottom:4px}
-
-/* ══════════════════════════════════════════
-   APP PRINCIPAL
-══════════════════════════════════════════ */
+/* APP */
 #app{display:none;flex-direction:column;min-height:100vh}
-
-header{
-  background:linear-gradient(135deg,#3B82F6,#8B5CF6);
-  padding:14px 20px;display:flex;align-items:center;gap:12px;
-  box-shadow:var(--sombra);position:sticky;top:0;z-index:100;
-}
-.hdr-logo{font-size:1.8rem}
+header{background:linear-gradient(135deg,#3B82F6,#8B5CF6);padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh);position:sticky;top:0;z-index:100}
+.hl{font-size:1.8rem}
 header h1{color:#fff;font-size:1.3rem;font-weight:900;flex:1}
-.hdr-aluno{
-  background:rgba(255,255,255,.2);color:#fff;
-  border-radius:50px;padding:6px 14px;font-size:.85rem;font-weight:700;
-}
-.hdr-estrelas{font-size:1rem;color:var(--amarelo);font-weight:900;min-width:70px;text-align:right}
+.hn{background:rgba(255,255,255,.2);color:#fff;border-radius:50px;padding:6px 14px;font-size:.85rem;font-weight:700}
+.hes{font-size:1rem;color:var(--am);font-weight:900;min-width:70px;text-align:right}
 
-/* tab bar */
-.tab-bar{
-  display:flex;overflow-x:auto;background:#fff;
-  border-bottom:3px solid var(--cinza);padding:0 12px;
-  scrollbar-width:none;gap:4px;
-}
-.tab-bar::-webkit-scrollbar{display:none}
-.tab-btn{
-  flex-shrink:0;padding:12px 18px;border:none;background:none;
-  font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;
-  cursor:pointer;color:#64748B;border-bottom:3px solid transparent;
-  margin-bottom:-3px;transition:color .2s,border-color .2s;white-space:nowrap;
-}
-.tab-btn.active{color:var(--azul);border-bottom-color:var(--azul)}
+.tabbar{display:flex;overflow-x:auto;background:#fff;border-bottom:3px solid var(--ci);padding:0 12px;scrollbar-width:none;gap:4px}
+.tabbar::-webkit-scrollbar{display:none}
+.tbb{flex-shrink:0;padding:12px 16px;border:none;background:none;font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;cursor:pointer;color:#64748B;border-bottom:3px solid transparent;margin-bottom:-3px;transition:color .2s,border-color .2s;white-space:nowrap}
+.tbb.active{color:var(--az);border-bottom-color:var(--az)}
 
-/* ── SEÇÕES ── */
-.secao{display:none;padding:20px;max-width:900px;margin:0 auto;width:100%}
-.secao.ativa{display:block;animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sec{display:none;padding:20px;max-width:960px;margin:0 auto;width:100%}
+.sec.ativa{display:block;animation:fi .3s ease}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.stit{font-family:'Baloo 2',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.card{background:#fff;border-radius:20px;box-shadow:var(--sh);padding:22px;margin-bottom:20px}
 
-.sec-titulo{
-  font-family:'Baloo 2',sans-serif;font-size:1.5rem;font-weight:800;
-  margin-bottom:18px;display:flex;align-items:center;gap:10px;
-}
-.card{
-  background:#fff;border-radius:20px;box-shadow:var(--sombra);
-  padding:22px;margin-bottom:20px;
-}
+/* FRASES */
+.frase-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--ci)}
+.frase-item:last-child{border-bottom:none}
+.fn{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:#fff;flex-shrink:0;margin-top:2px}
+.ft{font-size:1.05rem;line-height:1.7;color:#374151}
 
-/* ══════════════════════════════════════════
-   CAÇA-PALAVRAS (novo sistema)
-══════════════════════════════════════════ */
-.cw-words{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.cw-chip{
-  padding:6px 16px;border-radius:50px;font-size:.95rem;font-weight:800;
-  border:2px solid;cursor:default;transition:all .2s;
-}
-.cw-chip.achada{text-decoration:line-through;opacity:.4}
-.cw-grid-wrap{overflow-x:auto}
-.cw-grid{
-  display:inline-grid;gap:3px;user-select:none;
-  border-radius:16px;overflow:hidden;
-}
-.cw-cell{
-  width:42px;height:42px;display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;font-weight:900;background:#F8FAFC;cursor:pointer;
-  border-radius:8px;transition:background .12s,color .12s;border:2px solid transparent;
-  text-transform:uppercase;
-}
-.cw-cell:hover{background:#BFDBFE}
-.cw-cell.sel{background:var(--amarelo);color:#1E293B;border-color:#F59E0B}
-.cw-cell.c0{background:#86EFAC;color:#14532D}
-.cw-cell.c1{background:#93C5FD;color:#1E3A8A}
-.cw-cell.c2{background:#FCA5A5;color:#7F1D1D}
-.cw-cell.c3{background:#FDBA74;color:#7C2D12}
-.cw-cell.c4{background:#C4B5FD;color:#3B0764}
-.cw-cell.c5{background:#F9A8D4;color:#831843}
-.cw-cell.c6{background:#A5F3FC;color:#164E63}
-.cw-cell.c7{background:#FDE68A;color:#78350F}
-.cw-cell.c8{background:#BEF264;color:#365314}
-.cw-cell.c9{background:#E9D5FF;color:#5B21B6}
-.cw-progress{height:10px;background:var(--cinza);border-radius:50px;margin:10px 0;overflow:hidden}
-.cw-pbar{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--verde),var(--azul));transition:width .4s}
-.cw-info{font-size:.85rem;color:#6B7280;margin-bottom:12px}
-.win-box{
-  display:none;text-align:center;background:linear-gradient(135deg,#22C55E,#16A34A);
-  color:#fff;border-radius:16px;padding:18px;font-size:1.2rem;font-weight:900;
-  margin-top:12px;animation:pop .4s ease;
-}
-.win-box.show{display:block}
+/* CACA PALAVRAS */
+.cwwords{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.cwchip{padding:6px 16px;border-radius:50px;font-size:.92rem;font-weight:800;border:2px solid;cursor:default;transition:all .2s}
+.cwchip.ac{text-decoration:line-through;opacity:.4}
+.cwgw{overflow-x:auto;margin-bottom:12px;-webkit-overflow-scrolling:touch}
+.cwg{display:inline-grid;gap:3px;user-select:none;-webkit-user-select:none;border-radius:16px;overflow:hidden;touch-action:none}
+.cwc{width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;font-weight:900;background:#F8FAFC;cursor:pointer;border-radius:8px;transition:background .1s,transform .1s;border:2px solid transparent;text-transform:uppercase;pointer-events:all}
+.cwc.sel{background:var(--am);color:#1E293B;border-color:#F59E0B;transform:scale(1.08)}
+.cwc.flash-err{animation:cwflash .45s ease;background:#FCA5A5!important;color:#7F1D1D!important;border-color:#EF4444!important}
+@keyframes cwflash{0%{background:#FCA5A5;transform:scale(1.1)}40%{background:#FEE2E2;transform:scale(.95)}70%{background:#FCA5A5;transform:scale(1.05)}100%{background:#F8FAFC;transform:scale(1)}}
+.cwc.c0{background:#86EFAC;color:#14532D}.cwc.c1{background:#93C5FD;color:#1E3A8A}
+.cwc.c2{background:#FCA5A5;color:#7F1D1D}.cwc.c3{background:#FDBA74;color:#7C2D12}
+.cwc.c4{background:#C4B5FD;color:#3B0764}.cwc.c5{background:#F9A8D4;color:#831843}
+.cwc.c6{background:#A5F3FC;color:#164E63}.cwc.c7{background:#FDE68A;color:#78350F}
+.cwc.c8{background:#BEF264;color:#365314}.cwc.c9{background:#E9D5FF;color:#5B21B6}
+.cwpr{height:10px;background:var(--ci);border-radius:50px;margin:10px 0;overflow:hidden}
+.cwpb{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--vd),var(--az));transition:width .4s}
+
+/* QUIZ */
+.qtxt{background:linear-gradient(135deg,var(--azl),var(--rxl));border-radius:16px;padding:18px;font-size:1.05rem;line-height:1.8;margin-bottom:18px;border-left:5px solid var(--az)}
+.qperg{font-size:1.05rem;font-weight:800;margin-bottom:14px;color:var(--azd)}
+.qops{display:flex;flex-direction:column;gap:10px}
+.qop{padding:12px 18px;border-radius:14px;border:3px solid var(--ci);background:#fff;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;text-align:left;transition:all .2s}
+.qop:hover{border-color:var(--az);background:var(--azl)}
+.qop.cert{background:#DCFCE7;border-color:var(--vd);color:var(--vdd)}
+.qop.err{background:#FEE2E2;border-color:#EF4444;color:#991B1B}
+.qfb{margin-top:14px;padding:14px;border-radius:14px;font-size:1rem;font-weight:800;text-align:center;display:none}
+.qfb.ok{display:block;background:#DCFCE7;color:var(--vdd)}
+.qfb.nok{display:block;background:#FEE2E2;color:#991B1B}
+.qscore{text-align:center;background:linear-gradient(135deg,#FBBF24,#F97316);color:#fff;border-radius:20px;padding:24px;font-size:1.3rem;font-weight:900;display:none}
+.qscore.show{display:block;animation:pop .4s ease}
+.estrs{font-size:2rem;letter-spacing:4px;margin:8px 0}
+
+/* COMPLETAR */
+.frsetx{font-size:1.1rem;line-height:2.4;color:#1E293B;font-weight:600}
+.lac{display:inline-block;min-width:90px;border-bottom:3px solid var(--az);text-align:center;margin:0 4px;padding:0 8px;font-weight:900;color:var(--azd);cursor:pointer;border-radius:4px;transition:background .2s}
+.lac.cert{border-color:var(--vd);color:var(--vdd);background:var(--vdl)}
+.lac.errd{border-color:#EF4444;color:#991B1B;background:#FEE2E2;animation:shk .3s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.oplc{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.oplcb{padding:8px 18px;border-radius:50px;border:2px solid var(--rx);background:var(--rxl);color:var(--rxd);font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;cursor:pointer;transition:all .2s}
+.oplcb:hover{background:var(--rx);color:#fff}
+.oplcb.us{opacity:.35;pointer-events:none}
+
+/* MEMORIA */
+.mgr{display:grid;gap:10px}
+.mc{aspect-ratio:1;border-radius:16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid #E2E8F0;position:relative;overflow:hidden;transition:transform .1s}
+.mc:hover{transform:scale(1.03)}
+.mc .fr,.mc .bk{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;transition:opacity .25s}
+.mc .fr{background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:#fff;font-size:2rem}
+.mc .bk{background:#fff;gap:4px;opacity:0}
+.mc.vir .fr{opacity:0}
+.mc.vir .bk{opacity:1}
+.mc.ac{border-color:var(--vd)!important;background:var(--vdl)!important}
+.mpal{font-size:.78rem;font-weight:900;color:#374151}
+.mem{font-size:2rem}
+.minfo{display:flex;gap:16px;margin-bottom:14px;font-weight:700;font-size:.95rem}
+.minfo span{background:var(--ci);padding:6px 14px;border-radius:50px}
+
+/* ORDENAR */
+.ofrase{min-height:52px;background:var(--ci);border-radius:16px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;border:3px dashed #CBD5E1;margin-bottom:14px;align-items:center;transition:background .2s,border-color .2s}
+.ofrase.cb{background:var(--vdl);border-color:var(--vd)}
+.ofrase.eb{background:#FEE2E2;border-color:#EF4444;animation:shk .3s}
+.pop{padding:7px 14px;border-radius:50px;background:var(--az);color:#fff;font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:800;cursor:pointer;transition:transform .15s,background .2s;border:none}
+.pop:hover{transform:scale(1.06);background:var(--azd)}
+.pop.nf{background:var(--vd)}
+.pop.nf:hover{background:var(--vdd)}
+.banco{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+
+/* FORCA */
+.forca-area{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.forca-svg{flex-shrink:0}
+.forca-info{flex:1;min-width:200px}
+.forca-dica{background:var(--aml);border-radius:14px;padding:14px;font-size:.95rem;font-weight:700;color:var(--amd);margin-bottom:14px}
+.forca-letras-v{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;justify-content:center}
+.forca-slot{width:38px;height:44px;border-bottom:3px solid var(--azd);display:flex;align-items:flex-end;justify-content:center;font-size:1.3rem;font-weight:900;color:var(--azd)}
+.forca-alpha{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.fl{width:36px;height:36px;border-radius:8px;border:2px solid var(--azl);background:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;cursor:pointer;transition:all .15s;color:var(--azd)}
+.fl:hover:not(:disabled){background:var(--azl)}
+.fl:disabled{opacity:.35;cursor:default}
+.fl.cert{background:var(--vdl);border-color:var(--vd);color:var(--vdd)}
+.fl.err{background:#FEE2E2;border-color:#EF4444;color:#991B1B}
+.forca-msg{font-size:1.1rem;font-weight:900;text-align:center;padding:14px;border-radius:14px;display:none}
+.forca-msg.ok{display:block;background:var(--vdl);color:var(--vdd)}
+.forca-msg.nok{display:block;background:#FEE2E2;color:#991B1B}
+
+/* VF */
+.vf-afirm{background:linear-gradient(135deg,var(--azl),var(--rxl));border-radius:16px;padding:18px;font-size:1.05rem;line-height:1.7;margin-bottom:14px;border-left:5px solid var(--az)}
+.vfbts{display:flex;gap:12px;margin-top:8px}
+.vfbt{padding:11px 28px;border-radius:50px;border:none;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;cursor:pointer;transition:all .2s}
+.vfbt.v{background:var(--vdl);color:var(--vdd);border:2px solid var(--vd)}
+.vfbt.v:hover,.vfbt.v.sel{background:var(--vd);color:#fff}
+.vfbt.f{background:#FEE2E2;color:#991B1B;border:2px solid #EF4444}
+.vfbt.f:hover,.vfbt.f.sel{background:#EF4444;color:#fff}
+.vffb{margin-top:10px;padding:12px;border-radius:12px;font-weight:800;font-size:.95rem;display:none}
+.vffb.ok{display:block;background:var(--vdl);color:var(--vdd)}
+.vffb.nok{display:block;background:#FEE2E2;color:#991B1B}
+
+/* RELACIONAR */
+.rel-area{display:flex;gap:20px;flex-wrap:wrap}
+.rel-col{flex:1;min-width:140px}
+.rel-col h4{font-size:.9rem;font-weight:900;color:#6B7280;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+.relbt{width:100%;padding:12px;margin-bottom:8px;border-radius:14px;border:3px solid var(--ci);background:#fff;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;cursor:pointer;transition:all .2s;text-align:center}
+.relbt:hover{border-color:var(--az)}
+.relbt.sel{border-color:var(--az);background:var(--azl);color:var(--azd)}
+.relbt.cert{border-color:var(--vd);background:var(--vdl);color:var(--vdd);pointer-events:none}
+.relbt.err{border-color:#EF4444;background:#FEE2E2;color:#991B1B;animation:shk .3s}
+
+/* BOTÕES */
+.btn{padding:10px 22px;border-radius:50px;border:none;font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:800;cursor:pointer;transition:all .2s}
+.baz{background:var(--az);color:#fff;box-shadow:0 3px 12px rgba(59,130,246,.3)}
+.baz:hover{background:var(--azd);transform:scale(1.03)}
+.bvd{background:var(--vd);color:#fff;box-shadow:0 3px 12px rgba(34,197,94,.3)}
+.bvd:hover{background:var(--vdd);transform:scale(1.03)}
+.bci{background:var(--ci);color:#475569}
+.bci:hover{background:#E2E8F0}
+
+/* WIN */
+.win{display:none;text-align:center;background:linear-gradient(135deg,#22C55E,#16A34A);color:#fff;border-radius:16px;padding:18px;font-size:1.2rem;font-weight:900;margin-top:12px;animation:pop .4s ease}
+.win.sh{display:block}
 @keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
 
-/* ══════════════════════════════════════════
-   QUIZ
-══════════════════════════════════════════ */
-.quiz-text{
-  background:linear-gradient(135deg,var(--azul-l),var(--roxo-l));
-  border-radius:16px;padding:18px;font-size:1.05rem;line-height:1.8;
-  margin-bottom:18px;border-left:5px solid var(--azul);
-}
-.quiz-pergunta{font-size:1.05rem;font-weight:800;margin-bottom:14px;color:var(--azul-d)}
-.quiz-opcoes{display:flex;flex-direction:column;gap:10px}
-.quiz-op{
-  padding:12px 18px;border-radius:14px;border:3px solid var(--cinza);
-  background:#fff;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;
-  cursor:pointer;text-align:left;transition:all .2s;
-}
-.quiz-op:hover{border-color:var(--azul);background:var(--azul-l)}
-.quiz-op.certa{background:#DCFCE7;border-color:var(--verde);color:var(--verde-d)}
-.quiz-op.errada{background:#FEE2E2;border-color:#EF4444;color:#991B1B}
-.quiz-feedback{
-  margin-top:14px;padding:14px;border-radius:14px;
-  font-size:1rem;font-weight:800;text-align:center;display:none;
-}
-.quiz-feedback.ok{display:block;background:#DCFCE7;color:var(--verde-d)}
-.quiz-feedback.nok{display:block;background:#FEE2E2;color:#991B1B}
-.quiz-nav{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
-.quiz-score{
-  text-align:center;background:linear-gradient(135deg,#FBBF24,#F97316);
-  color:#fff;border-radius:20px;padding:24px;font-size:1.3rem;font-weight:900;
-  display:none;
-}
-.quiz-score.show{display:block;animation:pop .4s ease}
-.estrelinhas{font-size:2rem;letter-spacing:4px;margin:8px 0}
-
-/* ══════════════════════════════════════════
-   COMPLETAR FRASE
-══════════════════════════════════════════ */
-.frase-container{margin-bottom:20px}
-.frase-texto{
-  font-size:1.15rem;line-height:2.2;color:#1E293B;font-weight:600;
-}
-.lacuna{
-  display:inline-block;min-width:100px;border-bottom:3px solid var(--azul);
-  text-align:center;margin:0 4px;padding:0 8px;
-  font-weight:900;color:var(--azul-d);cursor:pointer;
-  border-radius:4px;transition:background .2s;
-}
-.lacuna:hover,.lacuna:focus{background:var(--azul-l);outline:none}
-.lacuna.certa{border-color:var(--verde);color:var(--verde-d);background:var(--verde-l)}
-.lacuna.errada{border-color:#EF4444;color:#991B1B;background:#FEE2E2;animation:shake .3s}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-.opcoes-lacuna{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.op-lac{
-  padding:8px 18px;border-radius:50px;border:2px solid var(--roxo);
-  background:var(--roxo-l);color:var(--roxo-d);font-family:'Nunito',sans-serif;
-  font-size:.95rem;font-weight:800;cursor:pointer;transition:all .2s;
-}
-.op-lac:hover{background:var(--roxo);color:#fff}
-.op-lac.usada{opacity:.35;pointer-events:none}
-
-/* ══════════════════════════════════════════
-   MEMÓRIA
-══════════════════════════════════════════ */
-.memo-grid{
-  display:grid;gap:10px;
-}
-.memo-card{
-  aspect-ratio:1;border-radius:16px;cursor:pointer;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-size:1.5rem;font-weight:900;border:3px solid;
-  transition:transform .2s,box-shadow .2s;
-  background:#fff;border-color:#E2E8F0;
-  position:relative;overflow:hidden;
-}
-.memo-card .front,.memo-card .back{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;border-radius:14px;
-  transition:opacity .2s;
-}
-.memo-card .front{background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:#fff;font-size:2rem}
-.memo-card .back{background:#fff;flex-direction:column;gap:2px;opacity:0}
-.memo-card.virada .front{opacity:0}
-.memo-card.virada .back{opacity:1}
-.memo-card.acertada{border-color:var(--verde)!important;background:var(--verde-l)!important}
-.memo-card.errada-anim{animation:shake .3s}
-.memo-palavra{font-size:.8rem;font-weight:900;margin-top:2px;color:#374151}
-.memo-emoji{font-size:2rem}
-.memo-info{display:flex;gap:16px;margin-bottom:14px;font-weight:700;font-size:.95rem}
-.memo-info span{background:var(--cinza);padding:6px 14px;border-radius:50px}
-
-/* ══════════════════════════════════════════
-   ORDENAR FRASE
-══════════════════════════════════════════ */
-.ordem-frase{
-  min-height:56px;background:var(--cinza);border-radius:16px;
-  padding:10px;display:flex;flex-wrap:wrap;gap:8px;
-  border:3px dashed #CBD5E1;margin-bottom:14px;align-items:center;
-}
-.ordem-frase.certa-bg{background:var(--verde-l);border-color:var(--verde)}
-.ordem-frase.errada-bg{background:#FEE2E2;border-color:#EF4444;animation:shake .3s}
-.palavra-op{
-  padding:8px 16px;border-radius:50px;background:var(--azul);color:#fff;
-  font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;
-  cursor:pointer;transition:transform .15s,background .2s;
-  border:none;
-}
-.palavra-op:hover{transform:scale(1.06);background:var(--azul-d)}
-.palavra-op.na-frase{background:var(--verde);cursor:pointer}
-.palavra-op.na-frase:hover{background:var(--verde-d)}
-.palavras-banco{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-
-/* ══════════════════════════════════════════
-   BOTÕES GENÉRICOS
-══════════════════════════════════════════ */
-.btn{
-  padding:10px 24px;border-radius:50px;border:none;
-  font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;
-  cursor:pointer;transition:all .2s;
-}
-.btn-azul{background:var(--azul);color:#fff;box-shadow:0 3px 12px rgba(59,130,246,.3)}
-.btn-azul:hover{background:var(--azul-d);transform:scale(1.03)}
-.btn-verde{background:var(--verde);color:#fff;box-shadow:0 3px 12px rgba(34,197,94,.3)}
-.btn-verde:hover{background:var(--verde-d);transform:scale(1.03)}
-.btn-roxo{background:var(--roxo);color:#fff;box-shadow:0 3px 12px rgba(167,139,250,.3)}
-.btn-roxo:hover{background:var(--roxo-d);transform:scale(1.03)}
-.btn-cinza{background:var(--cinza);color:#475569}
-.btn-cinza:hover{background:#E2E8F0}
-
-/* ══════════════════════════════════════════
-   TOAST
-══════════════════════════════════════════ */
-#toast{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);
-  background:#1E293B;color:#fff;padding:12px 28px;border-radius:50px;
-  font-size:1rem;font-weight:800;z-index:9999;transition:transform .3s;
-  white-space:nowrap;pointer-events:none;
-}
-#toast.show{transform:translateX(-50%) translateY(0)}
-
-/* ══════════════════════════════════════════
-   LEITURA
-══════════════════════════════════════════ */
-.leitura-card{border-left:5px solid var(--azul)}
-.leitura-card h3{font-size:1.1rem;font-weight:900;color:var(--azul-d);margin-bottom:10px}
-.leitura-card p{font-size:1.05rem;line-height:1.9;color:#374151}
-.leitura-card .perg{
-  margin-top:14px;background:var(--amarelo-l);border-radius:14px;
-  padding:14px;font-size:.95rem;border-left:4px solid var(--amarelo);
-}
-
-footer{
-  text-align:center;padding:20px;font-size:.82rem;color:#94A3B8;
-  border-top:2px solid var(--cinza);margin-top:auto;
-}
+/* TOAST */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#1E293B;color:#fff;padding:12px 28px;border-radius:50px;font-size:1rem;font-weight:800;z-index:9999;transition:transform .3s;white-space:nowrap;pointer-events:none}
+#toast.sh{transform:translateX(-50%) translateY(0)}
+footer{text-align:center;padding:20px;font-size:.82rem;color:#94A3B8;border-top:2px solid var(--ci);margin-top:auto}
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════
-     TELA INICIAL
-══════════════════════════════════ -->
-<div id="tela-inicial">
-  <div class="hero-card">
-    <div class="prof-avatar">👨‍💻</div>
+<!-- TELA INICIAL -->
+<div id="tela-ini">
+  <div class="hero">
+    <div class="av">👨‍💻</div>
     <div class="tag">Professor de Tecnologia</div>
     <h1>Prof. Daniel</h1>
-    <h2>Escola Presidente Médici</h2>
-    <div class="divider"></div>
-    <p class="welcome-text">
-      Olá! Seja bem-vindo ao <strong>Mundo da Leitura</strong>! 🌟<br>
-      Aqui você vai ler, jogar e aprender de um jeito divertido.<br>
-      Digite seu nome para começar a aventura!
-    </p>
-    <div class="input-group">
-      <label for="nomeInput">✏️ Qual é o seu nome?</label>
-      <input class="nome-input" id="nomeInput" type="text" placeholder="Digite seu nome aqui..." maxlength="30" autocomplete="off">
-      <button class="btn-entrar" onclick="entrar()">🚀 Vamos Começar!</button>
+    <h2>Escola Presidente Médici — Programa Tempo Integral</h2>
+    <div class="div"></div>
+    <p>Olá! Seja bem-vindo ao <strong>Mundo da Leitura</strong>! 🌟<br>
+       Aqui você vai ler, jogar e aprender de um jeito super divertido.<br>
+       Digite seu nome para começar a aventura!</p>
+    <div class="ig">
+      <label for="ni">✏️ Qual é o seu nome?</label>
+      <input class="ni" id="ni" type="text" placeholder="Digite seu nome aqui..." maxlength="30" autocomplete="off">
+      <button class="btn-en" onclick="entrar()">🚀 Vamos Começar!</button>
     </div>
-    <div class="features-row">
-      <span class="feat-chip">📖 Leitura</span>
-      <span class="feat-chip">🔍 Caça-Palavras</span>
-      <span class="feat-chip">🧠 Quiz</span>
-      <span class="feat-chip">🃏 Memória</span>
-      <span class="feat-chip">✏️ Complete a Frase</span>
-      <span class="feat-chip">🔤 Ordene</span>
+    <div class="frow">
+      <span class="fchip">📖 Leitura</span>
+      <span class="fchip">📝 Frases</span>
+      <span class="fchip">🔍 Caça-Palavras</span>
+      <span class="fchip">🧠 Quiz</span>
+      <span class="fchip">🃏 Memória</span>
+      <span class="fchip">✏️ Complete</span>
+      <span class="fchip">🔤 Ordene</span>
+      <span class="fchip">🎯 Forca</span>
+      <span class="fchip">✅ Verdadeiro/Falso</span>
+      <span class="fchip">🔗 Relacione</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     TELA BOAS-VINDAS
-══════════════════════════════════ -->
-<div id="tela-bv" style="display:none;min-height:100vh;display:none;align-items:center;justify-content:center;flex-direction:column;padding:30px 20px">
-  <div class="bv-card">
-    <div class="bv-emoji">🎉</div>
-    <h2 id="bv-titulo">Olá, Aluno!</h2>
-    <p id="bv-texto">Escolha a sua série para começar a aprender e jogar!</p>
-    <div class="serie-grid">
-      <div class="serie-card s1" onclick="iniciarApp(1)"><span>📗</span>1° Ano</div>
-      <div class="serie-card s2" onclick="iniciarApp(2)"><span>📘</span>2° Ano</div>
-      <div class="serie-card s3" onclick="iniciarApp(3)"><span>📙</span>3° Ano</div>
-      <div class="serie-card s4" onclick="iniciarApp(4)"><span>📕</span>4° Ano</div>
-      <div class="serie-card s5" onclick="iniciarApp(5)"><span>📓</span>5° Ano</div>
+<!-- BOAS VINDAS -->
+<div id="tela-bv">
+  <div class="bv">
+    <div class="bvem">🎉</div>
+    <h2 id="bvtit">Olá!</h2>
+    <p id="bvtx">Escolha a sua série e vamos aprender juntos!</p>
+    <div class="sg">
+      <div class="sc s1" onclick="iniciarApp(1)"><span>📗</span>1° Ano</div>
+      <div class="sc s2" onclick="iniciarApp(2)"><span>📘</span>2° Ano</div>
+      <div class="sc s3" onclick="iniciarApp(3)"><span>📙</span>3° Ano</div>
+      <div class="sc s4" onclick="iniciarApp(4)"><span>📕</span>4° Ano</div>
+      <div class="sc s5" onclick="iniciarApp(5)"><span>📓</span>5° Ano</div>
     </div>
-    <button class="btn btn-cinza" onclick="voltarInicial()">← Voltar</button>
+    <button class="btn bci" onclick="voltarIni()">← Voltar</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     APP PRINCIPAL
-══════════════════════════════════ -->
-<div id="app" style="display:none;flex-direction:column;min-height:100vh">
+<!-- APP -->
+<div id="app">
   <header>
-    <div class="hdr-logo">📚</div>
+    <div class="hl">📚</div>
     <h1>Mundo da Leitura</h1>
-    <div class="hdr-aluno" id="hdr-nome">Aluno</div>
-    <div class="hdr-estrelas" id="hdr-estrelas">⭐ 0</div>
+    <div class="hn" id="hn">Aluno</div>
+    <div class="hes" id="hes">⭐ 0</div>
   </header>
-
-  <div class="tab-bar" id="tabBar"></div>
-
+  <div class="tabbar" id="tabbar"></div>
   <div style="flex:1">
-    <!-- LEITURA -->
-    <div class="secao ativa" id="sec-leitura">
-      <div class="sec-titulo">📖 Textos para Ler</div>
-      <div id="leitura-content"></div>
-    </div>
-
-    <!-- CAÇA-PALAVRAS -->
-    <div class="secao" id="sec-caca">
-      <div class="sec-titulo">🔍 Caça-Palavras</div>
-      <div id="caca-content"></div>
-    </div>
-
-    <!-- QUIZ -->
-    <div class="secao" id="sec-quiz">
-      <div class="sec-titulo">🧠 Quiz de Leitura</div>
-      <div id="quiz-content"></div>
-    </div>
-
-    <!-- COMPLETAR -->
-    <div class="secao" id="sec-completar">
-      <div class="sec-titulo">✏️ Complete a Frase</div>
-      <div id="completar-content"></div>
-    </div>
-
-    <!-- MEMÓRIA -->
-    <div class="secao" id="sec-memoria">
-      <div class="sec-titulo">🃏 Jogo da Memória</div>
-      <div id="memoria-content"></div>
-    </div>
-
-    <!-- ORDENAR -->
-    <div class="secao" id="sec-ordenar">
-      <div class="sec-titulo">🔤 Ordene as Palavras</div>
-      <div id="ordenar-content"></div>
-    </div>
+    <div class="sec ativa" id="sec-frases"><div class="stit">📝 Frases para Leitura</div><div id="c-frases"></div></div>
+    <div class="sec" id="sec-leitura"><div class="stit">📖 Textos</div><div id="c-leitura"></div></div>
+    <div class="sec" id="sec-caca"><div class="stit">🔍 Caça-Palavras</div><div id="c-caca"></div></div>
+    <div class="sec" id="sec-quiz"><div class="stit">🧠 Quiz</div><div id="c-quiz"></div></div>
+    <div class="sec" id="sec-compl"><div class="stit">✏️ Complete a Frase</div><div id="c-compl"></div></div>
+    <div class="sec" id="sec-memo"><div class="stit">🃏 Jogo da Memória</div><div id="c-memo"></div></div>
+    <div class="sec" id="sec-ord"><div class="stit">🔤 Ordene as Palavras</div><div id="c-ord"></div></div>
+    <div class="sec" id="sec-forca"><div class="stit">🎯 Jogo da Forca</div><div id="c-forca"></div></div>
+    <div class="sec" id="sec-vf"><div class="stit">✅ Verdadeiro ou Falso</div><div id="c-vf"></div></div>
+    <div class="sec" id="sec-rel"><div class="stit">🔗 Relacione</div><div id="c-rel"></div></div>
   </div>
-
   <footer>Mundo da Leitura 📚 — Prof. Daniel &nbsp;|&nbsp; Escola Presidente Médici</footer>
 </div>
-
-<div id="toast">🎉 Parabéns!</div>
+<div id="toast"></div>
 
 <script>
-/* ═══════════════════════════
-   ESTADO GLOBAL
-═══════════════════════════ */
-let NOME = '';
-let SERIE = 1;
-let PONTOS = 0;
-let cacaState = {};
+/* ── ESTADO ── */
+let NOME='', SERIE=1, PTS=0;
+let cwSt={}, memoCards=[], memoVir=[], memoAc=0, memoTent=0, memoBl=false;
+let quizIdx=0,quizCert=0,quizBl=false;
+let forcaIdx=0,forcaErros=0,forcaBl=false,forcaLetrasCert=new Set(),forcaLetrasErr=new Set();
+let vfIdx=0,vfAc=0;
+let relSel={esq:null,dir:null},relAcertos=new Set();
+let ordState={};
 
-/* ═══════════════════════════
+/* ══════════════════════════════════════
    DADOS POR SÉRIE
-═══════════════════════════ */
-const DADOS = {
-  1: {
-    cor: '#3B82F6',
-    leituras: [
-      { titulo:'🐱 O Gato e o Rato', texto:'O gato é bonito.\nO gato tem pelo macio e olhos brilhantes.\nO rato é pequeno e vive em buracos.\nO rato gosta de queijo e de correr rápido.\nO gato viu o rato perto da mesa.\nO rato fugiu muito rápido!\nO gato ficou com sono e foi dormir.', perg:'Por que o rato fugiu rápido?' },
-      { titulo:'🌞 O Dia da Ana', texto:'Ana acorda cedo todo dia.\nEla lava o rosto com água fria.\nDepois, Ana toma café com pão e leite.\nEla pega a mochila e vai à escola.\nNa escola, Ana aprende a ler e escrever.\nA professora conta histórias bonitas.\nAna adora a escola!', perg:'O que Ana aprende na escola?' },
-      { titulo:'🐶 O Cachorro Bolinha', texto:'Bolinha é um cachorro pequeno e peludo.\nEle é branco com uma mancha preta.\nBolinha gosta de brincar com a bola vermelha.\nQuando chama o seu nome, ele vem correndo.\nÀ noite, Bolinha dorme no seu tapetinho.\nEle é o melhor amigo da família!', perg:'Como é o Bolinha?' }
-    ],
-    cacaPalavras: [
-      { tema:'🐾 Animais', palavras:['GATO','RATO','SAPO','PATO','PEIXE','BODE','URSO','LOBO','RATO','PATO'] },
-      { tema:'🍎 Frutas', palavras:['MACA','UVAS','PERA','CAJU','FIGO','LIMA','BANANA'] },
-    ],
-    quiz: [
-      { texto:'Ana acorda cedo todo dia. Ela toma café com pão e leite. Depois vai à escola aprender a ler.', perg:'O que Ana toma no café da manhã?', ops:['Suco e biscoito','Café com pão e leite','Vitamina de frutas','Somente água'], certa:1 },
-      { texto:'Bolinha é um cachorro pequeno e branco com uma mancha preta. Ele adora brincar com a bola vermelha.', perg:'Qual é a cor da bola de Bolinha?', ops:['Azul','Amarela','Vermelha','Verde'], certa:2 },
-      { texto:'O gato viu o rato perto da mesa. O rato fugiu muito rápido e o gato ficou com sono.', perg:'O que o gato fez depois?', ops:['Correu atrás','Foi comer','Ficou com sono e dormiu','Chamou a mamãe'], certa:2 }
-    ],
-    completar: [
-      { frase:['O gato tem pelo _____ e olhos _____.',['macio','brilhantes'],['macio','brilhantes','feio','apagados']], antes:'O gato tem pelo', lacunas:[{resp:'macio',pos:0},{resp:'brilhantes',pos:1}] },
-      { antes:'', lacunas:[], fraseParts:['Ana toma café com','pão','e','leite','.'], palavras:['arroz','pão','leite','suco'], corretas:['pão','leite'] },
-    ],
-    completarV2: [
-      { partes:['O gato tem pelo ',' e olhos ', '.'], lacunas:['macio','brilhantes'], opcoes:['macio','feio','brilhantes','apagados'] },
-      { partes:['Ana toma café com ',' e ', '.'], lacunas:['pão','leite'], opcoes:['arroz','pão','leite','suco'] },
-      { partes:['O rato fugiu muito ', '!'], lacunas:['rápido'], opcoes:['devagar','rápido','voando','nadando'] }
-    ],
-    memoria: [
-      {emoji:'🐱',palavra:'GATO'},{emoji:'🐭',palavra:'RATO'},
-      {emoji:'🐸',palavra:'SAPO'},{emoji:'🐟',palavra:'PEIXE'},
-      {emoji:'🐻',palavra:'URSO'},{emoji:'🦁',palavra:'LEAO'},
-    ],
-    ordenar: [
-      { correta:['O','gato','dorme','muito.'], embaralhada:['muito.','gato','O','dorme'] },
-      { correta:['Ana','vai','à','escola.'], embaralhada:['escola.','Ana','à','vai'] },
-      { correta:['O','rato','é','pequeno.'], embaralhada:['pequeno.','O','é','rato'] }
-    ]
-  },
-  2: {
-    cor:'#22C55E',
-    leituras:[
-      {titulo:'🌧️ A Chuva',texto:'Hoje o céu ficou cinza e pesado.\nAs nuvens vieram rápido pelo horizonte.\nComeçou a chover forte!\nAs crianças correram para dentro de casa.\nA chuva regou as plantas e encheu os rios.\nAs flores ficaram limpas e bonitas.\nDepois da chuva, saiu um lindo arco-íris colorido!',perg:'O que apareceu depois da chuva?'},
-      {titulo:'🐸 O Sapo Pulador',texto:'Sapo Teco morava na beira do lago verde.\nEle adorava pular de pedra em pedra.\nSua língua comprida pegava insetos no ar.\nUm dia, ele pulou tão alto que caiu na água!\nMas todo sapo sabe nadar muito bem.\nEle saiu da água rindo e feliz.\nTeco voltou para sua pedra favorita.',perg:'Por que Teco caiu na água?'},
-      {titulo:'🌱 A Semente',texto:'Mariana encontrou uma semente no jardim.\nEla cavou um buraco pequeno na terra.\nColocou a semente com muito cuidado.\nRegou todos os dias sem esquecer.\nDepois de duas semanas, nasceu um broto verde.\nMariana ficou muito feliz e orgulhosa.\nA plantinha cresceu e virou uma flor linda!',perg:'O que Mariana fez com a semente?'}
-    ],
-    cacaPalavras:[
-      {tema:'🌿 Natureza',palavras:['CHUVA','NUVEM','VENTO','FLOR','LAGO','ARVORE','PEDRA','TERRA','RAIZ','FOLHA']},
-      {tema:'🎨 Cores',palavras:['AZUL','VERDE','ROXO','ROSA','PRETO','BRANCO','CINZA']}
-    ],
-    quiz:[
-      {texto:'Mariana encontrou uma semente no jardim. Ela cavou um buraco e plantou. Depois de duas semanas, nasceu um broto verde.',perg:'Quanto tempo levou para nascer o broto?',ops:['Uma semana','Dois meses','Duas semanas','Um dia'],certa:2},
-      {texto:'Sapo Teco pulou tão alto que caiu na água do lago. Mas ele sabia nadar muito bem e saiu rindo.',perg:'Sapo Teco ficou triste ao cair na água?',ops:['Sim, chorou muito','Não, saiu rindo','Sim, pediu ajuda','Não, voou para fora'],certa:1},
-      {texto:'Depois da chuva, as flores ficaram limpas e bonitas. Um lindo arco-íris colorido apareceu no céu.',perg:'Como ficaram as flores depois da chuva?',ops:['Murchas e feias','Molhadas e tristes','Limpas e bonitas','Secas e amarelas'],certa:2}
-    ],
-    completarV2:[
-      {partes:['As nuvens vieram ',' pelo horizonte.'],lacunas:['rápido'],opcoes:['devagar','rápido','saltando','dormindo']},
-      {partes:['A chuva regou as ',' e encheu os ', '.'],lacunas:['plantas','rios'],opcoes:['pedras','plantas','lagos','rios']},
-      {partes:['Mariana regou a semente todos os dias sem ', '.'],lacunas:['esquecer'],opcoes:['dormir','comer','esquecer','parar']}
-    ],
-    memoria:[
-      {emoji:'🌧️',palavra:'CHUVA'},{emoji:'🌈',palavra:'ARCO-IRIS'},
-      {emoji:'🌸',palavra:'FLOR'},{emoji:'🌊',palavra:'LAGO'},
-      {emoji:'🌱',palavra:'BROTO'},{emoji:'💨',palavra:'VENTO'},
-    ],
-    ordenar:[
-      {correta:['A','chuva','encheu','os','rios.'],embaralhada:['rios.','A','os','chuva','encheu']},
-      {correta:['O','sapo','sabe','nadar','bem.'],embaralhada:['bem.','sapo','O','nadar','sabe']},
-      {correta:['A','flor','ficou','linda!'],embaralhada:['linda!','ficou','A','flor']}
-    ]
-  },
-  3: {
-    cor:'#FBBF24',
-    leituras:[
-      {titulo:'🏕️ O Acampamento',texto:'Pedro, Luana e Beto foram acampar com a família.\nEles escolheram um lugar lindo perto do rio.\nMontaram a barraca e acenderam uma fogueira.\nÀ noite, contaram histórias de assombração.\nDepois olharam as estrelas no céu limpo.\nConseguiram ver a Via Láctea!\nDe manhã, tomaram café com pão assado na brasa.',perg:'O que as crianças fizeram à noite no acampamento?'},
-      {titulo:'🦋 A Transformação',texto:'A lagarta nasceu pequena e faminta.\nEla comia folhas verdes o dia todo e crescia.\nCrescia tanto que ficava apertada na própria pele!\nUm dia, ela se enrolou num casulo resistente.\nDentro do casulo, algo mágico acontecia.\nDepois de muitos dias, o casulo se abriu devagar.\nDe dentro saiu uma linda borboleta colorida!',perg:'O que acontecia dentro do casulo?'},
-      {titulo:'🌍 Nossa Terra',texto:'A Terra é o nosso lar no universo.\nEla tem oceanos, florestas e montanhas.\nMilhões de animais vivem nela.\nMas a Terra está em perigo por causa da poluição.\nAs pessoas precisam cuidar do meio ambiente.\nPlantar árvores e reciclar o lixo ajuda muito.\nCada pequena atitude faz diferença!',perg:'Como as pessoas podem ajudar a Terra?'}
-    ],
-    cacaPalavras:[
-      {tema:'🧍 Corpo Humano',palavras:['BOCA','NARIZ','OLHO','BRACO','JOELHO','DEDO','OUVIDO','COSTAS','PESCOCO']},
-      {tema:'🏫 Escola',palavras:['LIVRO','CADERNO','LAPIS','BORRACHA','REGUA','MOCHILA','QUADRO','CANETA']}
-    ],
-    quiz:[
-      {texto:'A lagarta comia folhas e crescia. Ficou apertada na própria pele. Se enrolou num casulo e depois se transformou numa borboleta.',perg:'O que a lagarta virou depois do casulo?',ops:['Uma abelha','Uma borboleta','Um besouro','Uma mariposa'],certa:1},
-      {texto:'A Terra tem oceanos, florestas e montanhas. Milhões de animais vivem nela, mas ela está em perigo por causa da poluição.',perg:'O que coloca a Terra em perigo?',ops:['As chuvas','Os animais','A poluição','As montanhas'],certa:2},
-      {texto:'No acampamento, à noite, as crianças contaram histórias de assombração e olharam as estrelas. Conseguiram ver a Via Láctea.',perg:'O que as crianças conseguiram ver no céu?',ops:['A lua cheia','A Via Láctea','Um cometa','O sol poente'],certa:1}
-    ],
-    completarV2:[
-      {partes:['A lagarta comia folhas e ', ' muito.'],lacunas:['crescia'],opcoes:['dormia','crescia','voava','nadava']},
-      {partes:['De dentro do casulo saiu uma linda ',' colorida!'],lacunas:['borboleta'],opcoes:['flor','borboleta','abelha','folha']},
-      {partes:['Plantar árvores e reciclar o lixo ',' muito.'],lacunas:['ajuda'],opcoes:['prejudica','atrapalha','ajuda','complica']}
-    ],
-    memoria:[
-      {emoji:'🦋',palavra:'BORBOLETA'},{emoji:'🏕️',palavra:'BARRACA'},
-      {emoji:'🌍',palavra:'TERRA'},{emoji:'🔥',palavra:'FOGUEIRA'},
-      {emoji:'⭐',palavra:'ESTRELA'},{emoji:'🌊',palavra:'RIO'},
-    ],
-    ordenar:[
-      {correta:['A','lagarta','virou','uma','borboleta.'],embaralhada:['borboleta.','A','uma','virou','lagarta']},
-      {correta:['A','Terra','é','nosso','lar.'],embaralhada:['lar.','Terra','nosso','A','é']},
-      {correta:['Reciclar','o','lixo','ajuda','a','Terra.'],embaralhada:['Terra.','o','Reciclar','a','lixo','ajuda']}
-    ]
-  },
-  4: {
-    cor:'#F472B6',
-    leituras:[
-      {titulo:'🌊 O Pescador',texto:'João pescava no mesmo lugar há trinta anos.\nEle conhecia cada onda, cada corrente e cada nuvem.\nSeus olhos liam o mar como um livro aberto.\nUm dia, o mar ficou agitado e perigoso.\nJoão ficou na praia e esperou com paciência.\n— O mar tem seu tempo — dizia ele.\nOs mais jovens aprenderam muito com a sabedoria do velho pescador.',perg:'O que João dizia sobre o mar?'},
-      {titulo:'🌿 Carta da Terra',texto:'Se a Terra pudesse falar, ela diria:\n— Cuide de mim como eu cuido de você.\nDou a você água limpa, ar puro e alimento.\nEm troca, peço apenas respeito e carinho.\nNão sou inesgotável. Sou viva e preciso de cuidado.\nCada árvore derrubada é uma lágrima minha.\nJuntos podemos construir um futuro melhor!',perg:'O que a Terra pede em troca de tudo que oferece?'},
-      {titulo:'📚 A Biblioteca Mágica',texto:'Clara entrou na biblioteca pela primeira vez.\nO cheiro de livros antigos era diferente de tudo.\nUma bibliotecária sorridente se aproximou.\n— Cada livro aqui é uma porta para outro mundo — ela disse.\nClara pegou um livro de aventuras e começou a ler.\nEla viajou para selvas, oceanos e planetas distantes.\nQuando fechou o livro, sorriu. Voltaria amanhã.',perg:'Para onde Clara viajou lendo o livro?'}
-    ],
-    cacaPalavras:[
-      {tema:'🚗 Transportes',palavras:['TREM','ONIBUS','AVIAO','BARCO','CARRO','MOTO','METRO','TAXI','BICICLETA']},
-      {tema:'🏙️ Cidade',palavras:['PRACA','ESCOLA','HOSPITAL','MERCADO','BANCO','PARQUE','MUSEU','TEATRO']}
-    ],
-    quiz:[
-      {texto:'Clara entrou na biblioteca. A bibliotecária disse que cada livro é uma porta para outro mundo. Clara leu e viajou para selvas, oceanos e planetas.',perg:'O que a bibliotecária disse sobre os livros?',ops:['São pesados e difíceis','São portas para outro mundo','São chatos e velhos','São só para adultos'],certa:1},
-      {texto:'João pescava há trinta anos no mesmo lugar. Conhecia as ondas e as correntes. Quando o mar ficou perigoso, ele esperou com paciência.',perg:'Como João reagiu quando o mar ficou perigoso?',ops:['Foi pescar assim mesmo','Pediu ajuda','Esperou com paciência','Foi embora para sempre'],certa:2},
-      {texto:'A Terra diz que dá água limpa, ar puro e alimento. Em troca pede respeito e carinho. Cada árvore derrubada é uma lágrima dela.',perg:'O que representa cada árvore derrubada para a Terra?',ops:['Uma alegria','Um problema pequeno','Uma lágrima','Uma vitória'],certa:2}
-    ],
-    completarV2:[
-      {partes:['João pescava no mesmo lugar há trinta ', '.'],lacunas:['anos'],opcoes:['dias','anos','meses','horas']},
-      {partes:['Clara sentiu o cheiro de livros ',' na biblioteca.'],lacunas:['antigos'],opcoes:['novos','antigos','molhados','quentes']},
-      {partes:['A Terra pede apenas ',' e carinho.'],lacunas:['respeito'],opcoes:['dinheiro','respeito','silêncio','comida']}
-    ],
-    memoria:[
-      {emoji:'🌊',palavra:'OCEANO'},{emoji:'📚',palavra:'LIVRO'},
-      {emoji:'🎣',palavra:'PESCA'},{emoji:'🌿',palavra:'NATUREZA'},
-      {emoji:'🏛️',palavra:'MUSEU'},{emoji:'✈️',palavra:'AVIAO'},
-    ],
-    ordenar:[
-      {correta:['João','pescava','há','trinta','anos.'],embaralhada:['anos.','João','trinta','pescava','há']},
-      {correta:['Cada','livro','é','uma','porta.'],embaralhada:['porta.','livro','Cada','uma','é']},
-      {correta:['A','Terra','pede','respeito','e','carinho.'],embaralhada:['carinho.','pede','A','respeito','e','Terra']}
-    ]
-  },
-  5: {
-    cor:'#A78BFA',
-    leituras:[
-      {titulo:'📰 A Invenção do Jornal',texto:'Antes do jornal existir, as notícias viajavam devagar.\nAs informações iam de boca em boca ou por cartas lentas.\nCom a invenção da imprensa por Gutenberg, em 1450, tudo mudou.\nFoi possível imprimir muitas cópias de um texto rapidamente.\nOs primeiros jornais apareceram na Europa no século XVII.\nHoje a informação circula em segundos pela internet.\nMas o jornal ainda é uma importante fonte de conhecimento.',perg:'Como as notícias circulavam antes do jornal?'},
-      {titulo:'🚀 O Sonho de Astronauta',texto:'Marina olhava para o céu todas as noites e sonhava.\nEla estudou muito: física, matemática e inglês.\nEnfrentou reprovações e recomeçou sem desistir.\nAos 28 anos, foi selecionada para o programa espacial.\nPassou dois anos em treinamento intenso.\nQuando viu a Terra do espaço, lágrimas brotaram.\n— Os sonhos grandes pedem passos pequenos todo dia — ela disse.',perg:'Qual é a lição de vida que Marina aprendeu?'},
-      {titulo:'🌐 A Era Digital',texto:'Nunca na história se produziu tanta informação.\nA cada minuto, milhões de mensagens são enviadas.\nFotos, vídeos e textos circulam pelo mundo instantaneamente.\nMas nem toda informação na internet é verdadeira.\nAprender a verificar fontes é uma habilidade essencial.\nSer um cidadão digital responsável faz diferença.\nA tecnologia é uma ferramenta poderosa nas mãos certas.',perg:'O que é necessário fazer antes de acreditar em uma informação?'}
-    ],
-    cacaPalavras:[
-      {tema:'👷 Profissões',palavras:['MEDICO','PILOTO','DENTISTA','POLICIAL','BOMBEIRO','ARQUITETO','ENGENHEIRO','PROFESSOR']},
-      {tema:'💻 Tecnologia',palavras:['COMPUTADOR','INTERNET','CELULAR','PROGRAMA','TECLADO','MONITOR','ARQUIVO']}
-    ],
-    quiz:[
-      {texto:'Marina estudou física, matemática e inglês. Enfrentou reprovações e recomeçou. Aos 28 anos foi selecionada para o programa espacial.',perg:'O que Marina fez quando foi reprovada?',ops:['Desistiu do sonho','Ficou com raiva','Recomeçou sem desistir','Pediu ajuda ao governo'],certa:2},
-      {texto:'Nem toda informação na internet é verdadeira. Aprender a verificar fontes é essencial. Ser um cidadão digital responsável faz diferença.',perg:'O que significa ser um cidadão digital responsável?',ops:['Usar muitas redes sociais','Verificar fontes e ser crítico','Ter o celular mais novo','Passar horas no computador'],certa:1},
-      {texto:'Com a invenção da imprensa por Gutenberg em 1450, foi possível imprimir muitas cópias rapidamente. Os primeiros jornais surgiram na Europa no século XVII.',perg:'Quando Gutenberg inventou a imprensa?',ops:['Século XVII','Em 1750','Em 1450','No século XX'],certa:2}
-    ],
-    completarV2:[
-      {partes:['Marina estudou ', ', matemática e inglês.'],lacunas:['física'],opcoes:['biologia','física','história','arte']},
-      {partes:['Nem toda informação na internet é ', '.'],lacunas:['verdadeira'],opcoes:['colorida','verdadeira','importante','nova']},
-      {partes:['A tecnologia é uma ferramenta poderosa nas mãos ', '.'],lacunas:['certas'],opcoes:['grandes','certas','pequenas','sujas']}
-    ],
-    memoria:[
-      {emoji:'🚀',palavra:'FOGUETE'},{emoji:'🌐',palavra:'INTERNET'},
-      {emoji:'👨‍⚕️',palavra:'MEDICO'},{emoji:'📰',palavra:'JORNAL'},
-      {emoji:'💻',palavra:'COMPUTADOR'},{emoji:'🌍',palavra:'TERRA'},
-    ],
-    ordenar:[
-      {correta:['Marina','viu','a','Terra','do','espaço.'],embaralhada:['espaço.','a','Marina','Terra','do','viu']},
-      {correta:['A','tecnologia','é','uma','ferramenta.'],embaralhada:['ferramenta.','A','é','uma','tecnologia']},
-      {correta:['Verifique','sempre','a','fonte','da','notícia.'],embaralhada:['notícia.','Verifique','fonte','a','da','sempre']}
-    ]
-  }
+══════════════════════════════════════ */
+const D={
+1:{
+cor:'#3B82F6',
+frases:[
+  'O gato mia quando tem fome.',
+  'A bola é redonda e colorida.',
+  'O sol nasce de manhã e se põe à tarde.',
+  'A mamãe prepara o café da manhã.',
+  'O cachorro late para o carteiro.',
+  'A escola tem muitas salas de aula.',
+  'O passarinho canta no galho da árvore.',
+  'As crianças brincam no parque à tarde.',
+  'O peixe vive dentro da água do rio.',
+  'A lua aparece no céu durante a noite.'
+],
+leituras:[
+  {ti:'🐱 O Gato e o Rato',tx:'O gato é bonito e tem pelo macio.\nO rato é pequeno e vive em buracos.\nO rato gosta de queijo e de correr rápido.\nO gato viu o rato perto da mesa.\nO rato fugiu muito rápido!\nO gato ficou com sono e foi dormir.',pe:'Por que o rato fugiu?'},
+  {ti:'🌞 O Dia da Ana',tx:'Ana acorda cedo todo dia.\nEla lava o rosto com água fresca.\nDepois, Ana toma café com pão e leite.\nEla pega a mochila e vai à escola.\nNa escola, Ana aprende a ler e escrever.\nAna adora a escola!',pe:'O que Ana aprende na escola?'},
+],
+caca:[
+  {te:'🐾 Animais',pw:['GATO','RATO','SAPO','PATO','PEIXE','BODE','URSO','LOBO','VACA','LEÃO']},
+  {te:'🍎 Frutas',pw:['MAÇÃ','UVAS','PERA','CAJU','FIGO','LIMA','MANGA','ABACAXI']},
+],
+quiz:[
+  {tx:'Ana acorda cedo e toma café com pão e leite. Depois ela pega a mochila e vai à escola aprender a ler.',pe:'O que Ana toma no café da manhã?',op:['Suco e biscoito','Café com pão e leite','Vitamina','Só água'],ce:1},
+  {tx:'O gato viu o rato perto da mesa. O rato fugiu muito rápido e o gato ficou com sono.',pe:'O que o gato fez depois?',op:['Correu atrás','Foi comer','Ficou com sono e dormiu','Chamou a mamãe'],ce:2},
+  {tx:'O peixe vive dentro da água do rio. O passarinho canta no galho da árvore.',pe:'Onde o peixe vive?',op:['Na terra','No galho','Na água do rio','No céu'],ce:2},
+],
+compl:[
+  {pt:['O gato tem pelo ',' e olhos ', '.'],la:['macio','brilhantes'],op:['feio','macio','brilhantes','apagados']},
+  {pt:['Ana toma café com ',' e ', '.'],la:['pão','leite'],op:['arroz','pão','leite','suco']},
+  {pt:['O rato fugiu muito ', '!'],la:['rápido'],op:['devagar','rápido','voando','nadando']},
+],
+memo:[
+  {em:'🐱',pa:'GATO'},{em:'🐭',pa:'RATO'},{em:'🐸',pa:'SAPO'},
+  {em:'🐟',pa:'PEIXE'},{em:'🐻',pa:'URSO'},{em:'🦁',pa:'LEAO'},
+],
+ord:[
+  {c:['O','gato','dorme','muito.'],e:['muito.','gato','O','dorme']},
+  {c:['Ana','vai','à','escola.'],e:['escola.','Ana','à','vai']},
+  {c:['O','rato','é','pequeno.'],e:['pequeno.','O','é','rato']},
+  {c:['O','sol','nasce','de','manhã.'],e:['de','O','manhã.','nasce','sol']},
+],
+forca:[
+  {pa:'GATO',di:'🐱 Eu mio e gosto de leite.'},
+  {pa:'ESCOLA',di:'📚 Lugar onde as crianças aprendem.'},
+  {pa:'BOLA',di:'⚽ Usada para jogar futebol.'},
+  {pa:'ARVORE',di:'🌳 Tem tronco, galhos e folhas.'},
+  {pa:'PEIXE',di:'🐟 Vive na água e tem escamas.'},
+],
+vf:[
+  {af:'O gato tem pelo macio.',co:true,ex:'Sim! O texto diz que o gato tem pelo macio.'},
+  {af:'Ana toma suco no café da manhã.',co:false,ex:'Não! Ana toma café com pão e leite.'},
+  {af:'O rato gosta de queijo.',co:true,ex:'Isso! O texto diz que o rato gosta de queijo.'},
+  {af:'O sol nasce à noite.',co:false,ex:'Não! O sol nasce de manhã.'},
+  {af:'O peixe vive na água.',co:true,ex:'Correto! O peixe vive dentro da água do rio.'},
+],
+rel:[
+  {es:'🐱',di:'GATO'},{es:'🐭',di:'RATO'},
+  {es:'🌞',di:'SOL'},{es:'🐟',di:'PEIXE'},
+  {es:'🌙',di:'LUA'},{es:'🐻',di:'URSO'},
+]
+},
+2:{
+cor:'#22C55E',
+frases:[
+  'A chuva cai do céu e molha o chão.',
+  'O sapo pula de pedra em pedra.',
+  'Mariana plantou uma semente no jardim.',
+  'O arco-íris aparece depois da chuva.',
+  'As flores precisam de água e sol para crescer.',
+  'O vento balança os galhos das árvores.',
+  'O pato nada no lago tranquilo.',
+  'A borboleta voa de flor em flor.',
+  'O rio corre rápido entre as pedras.',
+  'As nuvens carregam a chuva pelo céu.'
+],
+leituras:[
+  {ti:'🌧️ A Chuva',tx:'Hoje o céu ficou cinza e pesado.\nAs nuvens vieram rápido pelo horizonte.\nComeçou a chover forte!\nAs crianças correram para dentro de casa.\nA chuva regou as plantas e encheu os rios.\nDepois da chuva, saiu um lindo arco-íris!',pe:'O que apareceu depois da chuva?'},
+  {ti:'🌱 A Semente',tx:'Mariana encontrou uma semente no jardim.\nEla cavou um buraco pequeno na terra.\nColocou a semente com muito cuidado.\nRegou todos os dias sem esquecer.\nDepois de duas semanas, nasceu um broto verde.\nA plantinha cresceu e virou uma flor linda!',pe:'Quanto tempo levou para nascer o broto?'},
+],
+caca:[
+  {te:'🌿 Natureza',pw:['CHUVA','NUVEM','VENTO','FLOR','LAGO','ÁRVORE','PEDRA','TERRA','RAIZ','FOLHA']},
+  {te:'🎨 Cores',pw:['AZUL','VERDE','ROXO','ROSA','PRETO','BRANCO','AMARELO','LARANJA']},
+],
+quiz:[
+  {tx:'Mariana encontrou uma semente, plantou e regou todos os dias. Depois de duas semanas, nasceu um broto verde.',pe:'O que Mariana fez para a semente crescer?',op:['Só plantou e esperou','Regou todos os dias','Pediu ajuda à vizinha','Comprou uma flor'],ce:1},
+  {tx:'Depois da chuva, as flores ficaram limpas e bonitas. Um lindo arco-íris colorido apareceu no céu.',pe:'Como ficaram as flores depois da chuva?',op:['Murchas e feias','Secas e amarelas','Limpas e bonitas','Velhas e cinzas'],ce:2},
+  {tx:'O vento balança os galhos das árvores. A borboleta voa de flor em flor.',pe:'O que o vento faz?',op:['Faz chover','Balança os galhos','Faz sol','Move as pedras'],ce:1},
+],
+compl:[
+  {pt:['As nuvens vieram ',' pelo horizonte.'],la:['rápido'],op:['devagar','rápido','saltando','dormindo']},
+  {pt:['A chuva regou as ',' e encheu os ', '.'],la:['plantas','rios'],op:['pedras','plantas','lagos','rios']},
+  {pt:['Depois de duas semanas, nasceu um broto ', '.'],la:['verde'],op:['seco','velho','verde','roxo']},
+],
+memo:[
+  {em:'🌧️',pa:'CHUVA'},{em:'🌈',pa:'ARCO-IRIS'},
+  {em:'🌸',pa:'FLOR'},{em:'🌊',pa:'LAGO'},
+  {em:'🌱',pa:'BROTO'},{em:'💨',pa:'VENTO'},
+],
+ord:[
+  {c:['A','chuva','encheu','os','rios.'],e:['rios.','A','os','chuva','encheu']},
+  {c:['O','sapo','sabe','nadar','bem.'],e:['bem.','sapo','O','nadar','sabe']},
+  {c:['A','flor','ficou','linda!'],e:['linda!','ficou','A','flor']},
+  {c:['Mariana','plantou','a','semente.'],e:['semente.','plantou','Mariana','a']},
+],
+forca:[
+  {pa:'CHUVA',di:'🌧️ Cai do céu e molha tudo.'},
+  {pa:'BORBOLETA',di:'🦋 Inseto colorido que voa de flor em flor.'},
+  {pa:'ARCOIRIS',di:'🌈 Aparece depois da chuva com várias cores.'},
+  {pa:'SEMENTE',di:'🌱 De onde nascem as plantas.'},
+  {pa:'NUVEM',di:'☁️ Flutua no céu e carrega a chuva.'},
+],
+vf:[
+  {af:'A chuva regou as plantas.',co:true,ex:'Correto! A chuva regou as plantas e encheu os rios.'},
+  {af:'O arco-íris aparece antes da chuva.',co:false,ex:'Não! O arco-íris aparece depois da chuva.'},
+  {af:'Mariana regou a semente todos os dias.',co:true,ex:'Sim! Ela regou todos os dias sem esquecer.'},
+  {af:'A borboleta vive embaixo da terra.',co:false,ex:'Não! A borboleta voa de flor em flor.'},
+  {af:'O vento balança os galhos das árvores.',co:true,ex:'Correto! O vento balança os galhos.'},
+],
+rel:[
+  {es:'🌧️',di:'CHUVA'},{es:'🌈',di:'ARCO-IRIS'},
+  {es:'🌸',di:'FLOR'},{es:'🦋',di:'BORBOLETA'},
+  {es:'🌱',di:'SEMENTE'},{es:'☁️',di:'NUVEM'},
+]
+},
+3:{
+cor:'#FBBF24',
+frases:[
+  'Pedro, Luana e Beto foram acampar perto do rio.',
+  'A lagarta se transformou em uma bela borboleta.',
+  'A fogueira ilumina a noite no acampamento.',
+  'Os planetas giram ao redor do sol.',
+  'O casulo protege a lagarta durante a transformação.',
+  'As estrelas brilham no céu limpo da noite.',
+  'A floresta é o lar de muitos animais.',
+  'O ser humano precisa respirar ar puro.',
+  'A reciclagem ajuda a cuidar do meio ambiente.',
+  'Cada ser vivo tem um papel importante na natureza.'
+],
+leituras:[
+  {ti:'🏕️ O Acampamento',tx:'Pedro, Luana e Beto foram acampar com a família.\nEles montaram a barraca perto do rio.\nÀ noite, contaram histórias de assombração.\nOlharam as estrelas e viram a Via Láctea.\nDe manhã, tomaram café com pão assado na brasa.\nFoi uma aventura incrível que nunca vão esquecer!',pe:'O que as crianças viram no céu à noite?'},
+  {ti:'🦋 A Transformação',tx:'A lagarta comia folhas verdes o dia todo.\nEla crescia tanto que ficava apertada na pele.\nUm dia, se enrolou num casulo resistente.\nDentro do casulo, algo mágico acontecia.\nDepois de muitos dias, o casulo se abriu.\nDe dentro saiu uma linda borboleta colorida!',pe:'O que acontecia dentro do casulo?'},
+],
+caca:[
+  {te:'🧍 Corpo Humano',pw:['BOCA','NARIZ','OLHO','BRAÇO','JOELHO','DEDO','OUVIDO','COSTAS','PESCOÇO','TORNOZELO']},
+  {te:'🏫 Escola',pw:['LIVRO','CADERNO','LÁPIS','BORRACHA','RÉGUA','MOCHILA','QUADRO','CANETA','TESOURA']},
+],
+quiz:[
+  {tx:'A lagarta comia folhas e crescia. Ficou apertada, se enrolou no casulo e se transformou numa borboleta.',pe:'O que a lagarta virou?',op:['Uma abelha','Uma borboleta','Um besouro','Uma mariposa'],ce:1},
+  {tx:'No acampamento, as crianças olharam as estrelas no céu limpo e conseguiram ver a Via Láctea.',pe:'O que as crianças viram no céu?',op:['A lua cheia','Um cometa','A Via Láctea','O sol poente'],ce:2},
+  {tx:'A reciclagem ajuda a cuidar do meio ambiente. Cada ser vivo tem papel importante na natureza.',pe:'O que a reciclagem ajuda a fazer?',op:['Ganhar dinheiro','Cuidar do meio ambiente','Produzir lixo','Desmatar florestas'],ce:1},
+],
+compl:[
+  {pt:['A lagarta comia folhas e ', ' muito.'],la:['crescia'],op:['dormia','crescia','voava','nadava']},
+  {pt:['De dentro do casulo saiu uma linda ',' colorida!'],la:['borboleta'],op:['flor','borboleta','abelha','folha']},
+  {pt:['A reciclagem ajuda a cuidar do meio ', '.'],la:['ambiente'],op:['corpo','ambiente','tempo','lugar']},
+],
+memo:[
+  {em:'🦋',pa:'BORBOLETA'},{em:'🏕️',pa:'BARRACA'},
+  {em:'⭐',pa:'ESTRELA'},{em:'🔥',pa:'FOGUEIRA'},
+  {em:'🌍',pa:'TERRA'},{em:'🌊',pa:'RIO'},
+],
+ord:[
+  {c:['A','lagarta','virou','uma','borboleta.'],e:['borboleta.','A','uma','virou','lagarta']},
+  {c:['As','estrelas','brilham','à','noite.'],e:['noite.','à','As','brilham','estrelas']},
+  {c:['A','reciclagem','ajuda','a','natureza.'],e:['natureza.','A','a','ajuda','reciclagem']},
+  {c:['O','casulo','protege','a','lagarta.'],e:['lagarta.','O','a','protege','casulo']},
+],
+forca:[
+  {pa:'LAGARTA',di:'🐛 Antes de virar borboleta, ela é assim.'},
+  {pa:'CASULO',di:'🫘 Proteção onde a lagarta se transforma.'},
+  {pa:'FOGUEIRA',di:'🔥 Feita com lenha para esquentar à noite.'},
+  {pa:'ESTRELA',di:'⭐ Brilha no céu durante a noite.'},
+  {pa:'NATUREZA',di:'🌿 Florestas, rios, animais e plantas fazem parte dela.'},
+],
+vf:[
+  {af:'A borboleta começa a vida como lagarta.',co:true,ex:'Sim! A lagarta se transforma em borboleta.'},
+  {af:'O casulo é feito de plástico.',co:false,ex:'Não! O casulo é feito pela própria lagarta com fios de seda.'},
+  {af:'As crianças viram a Via Láctea no acampamento.',co:true,ex:'Correto! Elas olharam as estrelas e viram a Via Láctea.'},
+  {af:'A reciclagem prejudica o meio ambiente.',co:false,ex:'Não! A reciclagem ajuda a cuidar do meio ambiente.'},
+  {af:'Cada ser vivo tem um papel na natureza.',co:true,ex:'Correto! Cada ser tem um papel importante.'},
+],
+rel:[
+  {es:'🐛',di:'LAGARTA'},{es:'🦋',di:'BORBOLETA'},
+  {es:'🔥',di:'FOGUEIRA'},{es:'⭐',di:'ESTRELA'},
+  {es:'🌍',di:'TERRA'},{es:'🏕️',di:'BARRACA'},
+]
+},
+4:{
+cor:'#F472B6',
+frases:[
+  'João pescava no mesmo lugar há trinta anos.',
+  'A biblioteca tem milhares de livros esperando por leitores.',
+  'A Terra precisa de cuidado para continuar viva.',
+  'Clara encontrou um livro de aventuras na biblioteca.',
+  'O pescador respeita o mar e espera o momento certo.',
+  'Cada livro é uma porta para um mundo diferente.',
+  'A poluição é um dos maiores problemas do planeta.',
+  'Ler nos ajuda a conhecer outros lugares e culturas.',
+  'Respeitar a natureza é uma forma de amor ao mundo.',
+  'A sabedoria vem com a experiência e os anos vividos.'
+],
+leituras:[
+  {ti:'🌊 O Pescador',tx:'João pescava no mesmo lugar há trinta anos.\nEle conhecia cada onda e cada corrente.\nUm dia, o mar ficou agitado e perigoso.\nJoão ficou na praia e esperou com paciência.\n— O mar tem seu tempo — dizia ele.\nOs jovens aprenderam com a sabedoria do velho pescador.',pe:'Qual era a lição de vida de João?'},
+  {ti:'📚 A Biblioteca Mágica',tx:'Clara entrou na biblioteca pela primeira vez.\nO cheiro de livros antigos era especial.\nUma bibliotecária sorridente se aproximou.\n— Cada livro é uma porta para outro mundo — ela disse.\nClara pegou um livro de aventuras e começou a ler.\nQuando fechou o livro, sorriu. Voltaria amanhã.',pe:'O que a bibliotecária disse sobre os livros?'},
+],
+caca:[
+  {te:'🚗 Transportes',pw:['TREM','ÔNIBUS','AVIÃO','BARCO','CARRO','MOTO','METRÔ','TÁXI','BICICLETA','HELICÓPTERO']},
+  {te:'🏙️ Cidade',pw:['PRAÇA','ESCOLA','HOSPITAL','MERCADO','BANCO','PARQUE','MUSEU','TEATRO','BIBLIOTECA']},
+],
+quiz:[
+  {tx:'Clara entrou na biblioteca. A bibliotecária disse que cada livro é uma porta para outro mundo. Clara leu e se apaixonou pela leitura.',pe:'O que a bibliotecária disse?',op:['Livros são pesados','Livros são portas para outro mundo','Livros são chatos','Livros são só para adultos'],ce:1},
+  {tx:'João pescava há trinta anos. Quando o mar ficou perigoso, ele esperou com paciência na praia.',pe:'Como João reagiu diante do mar perigoso?',op:['Foi pescar assim mesmo','Vendeu o barco','Esperou com paciência','Pediu socorro'],ce:2},
+  {tx:'A poluição é um dos maiores problemas do planeta. Respeitar a natureza é uma forma de amor ao mundo.',pe:'Por que devemos respeitar a natureza?',op:['Para ganhar prêmios','Por medo das leis','Porque é amor ao mundo','Porque é fácil'],ce:2},
+],
+compl:[
+  {pt:['João pescava no mesmo lugar há trinta ', '.'],la:['anos'],op:['dias','anos','meses','horas']},
+  {pt:['Clara sentiu o cheiro de livros ',' na biblioteca.'],la:['antigos'],op:['novos','antigos','molhados','quentes']},
+  {pt:['Cada livro é uma ',' para outro mundo.'],la:['porta'],op:['janela','porta','parede','sala']},
+],
+memo:[
+  {em:'🌊',pa:'OCEANO'},{em:'📚',pa:'LIVRO'},
+  {em:'🎣',pa:'PESCA'},{em:'🏛️',pa:'MUSEU'},
+  {em:'✈️',pa:'AVIAO'},{em:'🌿',pa:'NATUREZA'},
+],
+ord:[
+  {c:['João','pescava','há','trinta','anos.'],e:['anos.','João','trinta','pescava','há']},
+  {c:['Cada','livro','é','uma','porta.'],e:['porta.','livro','Cada','uma','é']},
+  {c:['Clara','ama','a','biblioteca.'],e:['biblioteca.','ama','Clara','a']},
+  {c:['O','mar','tem','seu','tempo.'],e:['tempo.','O','seu','tem','mar']},
+],
+forca:[
+  {pa:'BIBLIOTECA',di:'📚 Lugar cheio de livros para ler e aprender.'},
+  {pa:'PESCADOR',di:'🎣 Profissional que pega peixes no mar ou no rio.'},
+  {pa:'PACIENCIA',di:'⏳ Saber esperar sem se irritar.'},
+  {pa:'AVENTURA',di:'🗺️ Uma história cheia de emoção e surpresas.'},
+  {pa:'POLUICAO',di:'🏭 O que prejudica o ar, a água e o ambiente.'},
+],
+vf:[
+  {af:'João pescava há trinta anos no mesmo lugar.',co:true,ex:'Correto! O texto diz isso claramente.'},
+  {af:'Clara odiou a biblioteca.',co:false,ex:'Não! Clara adorou a biblioteca e quis voltar.'},
+  {af:'A poluição ajuda o planeta.',co:false,ex:'Não! A poluição é um dos maiores problemas do planeta.'},
+  {af:'Cada livro é uma porta para outro mundo.',co:true,ex:'Correto! Foi o que a bibliotecária disse a Clara.'},
+  {af:'João foi pescar mesmo com o mar perigoso.',co:false,ex:'Não! João esperou com paciência na praia.'},
+],
+rel:[
+  {es:'🎣',di:'PESCA'},{es:'📚',di:'LIVRO'},
+  {es:'🚗',di:'CARRO'},{es:'🏛️',di:'MUSEU'},
+  {es:'✈️',di:'AVIAO'},{es:'🌊',di:'MAR'},
+]
+},
+5:{
+cor:'#A78BFA',
+frases:[
+  'Antes do jornal, as notícias viajavam de boca em boca.',
+  'Gutenberg inventou a imprensa em 1450.',
+  'Marina estudou muito para se tornar astronauta.',
+  'A internet permite que informações circulem em segundos.',
+  'Verificar as fontes é essencial na era digital.',
+  'Os sonhos grandes pedem passos pequenos todo dia.',
+  'O espaço é infinito e ainda pouco conhecido pelo ser humano.',
+  'A imprensa permitiu que o conhecimento chegasse a mais pessoas.',
+  'Ser um cidadão digital responsável é um dever de todos.',
+  'O primeiro jornal impresso surgiu na Europa no século XVII.'
+],
+leituras:[
+  {ti:'📰 A Invenção do Jornal',tx:'Antes do jornal existir, as notícias viajavam devagar.\nCom a invenção da imprensa por Gutenberg, em 1450, tudo mudou.\nFoi possível imprimir muitas cópias rapidamente.\nOs primeiros jornais apareceram na Europa no século XVII.\nHoje a informação circula em segundos pela internet.\nMas verificar as fontes continua sendo essencial.',pe:'Como as notícias circulavam antes do jornal?'},
+  {ti:'🚀 O Sonho de Astronauta',tx:'Marina olhava para o céu e sonhava com as estrelas.\nEla estudou física, matemática e inglês.\nEnfrentou reprovações e recomeçou sem desistir.\nAos 28 anos, foi selecionada para o programa espacial.\nQuando viu a Terra do espaço, lágrimas brotaram.\n— Os sonhos grandes pedem passos pequenos todo dia — ela disse.',pe:'Qual é a lição de vida de Marina?'},
+],
+caca:[
+  {te:'👷 Profissões',pw:['MEDICO','PILOTO','DENTISTA','POLICIAL','BOMBEIRO','ARQUITETO','PROFESSOR','ENGENHEIRO']},
+  {te:'💻 Tecnologia',pw:['COMPUTADOR','INTERNET','CELULAR','PROGRAMA','TECLADO','MONITOR','ARQUIVO','REDE']},
+],
+quiz:[
+  {tx:'Marina estudou muito, enfrentou reprovações e recomeçou. Aos 28 anos foi selecionada para o programa espacial.',pe:'O que Marina fez quando foi reprovada?',op:['Desistiu do sonho','Ficou com raiva','Recomeçou sem desistir','Pediu ajuda ao governo'],ce:2},
+  {tx:'Nem toda informação na internet é verdadeira. Aprender a verificar fontes é essencial para ser um bom cidadão digital.',pe:'O que significa ser um cidadão digital responsável?',op:['Usar muitas redes sociais','Verificar fontes e ser crítico','Ter o celular mais novo','Ficar horas no computador'],ce:1},
+  {tx:'Gutenberg inventou a imprensa em 1450, permitindo imprimir muitas cópias rapidamente.',pe:'O que a invenção da imprensa permitiu?',op:['Inventar o rádio','Imprimir muitas cópias rapidamente','Criar a internet','Construir televisões'],ce:1},
+],
+compl:[
+  {pt:['Marina estudou ', ', matemática e inglês.'],la:['física'],op:['biologia','física','história','arte']},
+  {pt:['Nem toda informação na internet é ', '.'],la:['verdadeira'],op:['colorida','verdadeira','importante','nova']},
+  {pt:['Os sonhos grandes pedem ',' pequenos todo dia.'],la:['passos'],op:['gritos','passos','prêmios','descansos']},
+],
+memo:[
+  {em:'🚀',pa:'FOGUETE'},{em:'🌐',pa:'INTERNET'},
+  {em:'👨‍⚕️',pa:'MEDICO'},{em:'📰',pa:'JORNAL'},
+  {em:'💻',pa:'COMPUTADOR'},{em:'⭐',pa:'ESTRELA'},
+],
+ord:[
+  {c:['Marina','viu','a','Terra','do','espaço.'],e:['espaço.','a','Marina','Terra','do','viu']},
+  {c:['Verificar','fontes','é','muito','importante.'],e:['importante.','Verificar','muito','é','fontes']},
+  {c:['Os','sonhos','pedem','passos','pequenos.'],e:['pequenos.','Os','passos','sonhos','pedem']},
+  {c:['A','internet','liga','o','mundo.'],e:['mundo.','A','liga','internet','o']},
+],
+forca:[
+  {pa:'ASTRONAUTA',di:'🚀 Profissional que viaja para o espaço.'},
+  {pa:'IMPRENSA',di:'📰 Máquina inventada por Gutenberg para imprimir textos.'},
+  {pa:'INTERNET',di:'🌐 Rede mundial de computadores conectados.'},
+  {pa:'TECNOLOGIA',di:'💻 Conjunto de ferramentas e inovações criadas pelo ser humano.'},
+  {pa:'CONHECIMENTO',di:'📚 O que adquirimos ao estudar e aprender.'},
+],
+vf:[
+  {af:'Gutenberg inventou a imprensa em 1450.',co:true,ex:'Correto! Isso está no texto.'},
+  {af:'Marina desistiu quando foi reprovada.',co:false,ex:'Não! Ela recomeçou sem desistir.'},
+  {af:'Toda informação na internet é verdadeira.',co:false,ex:'Não! É preciso verificar as fontes.'},
+  {af:'O primeiro jornal surgiu na Europa no século XVII.',co:true,ex:'Correto! É o que o texto informa.'},
+  {af:'Marina viu a Terra de dentro do espaço.',co:true,ex:'Correto! Ela foi selecionada para o programa espacial.'},
+],
+rel:[
+  {es:'🚀',di:'FOGUETE'},{es:'📰',di:'JORNAL'},
+  {es:'💻',di:'COMPUTADOR'},{es:'👨‍⚕️',di:'MEDICO'},
+  {es:'🌐',di:'INTERNET'},{es:'📚',di:'LIVRO'},
+]
+}
 };
 
-/* ═══════════════════════════
+/* ══════════════════════════════════════
+   UTILIDADES
+══════════════════════════════════════ */
+function emb(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('sh');setTimeout(()=>t.classList.remove('sh'),2800);}
+function pts(n){PTS+=n;document.getElementById('hes').textContent='⭐ '+PTS;if(n>0)toast('🌟 +'+n+' pontos! Parabéns, '+NOME+'!');}
+
+/* ══════════════════════════════════════
    NAVEGAÇÃO INICIAL
-═══════════════════════════ */
-function entrar() {
-  const n = document.getElementById('nomeInput').value.trim();
-  if (!n) { showToast('✏️ Digite seu nome primeiro!'); return; }
-  NOME = n;
-  document.getElementById('tela-inicial').style.display = 'none';
-  const bv = document.getElementById('tela-bv');
-  bv.style.display = 'flex';
-  document.getElementById('bv-titulo').textContent = `Olá, ${NOME}! 🎉`;
-  document.getElementById('bv-texto').textContent = `Que ótimo te ver aqui! Escolha a sua série e vamos aprender juntos!`;
+══════════════════════════════════════ */
+function entrar(){
+  const n=document.getElementById('ni').value.trim();
+  if(!n){toast('✏️ Digite seu nome primeiro!');return;}
+  NOME=n;
+  document.getElementById('tela-ini').style.display='none';
+  const bv=document.getElementById('tela-bv');
+  bv.style.display='flex';
+  document.getElementById('bvtit').textContent='Olá, '+NOME+'! 🎉';
+  document.getElementById('bvtx').textContent='Que ótimo te ver aqui! Escolha a sua série e vamos aprender juntos!';
 }
-document.getElementById('nomeInput').addEventListener('keydown', e => { if(e.key==='Enter') entrar(); });
+document.getElementById('ni').addEventListener('keydown',e=>{if(e.key==='Enter')entrar();});
+function voltarIni(){document.getElementById('tela-bv').style.display='none';document.getElementById('tela-ini').style.display='flex';}
 
-function voltarInicial() {
-  document.getElementById('tela-bv').style.display = 'none';
-  document.getElementById('tela-inicial').style.display = 'flex';
-}
-
-function iniciarApp(serie) {
-  SERIE = serie;
-  PONTOS = 0;
-  document.getElementById('tela-bv').style.display = 'none';
-  const app = document.getElementById('app');
-  app.style.display = 'flex';
-  document.getElementById('hdr-nome').textContent = '👤 ' + NOME;
-  atualizarPontos();
+function iniciarApp(s){
+  SERIE=s;PTS=0;
+  document.getElementById('tela-bv').style.display='none';
+  const ap=document.getElementById('app');ap.style.display='flex';ap.style.flexDirection='column';
+  document.getElementById('hn').textContent='👤 '+NOME;
+  document.getElementById('hes').textContent='⭐ 0';
   buildTabs();
-  buildLeitura();
-  buildCaca();
-  buildQuiz();
-  buildCompletar();
-  buildMemoria();
-  buildOrdenar();
-  showSecao('leitura');
+  buildFrases();buildLeitura();buildCaca();buildQuiz();
+  buildCompl();buildMemo();buildOrd();buildForca();buildVF();buildRel();
+  showSec('frases');
 }
 
-/* ═══════════════════════════
+/* ══════════════════════════════════════
    TABS
-═══════════════════════════ */
-const TABS = [
-  {id:'leitura',label:'📖 Leitura'},
-  {id:'caca',label:'🔍 Caça-Palavras'},
-  {id:'quiz',label:'🧠 Quiz'},
-  {id:'completar',label:'✏️ Complete'},
-  {id:'memoria',label:'🃏 Memória'},
-  {id:'ordenar',label:'🔤 Ordene'},
+══════════════════════════════════════ */
+const TABS=[
+  {id:'frases',lb:'📝 Frases'},{id:'leitura',lb:'📖 Texto'},
+  {id:'caca',lb:'🔍 Caça-Palavras'},{id:'quiz',lb:'🧠 Quiz'},
+  {id:'compl',lb:'✏️ Complete'},{id:'memo',lb:'🃏 Memória'},
+  {id:'ord',lb:'🔤 Ordene'},{id:'forca',lb:'🎯 Forca'},
+  {id:'vf',lb:'✅ V ou F'},{id:'rel',lb:'🔗 Relacione'},
 ];
-function buildTabs() {
-  const bar = document.getElementById('tabBar');
-  bar.innerHTML = TABS.map(t =>
-    `<button class="tab-btn" id="tab-${t.id}" onclick="showSecao('${t.id}')">${t.label}</button>`
+function buildTabs(){
+  document.getElementById('tabbar').innerHTML=TABS.map(t=>
+    `<button class="tbb" id="tab-${t.id}" onclick="showSec('${t.id}')">${t.lb}</button>`
   ).join('');
 }
-function showSecao(id) {
-  document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+function showSec(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('ativa'));
+  document.querySelectorAll('.tbb').forEach(b=>b.classList.remove('active'));
   document.getElementById('sec-'+id).classList.add('ativa');
   document.getElementById('tab-'+id).classList.add('active');
 }
 
-/* ═══════════════════════════
-   PONTOS
-═══════════════════════════ */
-function addPontos(n) {
-  PONTOS += n;
-  atualizarPontos();
-  if (n > 0) showToast(`🌟 +${n} pontos! Parabéns, ${NOME}!`);
-}
-function atualizarPontos() {
-  document.getElementById('hdr-estrelas').textContent = `⭐ ${PONTOS}`;
-}
-
-/* ═══════════════════════════
-   TOAST
-═══════════════════════════ */
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
-}
-
-/* ═════════════════════════════════════════
-   LEITURA
-═════════════════════════════════════════ */
-function buildLeitura() {
-  const d = DADOS[SERIE];
-  const el = document.getElementById('leitura-content');
-  el.innerHTML = d.leituras.map(l => `
-    <div class="card leitura-card" style="border-left-color:${d.cor}">
-      <h3>${l.titulo}</h3>
-      <p>${l.texto.replace(/\n/g,'<br>')}</p>
-      <div class="perg"><b>💬 Reflita:</b> ${l.perg}</div>
-    </div>
-  `).join('');
-}
-
-/* ═════════════════════════════════════════
-   CAÇA-PALAVRAS
-═════════════════════════════════════════ */
-const CW_ROWS=10, CW_COLS=12;
-function buildCaca() {
-  const d = DADOS[SERIE];
-  const el = document.getElementById('caca-content');
-  el.innerHTML = d.cacaPalavras.map((cp,i) => `
+/* ══════════════════════════════════════
+   FRASES
+══════════════════════════════════════ */
+const CORES_FRASES=['#3B82F6','#22C55E','#F97316','#A78BFA','#F472B6','#FBBF24','#14B8A6','#EF4444','#8B5CF6','#84CC16'];
+function buildFrases(){
+  const d=D[SERIE];
+  document.getElementById('c-frases').innerHTML=`
     <div class="card">
-      <h3 style="font-size:1.1rem;font-weight:900;margin-bottom:6px;color:${d.cor}">${cp.tema}</h3>
-      <p style="font-size:.85rem;color:#6B7280;margin-bottom:14px">Clique nas letras em sequência para marcar a palavra!</p>
-      <div id="cw${i}"></div>
-      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-azul" onclick="reiniciarCaca(${i})">🔄 Novo Jogo</button>
+      <p style="font-size:.9rem;color:#6B7280;margin-bottom:16px;font-weight:700">📌 Leia cada frase com atenção e em voz alta!</p>
+      ${d.frases.map((f,i)=>`
+        <div class="frase-item">
+          <div class="fn" style="background:${CORES_FRASES[i]}">${i+1}</div>
+          <div class="ft">${f}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+/* ══════════════════════════════════════
+   LEITURA
+══════════════════════════════════════ */
+function buildLeitura(){
+  const d=D[SERIE];
+  document.getElementById('c-leitura').innerHTML=d.leituras.map(l=>`
+    <div class="card" style="border-left:5px solid ${d.cor}">
+      <h3 style="font-size:1.1rem;font-weight:900;color:${d.cor};margin-bottom:10px">${l.ti}</h3>
+      <p style="font-size:1.05rem;line-height:1.9;color:#374151">${l.tx.replace(/\n/g,'<br>')}</p>
+      <div style="margin-top:14px;background:${d.cor}22;border-radius:14px;padding:14px;border-left:4px solid ${d.cor}">
+        <b>💬 Reflita:</b> ${l.pe}
       </div>
     </div>
   `).join('');
-  d.cacaPalavras.forEach((_,i) => iniciarCaca(i));
 }
 
-function iniciarCaca(idx) {
-  const palavras = DADOS[SERIE].cacaPalavras[idx].palavras;
-  const grid = gerarGrid(palavras, CW_ROWS, CW_COLS);
-  cacaState[idx] = { grid, palavras, encontradas:new Set(), selecionadas:[], celulasColoridas:{}, erros:0 };
-  renderCaca(idx);
+/* ══════════════════════════════════════
+   CAÇA-PALAVRAS — drag, Ç, acentos
+══════════════════════════════════════ */
+const CWROWS=10,CWCOLS=12;
+const CWCORES=['c0','c1','c2','c3','c4','c5','c6','c7','c8','c9'];
+const CWHEX={'c0':'#16A34A','c1':'#2563EB','c2':'#DC2626','c3':'#EA580C','c4':'#7C3AED','c5':'#DB2777','c6':'#0891B2','c7':'#D97706','c8':'#65A30D','c9':'#6D28D9'};
+
+// Letras PT-BR completas incluindo Ç e acentuadas
+const CWLETRAS='ABCDEFGHIJKLMNOPQRSTUVWXYZÇÁÉÍÓÚÂÊÎÔÛÃÕ'.split('');
+
+// Normaliza para comparar (remove acento mas mantém Ç)
+function cwNorm(s){
+  return s.toUpperCase()
+    .replace(/[ÀÁÂÃÄ]/g,'A').replace(/[ÈÉÊË]/g,'E')
+    .replace(/[ÌÍÎÏ]/g,'I').replace(/[ÒÓÔÕÖ]/g,'O')
+    .replace(/[ÙÚÛÜ]/g,'U');
 }
 
-function reiniciarCaca(idx) { iniciarCaca(idx); }
+function buildCaca(){
+  const d=D[SERIE];
+  document.getElementById('c-caca').innerHTML=d.caca.map((cp,i)=>`
+    <div class="card">
+      <h3 style="font-size:1.05rem;font-weight:900;margin-bottom:6px;color:${d.cor}">${cp.te}</h3>
+      <p style="font-size:.85rem;color:#6B7280;margin-bottom:14px">🖱️ Clique e arraste para selecionar as palavras!</p>
+      <div id="cw${i}"></div>
+      <div style="margin-top:12px"><button class="btn baz" onclick="cwInit(${i})">🔄 Novo Jogo</button></div>
+    </div>
+  `).join('');
+  d.caca.forEach((_,i)=>cwInit(i));
+}
 
-function gerarGrid(palavras, rows, cols) {
-  const g = Array.from({length:rows},()=>Array(cols).fill(''));
-  const dirs = [[0,1],[1,0]]; // só H e V para facilitar
-  for (const p of palavras) {
-    let ok = false;
-    for (let t=0;t<300&&!ok;t++) {
-      const [dr,dc] = dirs[Math.floor(Math.random()*dirs.length)];
-      const r = Math.floor(Math.random()*rows);
-      const c = Math.floor(Math.random()*cols);
-      if (podeColocar(g,p.toUpperCase(),r,c,dr,dc,rows,cols)) {
-        for (let i=0;i<p.length;i++) g[r+dr*i][c+dc*i]=p[i].toUpperCase();
+function cwGridFn(palavras){
+  const g=Array.from({length:CWROWS},()=>Array(CWCOLS).fill(''));
+  const dirs=[[0,1],[1,0]]; // H e V apenas
+  for(const p of palavras){
+    const pu=p.toUpperCase();
+    let ok=false;
+    for(let t=0;t<400&&!ok;t++){
+      const[dr,dc]=dirs[Math.floor(Math.random()*2)];
+      const r=Math.floor(Math.random()*CWROWS);
+      const c=Math.floor(Math.random()*CWCOLS);
+      if(cwCanPlace(g,pu,r,c,dr,dc)){
+        for(let i=0;i<pu.length;i++)g[r+dr*i][c+dc*i]=pu[i];
         ok=true;
       }
     }
   }
-  const az='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  for (let r=0;r<rows;r++) for (let c=0;c<cols;c++) if(!g[r][c]) g[r][c]=az[Math.floor(Math.random()*26)];
+  // preencher com letras PT-BR
+  for(let r=0;r<CWROWS;r++)
+    for(let c=0;c<CWCOLS;c++)
+      if(!g[r][c])g[r][c]=CWLETRAS[Math.floor(Math.random()*26)]; // só A-Z para fundo
   return g;
 }
-function podeColocar(g,p,r,c,dr,dc,rows,cols) {
-  for (let i=0;i<p.length;i++) {
+function cwCanPlace(g,p,r,c,dr,dc){
+  for(let i=0;i<p.length;i++){
     const nr=r+dr*i,nc=c+dc*i;
-    if (nr<0||nr>=rows||nc<0||nc>=cols) return false;
-    if (g[nr][nc]&&g[nr][nc]!==p[i]) return false;
+    if(nr<0||nr>=CWROWS||nc<0||nc>=CWCOLS)return false;
+    if(g[nr][nc]&&g[nr][nc]!==p[i])return false;
   }
   return true;
 }
 
-const CW_CORES=['c0','c1','c2','c3','c4','c5','c6','c7','c8','c9'];
-function corParaHex(c){
-  const m={'c0':'#16A34A','c1':'#2563EB','c2':'#DC2626','c3':'#EA580C','c4':'#7C3AED','c5':'#DB2777','c6':'#0891B2','c7':'#D97706','c8':'#65A30D','c9':'#6D28D9'};
-  return m[c]||'#3B82F6';
+function cwInit(idx){
+  const pw=D[SERIE].caca[idx].pw;
+  cwSt[idx]={
+    grid:cwGridFn(pw),palavras:pw,
+    enc:new Set(),sel:[],cc:{},
+    dragging:false,dragStart:null
+  };
+  cwRender(idx);
+  cwBindEvents(idx);
 }
 
-function renderCaca(idx) {
-  const st = cacaState[idx];
-  const el = document.getElementById('cw'+idx);
-  if(!el||!st) return;
-
-  const chips = st.palavras.map((p,i)=>{
-    const cor = CW_CORES[i%CW_CORES.length];
-    const hex = corParaHex(cor);
-    const achada = st.encontradas.has(p.toUpperCase());
-    return `<span class="cw-chip ${achada?'achada':''}" style="border-color:${hex};color:${hex}">${p}</span>`;
-  }).join('');
-
-  const pct = Math.round(st.encontradas.size/st.palavras.length*100);
-
-  let gridHTML = `<div class="cw-grid" style="grid-template-columns:repeat(${CW_COLS},42px)">`;
-  for (let r=0;r<CW_ROWS;r++) for (let c=0;c<CW_COLS;c++) {
-    const key=`${r}_${c}`;
-    const sel=st.selecionadas.find(s=>s[0]===r&&s[1]===c)?'sel':'';
-    const col=st.celulasColoridas[key]||'';
-    gridHTML+=`<div class="cw-cell ${sel} ${col}" onclick="clicouCelula(${idx},${r},${c})">${st.grid[r][c]}</div>`;
-  }
-  gridHTML+='</div>';
-
-  const ganhou = st.encontradas.size===st.palavras.length;
-  el.innerHTML = `
-    <div class="cw-words">${chips}</div>
-    <div class="cw-progress"><div class="cw-pbar" style="width:${pct}%"></div></div>
-    <div class="cw-info">${st.encontradas.size} de ${st.palavras.length} palavras encontradas</div>
-    <div class="cw-grid-wrap">${gridHTML}</div>
-    <div class="win-box ${ganhou?'show':''}" id="cwwin${idx}">🎉 Incrível, ${NOME}! Você encontrou todas as palavras! 🏆</div>
-  `;
-}
-
-function clicouCelula(idx,r,c) {
-  const st = cacaState[idx];
-  const key=`${r}_${c}`;
-  if(st.celulasColoridas[key]) return;
-
-  const existe=st.selecionadas.findIndex(s=>s[0]===r&&s[1]===c);
-  if(existe!==-1){ st.selecionadas=st.selecionadas.slice(0,existe); }
-  else { st.selecionadas.push([r,c]); }
-
-  checarPalavra(idx);
-  renderCaca(idx);
-}
-
-function checarPalavra(idx) {
-  const st = cacaState[idx];
-  const sel = st.selecionadas;
-  if(sel.length<2) return;
-
-  if(!eColinar(sel)){ if(sel.length>10) st.selecionadas=[]; return; }
-
-  const str = sel.map(([r,c])=>st.grid[r][c]).join('');
-  const strRev = str.split('').reverse().join('');
-
-  for (const p of st.palavras) {
+function cwRender(idx){
+  const st=cwSt[idx];const el=document.getElementById('cw'+idx);if(!el)return;
+  const chips=st.palavras.map((p,i)=>{
+    const cor=CWHEX[CWCORES[i%CWCORES.length]];
     const pu=p.toUpperCase();
-    if(st.encontradas.has(pu)) continue;
-    if(str===pu||strRev===pu) {
-      const i=st.palavras.map(x=>x.toUpperCase()).indexOf(pu);
-      const cor=CW_CORES[i%CW_CORES.length];
-      st.encontradas.add(pu);
-      sel.forEach(([r,c])=>{ st.celulasColoridas[`${r}_${c}`]=cor; });
-      st.selecionadas=[];
-      addPontos(10);
-      if(st.encontradas.size===st.palavras.length) addPontos(20);
+    return`<span class="cwchip ${st.enc.has(pu)?'ac':''}" style="border-color:${cor};color:${cor}">${p}</span>`;
+  }).join('');
+  const pct=Math.round(st.enc.size/st.palavras.length*100);
+
+  let gh=`<div class="cwg" id="cwgrid${idx}" style="grid-template-columns:repeat(${CWCOLS},42px)">`;
+  for(let r=0;r<CWROWS;r++)for(let c=0;c<CWCOLS;c++){
+    const k=r+'_'+c;
+    const isSel=st.sel.some(s=>s[0]===r&&s[1]===c);
+    const cc=st.cc[k]||'';
+    gh+=`<div class="cwc ${isSel?'sel':''} ${cc}" data-r="${r}" data-c="${c}">${st.grid[r][c]}</div>`;
+  }
+  gh+='</div>';
+  const gn=st.enc.size===st.palavras.length;
+  el.innerHTML=`
+    <div class="cwwords">${chips}</div>
+    <div class="cwpr"><div class="cwpb" style="width:${pct}%"></div></div>
+    <p style="font-size:.82rem;color:#6B7280;margin:6px 0 12px">${st.enc.size} de ${st.palavras.length} encontradas</p>
+    <div class="cwgw">${gh}</div>
+    <div class="win ${gn?'sh':''}" id="cww${idx}">🎉 Incrível, ${NOME}! Você encontrou tudo! 🏆</div>`;
+  cwBindEvents(idx);
+}
+
+function cwCellFromPoint(idx,x,y){
+  const grid=document.getElementById('cwgrid'+idx);
+  if(!grid)return null;
+  const cells=grid.querySelectorAll('.cwc');
+  for(const cell of cells){
+    const rect=cell.getBoundingClientRect();
+    if(x>=rect.left&&x<=rect.right&&y>=rect.top&&y<=rect.bottom){
+      return{r:parseInt(cell.dataset.r),c:parseInt(cell.dataset.c)};
+    }
+  }
+  return null;
+}
+
+function cwGetLine(r0,c0,r1,c1){
+  // retorna células em linha reta (H ou V) entre dois pontos
+  const cells=[];
+  if(r0===r1){
+    // horizontal
+    const step=c1>=c0?1:-1;
+    for(let c=c0;c!==c1+step;c+=step)cells.push([r0,c]);
+  }else if(c0===c1){
+    // vertical
+    const step=r1>=r0?1:-1;
+    for(let r=r0;r!==r1+step;r+=step)cells.push([r,c0]);
+  }else{
+    // diagonal não permitida — retorna só o início
+    cells.push([r0,c0]);
+  }
+  return cells;
+}
+
+function cwUpdateSel(idx,r,c){
+  const st=cwSt[idx];
+  if(!st.dragStart)return;
+  const {r:r0,c:c0}=st.dragStart;
+  st.sel=cwGetLine(r0,c0,r,c);
+  // live render só das classes sel sem reconstruir tudo
+  const grid=document.getElementById('cwgrid'+idx);
+  if(!grid)return;
+  grid.querySelectorAll('.cwc').forEach(cell=>{
+    const cr=parseInt(cell.dataset.r),cc=parseInt(cell.dataset.c);
+    const isSel=st.sel.some(s=>s[0]===cr&&s[1]===cc);
+    // não mexer em células já coloridas
+    if(!st.cc[cr+'_'+cc]){
+      cell.classList.toggle('sel',isSel);
+    }
+  });
+}
+
+function cwFlashErr(idx){
+  const st=cwSt[idx];
+  const grid=document.getElementById('cwgrid'+idx);
+  if(!grid)return;
+  st.sel.forEach(([r,c])=>{
+    const cell=grid.querySelector(`[data-r="${r}"][data-c="${c}"]`);
+    if(cell&&!st.cc[r+'_'+c]){
+      cell.classList.remove('sel');
+      cell.classList.add('flash-err');
+      setTimeout(()=>cell.classList.remove('flash-err'),500);
+    }
+  });
+  st.sel=[];
+}
+
+function cwCommit(idx){
+  const st=cwSt[idx];
+  if(st.sel.length<2){st.sel=[];return;}
+  const str=st.sel.map(([r,c])=>st.grid[r][c]).join('');
+  const rev=str.split('').reverse().join('');
+  // normalizar comparação
+  const strN=cwNorm(str),revN=cwNorm(rev);
+  let found=false;
+  for(let pi=0;pi<st.palavras.length;pi++){
+    const pu=st.palavras[pi].toUpperCase();
+    const puN=cwNorm(pu);
+    if(st.enc.has(pu))continue;
+    if(strN===puN||revN===puN){
+      const cor=CWCORES[pi%CWCORES.length];
+      st.enc.add(pu);
+      st.sel.forEach(([r,c])=>{st.cc[r+'_'+c]=cor;});
+      st.sel=[];pts(10);
+      if(st.enc.size===st.palavras.length)pts(20);
+      found=true;
+      cwRender(idx);
       return;
     }
   }
-  if(sel.length>12) st.selecionadas=[];
+  if(!found)cwFlashErr(idx);
 }
 
-function eColinar(cells) {
-  if(cells.length<2) return true;
-  const dr=cells[1][0]-cells[0][0], dc=cells[1][1]-cells[0][1];
-  for(let i=2;i<cells.length;i++) {
-    if(cells[i][0]-cells[i-1][0]!==dr||cells[i][1]-cells[i-1][1]!==dc) return false;
-  }
-  return true;
-}
+function cwBindEvents(idx){
+  const grid=document.getElementById('cwgrid'+idx);
+  if(!grid||grid._cwBound)return;
+  grid._cwBound=true;
+  const st=cwSt[idx];
 
-/* ═════════════════════════════════════════
-   QUIZ
-═════════════════════════════════════════ */
-let quizIdx=0, quizRespondidas=0, quizCertas=0, quizBloqueado=false;
-function buildQuiz() {
-  quizIdx=0; quizRespondidas=0; quizCertas=0; quizBloqueado=false;
-  renderQuiz();
-}
-function renderQuiz() {
-  const d=DADOS[SERIE];
-  const el=document.getElementById('quiz-content');
-  const q=d.quiz[quizIdx];
-  if(!q) return;
-  el.innerHTML=`
-    <div class="card">
-      <p style="font-size:.8rem;font-weight:700;color:#6B7280;margin-bottom:10px">Pergunta ${quizIdx+1} de ${d.quiz.length}</p>
-      <div class="quiz-text">${q.texto}</div>
-      <div class="quiz-pergunta">❓ ${q.perg}</div>
-      <div class="quiz-opcoes">
-        ${q.ops.map((op,i)=>`<button class="quiz-op" id="qop${i}" onclick="responderQuiz(${i})">${String.fromCharCode(65+i)}) ${op}</button>`).join('')}
-      </div>
-      <div class="quiz-feedback" id="qfb"></div>
-      <div class="quiz-nav">
-        <button class="btn btn-azul" id="btnProx" style="display:none" onclick="proximoQuiz()">Próxima →</button>
-      </div>
-    </div>
-    <div class="quiz-score" id="quizScore"></div>
-  `;
-}
-function responderQuiz(i) {
-  if(quizBloqueado) return;
-  quizBloqueado=true;
-  const d=DADOS[SERIE];
-  const q=d.quiz[quizIdx];
-  const fb=document.getElementById('qfb');
-  document.querySelectorAll('.quiz-op').forEach((el,idx)=>{
-    if(idx===q.certa) el.classList.add('certa');
-    else el.classList.add('errada');
-    el.style.pointerEvents='none';
+  // MOUSE
+  grid.addEventListener('mousedown',e=>{
+    const cell=e.target.closest('.cwc');if(!cell)return;
+    e.preventDefault();
+    const r=parseInt(cell.dataset.r),c=parseInt(cell.dataset.c);
+    if(st.cc[r+'_'+c])return;
+    st.dragging=true;st.dragStart={r,c};st.sel=[[r,c]];
+    cwUpdateSel(idx,r,c);
   });
-  if(i===q.certa){
-    quizCertas++;
-    fb.className='quiz-feedback ok';
-    fb.textContent=`✅ Correto! Muito bem, ${NOME}!`;
-    addPontos(15);
-  } else {
-    fb.className='quiz-feedback nok';
-    fb.textContent=`❌ Não foi dessa vez! A resposta certa é: ${String.fromCharCode(65+q.certa)}) ${q.ops[q.certa]}`;
-  }
-  quizRespondidas++;
-  document.getElementById('btnProx').style.display='inline-block';
+  window.addEventListener('mousemove',e=>{
+    if(!st.dragging)return;
+    const pos=cwCellFromPoint(idx,e.clientX,e.clientY);
+    if(pos)cwUpdateSel(idx,pos.r,pos.c);
+  });
+  window.addEventListener('mouseup',e=>{
+    if(!st.dragging)return;
+    st.dragging=false;st.dragStart=null;
+    cwCommit(idx);
+  });
+
+  // TOUCH
+  grid.addEventListener('touchstart',e=>{
+    const t=e.touches[0];
+    const cell=document.elementFromPoint(t.clientX,t.clientY);
+    const cwcell=cell&&cell.closest('.cwc');if(!cwcell)return;
+    e.preventDefault();
+    const r=parseInt(cwcell.dataset.r),c=parseInt(cwcell.dataset.c);
+    if(st.cc[r+'_'+c])return;
+    st.dragging=true;st.dragStart={r,c};st.sel=[[r,c]];
+    cwUpdateSel(idx,r,c);
+  },{passive:false});
+  grid.addEventListener('touchmove',e=>{
+    if(!st.dragging)return;
+    e.preventDefault();
+    const t=e.touches[0];
+    const pos=cwCellFromPoint(idx,t.clientX,t.clientY);
+    if(pos)cwUpdateSel(idx,pos.r,pos.c);
+  },{passive:false});
+  grid.addEventListener('touchend',e=>{
+    if(!st.dragging)return;
+    e.preventDefault();
+    st.dragging=false;st.dragStart=null;
+    cwCommit(idx);
+  },{passive:false});
 }
-function proximoQuiz() {
-  const d=DADOS[SERIE];
-  quizIdx++;
-  quizBloqueado=false;
-  if(quizIdx>=d.quiz.length) {
-    mostrarResultadoQuiz();
-  } else {
-    renderQuiz();
-  }
+
+/* ══════════════════════════════════════
+   QUIZ
+══════════════════════════════════════ */
+function buildQuiz(){quizIdx=0;quizCert=0;quizBl=false;renderQuiz();}
+function renderQuiz(){
+  const d=D[SERIE];const el=document.getElementById('c-quiz');
+  const q=d.quiz[quizIdx];if(!q)return;
+  el.innerHTML=`<div class="card">
+    <p style="font-size:.82rem;font-weight:700;color:#6B7280;margin-bottom:10px">Pergunta ${quizIdx+1} de ${d.quiz.length}</p>
+    <div class="qtxt">${q.tx}</div>
+    <div class="qperg">❓ ${q.pe}</div>
+    <div class="qops">${q.op.map((o,i)=>`<button class="qop" id="qo${i}" onclick="respQuiz(${i})">${String.fromCharCode(65+i)}) ${o}</button>`).join('')}</div>
+    <div class="qfb" id="qfb"></div>
+    <div style="display:flex;justify-content:flex-end;margin-top:14px">
+      <button class="btn baz" id="qnxt" style="display:none" onclick="proxQuiz()">Próxima →</button>
+    </div>
+  </div><div class="qscore" id="qsc"></div>`;
 }
-function mostrarResultadoQuiz() {
-  const d=DADOS[SERIE];
-  const el=document.getElementById('quiz-content');
-  const pct=Math.round(quizCertas/d.quiz.length*100);
-  const estrelas=pct>=80?'⭐⭐⭐':pct>=50?'⭐⭐':'⭐';
-  el.innerHTML=`
-    <div class="quiz-score show">
+function respQuiz(i){
+  if(quizBl)return;quizBl=true;
+  const q=D[SERIE].quiz[quizIdx];
+  document.querySelectorAll('.qop').forEach((el,idx)=>{el.classList.add(idx===q.ce?'cert':'err');el.style.pointerEvents='none';});
+  const fb=document.getElementById('qfb');
+  if(i===q.ce){quizCert++;fb.className='qfb ok';fb.textContent='✅ Correto! Muito bem, '+NOME+'!';pts(15);}
+  else{fb.className='qfb nok';fb.textContent='❌ A resposta certa é: '+String.fromCharCode(65+q.ce)+') '+q.op[q.ce];}
+  document.getElementById('qnxt').style.display='inline-block';
+}
+function proxQuiz(){
+  quizIdx++;quizBl=false;
+  if(quizIdx>=D[SERIE].quiz.length)fimQuiz();else renderQuiz();
+}
+function fimQuiz(){
+  const d=D[SERIE];const pct=Math.round(quizCert/d.quiz.length*100);
+  const es=pct>=80?'⭐⭐⭐':pct>=50?'⭐⭐':'⭐';
+  document.getElementById('c-quiz').innerHTML=`
+    <div class="qscore show">
       <div style="font-size:3rem">🏆</div>
       <div style="margin:8px 0;font-size:1.4rem">Parabéns, ${NOME}!</div>
-      <div class="estrelinhas">${estrelas}</div>
-      <div style="font-size:1.1rem;margin:8px 0">${quizCertas} de ${d.quiz.length} perguntas corretas</div>
-      <button class="btn btn-cinza" style="margin-top:16px" onclick="buildQuiz()">🔄 Jogar Novamente</button>
-    </div>
-  `;
+      <div class="estrs">${es}</div>
+      <div>${quizCert} de ${d.quiz.length} corretas</div>
+      <button class="btn bci" style="margin-top:16px" onclick="buildQuiz()">🔄 Jogar de Novo</button>
+    </div>`;
 }
 
-/* ═════════════════════════════════════════
-   COMPLETAR A FRASE
-═════════════════════════════════════════ */
-let complIdx=0, complRespostas={};
-function buildCompletar() {
-  complIdx=0; complRespostas={};
-  renderCompletar();
-}
-function renderCompletar() {
-  const d=DADOS[SERIE];
-  const el=document.getElementById('completar-content');
-  const frases=d.completarV2;
-
-  el.innerHTML=frases.map((f,fi)=>{
-    let fraseHTML='';
-    f.partes.forEach((parte,pi)=>{
-      fraseHTML+=`<span>${parte}</span>`;
-      if(pi<f.lacunas.length) {
-        fraseHTML+=`<span class="lacuna" id="lac_${fi}_${pi}" data-fi="${fi}" data-pi="${pi}" data-resp="${f.lacunas[pi]}">${'_'.repeat(f.lacunas[pi].length)}</span>`;
-      }
+/* ══════════════════════════════════════
+   COMPLETAR
+══════════════════════════════════════ */
+let complR={};
+function buildCompl(){complR={};renderCompl();}
+function renderCompl(){
+  const d=D[SERIE];
+  document.getElementById('c-compl').innerHTML=d.compl.map((f,fi)=>{
+    let fh='';
+    f.pt.forEach((p,pi)=>{
+      fh+=`<span>${p}</span>`;
+      if(pi<f.la.length)fh+=`<span class="lac" id="l${fi}_${pi}" data-r="${f.la[pi]}">${'_'.repeat(f.la[pi].length)}</span>`;
     });
-    const opcoes=embaralhar([...f.opcoes]);
-    return `
-      <div class="card" id="complcard${fi}">
-        <p style="font-weight:700;color:#6B7280;font-size:.85rem;margin-bottom:10px">Frase ${fi+1} de ${frases.length}</p>
-        <div class="frase-texto">${fraseHTML}</div>
-        <div class="opcoes-lacuna" id="ops_${fi}">
-          ${opcoes.map(op=>`<button class="op-lac" id="opbtn_${fi}_${op}" onclick="usarPalavra(${fi},'${op}')">${op}</button>`).join('')}
-        </div>
-        <div id="complfb_${fi}" style="margin-top:10px;font-weight:800;color:${d.cor};display:none"></div>
-      </div>
-    `;
+    return`<div class="card"><p style="font-weight:700;color:#6B7280;font-size:.85rem;margin-bottom:10px">Frase ${fi+1} de ${d.compl.length}</p>
+      <div class="frsetx">${fh}</div>
+      <div class="oplc" id="op${fi}">${emb([...f.op]).map(o=>`<button class="oplcb" id="ob${fi}_${o}" onclick="usarP(${fi},'${o}')">${o}</button>`).join('')}</div>
+      <div id="cf${fi}" style="margin-top:10px;font-weight:800;display:none"></div>
+    </div>`;
   }).join('');
 }
-
-function usarPalavra(fi, palavra) {
-  const d=DADOS[SERIE];
-  const frase=d.completarV2[fi];
-  if(!complRespostas[fi]) complRespostas[fi]=[];
-  
-  // encontra primeira lacuna vazia
-  let lacunaIdx=-1;
-  for(let pi=0;pi<frase.lacunas.length;pi++) {
-    if(!complRespostas[fi][pi]) { lacunaIdx=pi; break; }
-  }
-  if(lacunaIdx===-1) return;
-
-  complRespostas[fi][lacunaIdx]=palavra;
-  const lacEl=document.getElementById(`lac_${fi}_${lacunaIdx}`);
-  const correto=frase.lacunas[lacunaIdx].toUpperCase()===palavra.toUpperCase();
-
-  if(correto) {
-    lacEl.textContent=palavra;
-    lacEl.classList.add('certa');
-    document.getElementById(`opbtn_${fi}_${palavra}`).classList.add('usada');
-    addPontos(10);
-
-    // verificar se todas completas
-    const todasCertas=frase.lacunas.every((_,pi)=>complRespostas[fi][pi]);
-    if(todasCertas) {
-      const fb=document.getElementById(`complfb_${fi}`);
-      fb.style.display='block';
-      fb.textContent=`🎉 Perfeito, ${NOME}! Frase completa!`;
+function usarP(fi,p){
+  const d=D[SERIE];const f=d.compl[fi];
+  if(!complR[fi])complR[fi]=[];
+  let li=-1;
+  for(let i=0;i<f.la.length;i++){if(!complR[fi][i]){li=i;break;}}
+  if(li===-1)return;
+  const ok=f.la[li].toLowerCase()===p.toLowerCase();
+  const lel=document.getElementById('l'+fi+'_'+li);
+  if(ok){
+    complR[fi][li]=p;lel.textContent=p;lel.classList.add('cert');
+    document.getElementById('ob'+fi+'_'+p).classList.add('us');pts(10);
+    if(f.la.every((_,i)=>complR[fi][i])){
+      const fb=document.getElementById('cf'+fi);fb.style.display='block';
+      fb.style.color=D[SERIE].cor;fb.textContent='🎉 Perfeito, '+NOME+'! Frase completa!';
     }
-  } else {
-    lacEl.classList.add('errada');
-    complRespostas[fi][lacunaIdx]=null;
-    setTimeout(()=>lacEl.classList.remove('errada'),500);
+  }else{
+    lel.classList.add('errd');setTimeout(()=>lel.classList.remove('errd'),500);
   }
 }
 
-/* ═════════════════════════════════════════
+/* ══════════════════════════════════════
    MEMÓRIA
-═════════════════════════════════════════ */
-let memoCartasViradas=[], memoAcertos=0, memoTentativas=0, memoBloqueado=false;
-let memoCards=[];
-function buildMemoria() {
-  memoAcertos=0; memoTentativas=0; memoBloqueado=false; memoCartasViradas=[];
-  const d=DADOS[SERIE];
-  const pares=[...d.memoria,...d.memoria];
-  memoCards=embaralhar(pares.map((c,i)=>({...c,id:i,acertada:false,virada:false})));
-  renderMemoria();
+══════════════════════════════════════ */
+function buildMemo(){
+  memoAc=0;memoTent=0;memoBl=false;memoVir=[];
+  const d=D[SERIE];
+  memoCards=emb([...d.memo,...d.memo].map((c,i)=>({...c,id:i,ac:false,vir:false})));
+  renderMemo();
 }
-function renderMemoria() {
-  const d=DADOS[SERIE];
-  const el=document.getElementById('memoria-content');
-  const total=memoCards.length;
-  const pares=total/2;
-  el.innerHTML=`
-    <div class="card">
-      <div class="memo-info">
-        <span>🎴 Pares: ${memoAcertos}/${pares}</span>
-        <span>🔄 Tentativas: ${memoTentativas}</span>
-      </div>
-      <div class="memo-grid" style="grid-template-columns:repeat(${Math.min(4,total/2)},1fr);max-width:${Math.min(4,total/2)*100}px">
-        ${memoCards.map((c,i)=>`
-          <div class="memo-card ${c.virada||c.acertada?'virada':''} ${c.acertada?'acertada':''}" id="mc${i}" onclick="clicouMemo(${i})">
-            <div class="front">❓</div>
-            <div class="back">
-              <div class="memo-emoji">${c.emoji}</div>
-              <div class="memo-palavra">${c.palavra}</div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-      <div id="memofim" style="display:none;margin-top:16px;text-align:center;background:linear-gradient(135deg,#22C55E,#16A34A);color:#fff;border-radius:16px;padding:18px;font-size:1.2rem;font-weight:900;animation:pop .4s ease">
-        🎊 Parabéns, ${NOME}! Você completou a memória em ${memoTentativas} tentativas!
-      </div>
-      <button class="btn btn-azul" style="margin-top:14px" onclick="buildMemoria()">🔄 Novo Jogo</button>
+function renderMemo(){
+  const cols=Math.min(4,D[SERIE].memo.length);
+  document.getElementById('c-memo').innerHTML=`<div class="card">
+    <div class="minfo"><span>🎴 Pares: ${memoAc}/${D[SERIE].memo.length}</span><span>🔄 Tentativas: ${memoTent}</span></div>
+    <div class="mgr" style="grid-template-columns:repeat(${cols},1fr);max-width:${cols*110}px">
+      ${memoCards.map((c,i)=>`<div class="mc ${c.vir||c.ac?'vir':''} ${c.ac?'ac':''}" id="mc${i}" onclick="clkMemo(${i})">
+        <div class="fr">❓</div>
+        <div class="bk"><div class="mem">${c.em}</div><div class="mpal">${c.pa}</div></div>
+      </div>`).join('')}
     </div>
-  `;
+    <div id="memofim" style="display:none;margin-top:16px;text-align:center;background:linear-gradient(135deg,#22C55E,#16A34A);color:#fff;border-radius:16px;padding:18px;font-size:1.1rem;font-weight:900;animation:pop .4s ease">
+      🎊 Parabéns, ${NOME}! Zerou em ${memoTent} tentativas! 🏆
+    </div>
+    <button class="btn baz" style="margin-top:14px" onclick="buildMemo()">🔄 Novo Jogo</button>
+  </div>`;
 }
-function clicouMemo(i) {
-  if(memoBloqueado) return;
-  const c=memoCards[i];
-  if(c.acertada||c.virada) return;
-  c.virada=true;
-  memoCartasViradas.push(i);
-  document.getElementById('mc'+i).classList.add('virada');
-  const back=document.getElementById('mc'+i).querySelector('.back');
-  back.style.opacity='1';
-  document.getElementById('mc'+i).querySelector('.front').style.opacity='0';
-
-  if(memoCartasViradas.length===2) {
-    memoBloqueado=true;
-    memoTentativas++;
-    const [a,b]=memoCartasViradas;
+function clkMemo(i){
+  if(memoBl)return;const c=memoCards[i];if(c.ac||c.vir)return;
+  c.vir=true;memoVir.push(i);
+  const el=document.getElementById('mc'+i);el.classList.add('vir');
+  el.querySelector('.fr').style.opacity='0';el.querySelector('.bk').style.opacity='1';
+  if(memoVir.length===2){
+    memoBl=true;memoTent++;
+    const[a,b]=memoVir;
     setTimeout(()=>{
-      if(memoCards[a].emoji===memoCards[b].emoji) {
-        memoCards[a].acertada=memoCards[b].acertada=true;
-        memoAcertos++;
-        addPontos(20);
-        if(memoAcertos===memoCards.length/2) {
-          addPontos(30);
-          document.getElementById('memofim').style.display='block';
-        }
-      } else {
-        memoCards[a].virada=memoCards[b].virada=false;
-      }
-      memoCartasViradas=[];
-      memoBloqueado=false;
-      renderMemoria();
+      if(memoCards[a].em===memoCards[b].em){
+        memoCards[a].ac=memoCards[b].ac=true;memoAc++;pts(20);
+        if(memoAc===D[SERIE].memo.length){pts(30);document.getElementById('memofim').style.display='block';}
+      }else{memoCards[a].vir=memoCards[b].vir=false;}
+      memoVir=[];memoBl=false;renderMemo();
     },900);
   }
 }
 
-/* ═════════════════════════════════════════
-   ORDENAR FRASES
-═════════════════════════════════════════ */
-let ordIdx=0, ordFrase=[], ordBloqueado=false;
-function buildOrdenar() {
-  ordIdx=0; ordFrase=[]; ordBloqueado=false;
-  renderOrdenar();
-}
-function renderOrdenar() {
-  const d=DADOS[SERIE];
-  const el=document.getElementById('ordenar-content');
-  el.innerHTML=d.ordenar.map((o,oi)=>`
-    <div class="card" id="ordcard${oi}">
-      <p style="font-weight:700;color:#6B7280;font-size:.85rem;margin-bottom:10px">Frase ${oi+1} de ${d.ordenar.length}</p>
-      <p style="font-size:.9rem;margin-bottom:10px;color:#475569">Monte a frase clicando nas palavras na ordem certa:</p>
-      <div class="ordem-frase" id="ordfrase${oi}"></div>
-      <div class="palavras-banco" id="ordbanco${oi}">
-        ${embaralhar([...o.embaralhada]).map(p=>`<button class="palavra-op" id="ordop_${oi}_${p}" onclick="adicionarPalavra(${oi},'${p}')">${p}</button>`).join('')}
+/* ══════════════════════════════════════
+   ORDENAR
+══════════════════════════════════════ */
+function buildOrd(){
+  ordState={};
+  const d=D[SERIE];
+  document.getElementById('c-ord').innerHTML=d.ord.map((o,oi)=>`
+    <div class="card"><p style="font-weight:700;color:#6B7280;font-size:.85rem;margin-bottom:8px">Frase ${oi+1} de ${d.ord.length}</p>
+      <p style="font-size:.9rem;margin-bottom:10px;color:#475569">Monte a frase clicando nas palavras:</p>
+      <div class="ofrase" id="of${oi}"></div>
+      <div class="banco" id="ob${oi}">
+        ${emb([...o.e]).map(p=>`<button class="pop" id="op_${oi}_${p.replace(/\./g,'DOT').replace(/!/g,'EXCL').replace(/\?/g,'QUEST')}" onclick="addOrd(${oi},'${p.replace(/'/g,"\\'")}'">${p}</button>`).join('')}
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-verde" onclick="verificarOrdem(${oi})">✅ Verificar</button>
-        <button class="btn btn-cinza" onclick="limparOrdem(${oi})">🔄 Limpar</button>
+        <button class="btn bvd" onclick="verOrd(${oi})">✅ Verificar</button>
+        <button class="btn bci" onclick="limOrd(${oi})">🔄 Limpar</button>
       </div>
-      <div id="ordfb${oi}" style="margin-top:10px;font-weight:800;display:none"></div>
+      <div id="ofb${oi}" style="margin-top:10px;font-weight:800;display:none"></div>
     </div>
   `).join('');
-
-  d.ordenar.forEach((_,oi)=>{ window[`ordState${oi}`]=[]; });
+  d.ord.forEach((_,oi)=>{ordState[oi]=[];});
 }
-
-function adicionarPalavra(oi,p) {
-  const state=window[`ordState${oi}`]||[];
-  const d=DADOS[SERIE];
-  if(state.length>=d.ordenar[oi].correta.length) return;
-  state.push(p);
-  window[`ordState${oi}`]=state;
-  const btn=document.getElementById(`ordop_${oi}_${p}`);
-  if(btn){btn.classList.add('na-frase');btn.onclick=()=>removerPalavra(oi,p);}
-  const fEl=document.getElementById(`ordfrase${oi}`);
-  fEl.innerHTML=state.map(w=>`<span style="background:var(--verde);color:#fff;padding:6px 14px;border-radius:50px;font-weight:800;font-size:.95rem">${w}</span>`).join('');
+function ordKey(p){return p.replace(/\./g,'DOT').replace(/!/g,'EXCL').replace(/\?/g,'QUEST');}
+function addOrd(oi,p){
+  const d=D[SERIE];const st=ordState[oi];
+  if(st.length>=d.ord[oi].c.length)return;
+  st.push(p);
+  const btn=document.getElementById('op_'+oi+'_'+ordKey(p));
+  if(btn){btn.classList.add('nf');btn.onclick=()=>remOrd(oi,p);}
+  document.getElementById('of'+oi).innerHTML=st.map(w=>`<span style="background:var(--vd);color:#fff;padding:6px 14px;border-radius:50px;font-weight:800;font-size:.9rem">${w}</span>`).join('');
 }
-
-function removerPalavra(oi,p) {
-  const state=window[`ordState${oi}`]||[];
-  const i=state.indexOf(p);
-  if(i!==-1) state.splice(i,1);
-  window[`ordState${oi}`]=state;
-  const btn=document.getElementById(`ordop_${oi}_${p}`);
-  if(btn){btn.classList.remove('na-frase');btn.onclick=()=>adicionarPalavra(oi,p);}
-  const fEl=document.getElementById(`ordfrase${oi}`);
-  fEl.innerHTML=state.map(w=>`<span style="background:var(--verde);color:#fff;padding:6px 14px;border-radius:50px;font-weight:800;font-size:.95rem">${w}</span>`).join('');
+function remOrd(oi,p){
+  const st=ordState[oi];const i=st.indexOf(p);if(i!==-1)st.splice(i,1);
+  const btn=document.getElementById('op_'+oi+'_'+ordKey(p));
+  if(btn){btn.classList.remove('nf');btn.onclick=()=>addOrd(oi,p);}
+  document.getElementById('of'+oi).innerHTML=st.map(w=>`<span style="background:var(--vd);color:#fff;padding:6px 14px;border-radius:50px;font-weight:800;font-size:.9rem">${w}</span>`).join('');
 }
-
-function verificarOrdem(oi) {
-  const d=DADOS[SERIE];
-  const state=window[`ordState${oi}`]||[];
-  const correta=d.ordenar[oi].correta;
-  const fb=document.getElementById(`ordfb${oi}`);
-  const fEl=document.getElementById(`ordfrase${oi}`);
-  if(state.length<correta.length){showToast('⚠️ Coloque todas as palavras!');return;}
-  const ok=state.join(' ')===correta.join(' ');
+function verOrd(oi){
+  const d=D[SERIE];const st=ordState[oi];const cor=d.ord[oi].c;
+  const fb=document.getElementById('ofb'+oi);const fEl=document.getElementById('of'+oi);
+  if(st.length<cor.length){toast('⚠️ Coloque todas as palavras!');return;}
   fb.style.display='block';
-  if(ok){
-    fb.style.color='var(--verde-d)';
-    fb.textContent=`✅ Correto! Muito bem, ${NOME}! 🎉`;
-    fEl.classList.add('certa-bg');
-    addPontos(15);
-  } else {
-    fb.style.color='#991B1B';
-    fb.textContent=`❌ Quase! A frase correta é: "${correta.join(' ')}"`;
-    fEl.classList.add('errada-bg');
-    setTimeout(()=>fEl.classList.remove('errada-bg'),600);
+  if(st.join(' ')===cor.join(' ')){
+    fb.style.color='var(--vdd)';fb.textContent='✅ Correto! Muito bem, '+NOME+'! 🎉';
+    fEl.classList.add('cb');pts(15);
+  }else{
+    fb.style.color='#991B1B';fb.textContent='❌ A frase correta é: "'+cor.join(' ')+'"';
+    fEl.classList.add('eb');setTimeout(()=>fEl.classList.remove('eb'),600);
   }
 }
-
-function limparOrdem(oi) {
-  window[`ordState${oi}`]=[];
-  const d=DADOS[SERIE];
-  d.ordenar[oi].embaralhada.forEach(p=>{
-    const btn=document.getElementById(`ordop_${oi}_${p}`);
-    if(btn){btn.classList.remove('na-frase');btn.onclick=()=>adicionarPalavra(oi,p);}
+function limOrd(oi){
+  ordState[oi]=[];const d=D[SERIE];
+  d.ord[oi].e.forEach(p=>{
+    const btn=document.getElementById('op_'+oi+'_'+ordKey(p));
+    if(btn){btn.classList.remove('nf');btn.onclick=()=>addOrd(oi,p);}
   });
-  document.getElementById(`ordfrase${oi}`).innerHTML='';
-  document.getElementById(`ordfrase${oi}`).className='ordem-frase';
-  document.getElementById(`ordfb${oi}`).style.display='none';
+  document.getElementById('of'+oi).innerHTML='';
+  document.getElementById('of'+oi).className='ofrase';
+  document.getElementById('ofb'+oi).style.display='none';
 }
 
-/* ═════════════════════════════════════════
-   UTILS
-═════════════════════════════════════════ */
-function embaralhar(arr) {
-  for(let i=arr.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [arr[i],arr[j]]=[arr[j],arr[i]];
+/* ══════════════════════════════════════
+   FORCA
+══════════════════════════════════════ */
+function buildForca(){forcaIdx=0;renderForca();}
+function svgForca(erros){
+  const partes=[
+    '',
+    '<circle cx="130" cy="50" r="18" stroke="#EF4444" stroke-width="4" fill="none"/>',
+    '<line x1="130" y1="68" x2="130" y2="130" stroke="#EF4444" stroke-width="4"/>',
+    '<line x1="130" y1="85" x2="105" y2="110" stroke="#EF4444" stroke-width="4"/>',
+    '<line x1="130" y1="85" x2="155" y2="110" stroke="#EF4444" stroke-width="4"/>',
+    '<line x1="130" y1="130" x2="110" y2="160" stroke="#EF4444" stroke-width="4"/>',
+    '<line x1="130" y1="130" x2="150" y2="160" stroke="#EF4444" stroke-width="4"/>',
+  ];
+  let corpo='';for(let i=0;i<=erros&&i<partes.length;i++)corpo+=partes[i];
+  return`<svg width="180" height="200" class="forca-svg">
+    <line x1="20" y1="190" x2="160" y2="190" stroke="#374151" stroke-width="4"/>
+    <line x1="60" y1="190" x2="60" y2="20" stroke="#374151" stroke-width="4"/>
+    <line x1="60" y1="20" x2="130" y2="20" stroke="#374151" stroke-width="4"/>
+    <line x1="130" y1="20" x2="130" y2="32" stroke="#374151" stroke-width="4"/>
+    ${corpo}
+  </svg>`;
+}
+function renderForca(){
+  const d=D[SERIE];const f=d.forca[forcaIdx];
+  forcaErros=0;forcaBl=false;forcaLetrasCert=new Set();forcaLetrasErr=new Set();
+  const alfa='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  document.getElementById('c-forca').innerHTML=`
+    <div class="card">
+      <p style="font-size:.82rem;color:#6B7280;font-weight:700;margin-bottom:12px">Palavra ${forcaIdx+1} de ${d.forca.length}</p>
+      <div class="forca-dica">💡 Dica: ${f.di}</div>
+      <div class="forca-area">
+        <div id="forcasvg">${svgForca(0)}</div>
+        <div class="forca-info" style="flex:1">
+          <div class="forca-letras-v" id="fslots"></div>
+          <div class="forca-alpha" id="falpha">
+            ${alfa.map(l=>`<button class="fl" id="fl_${l}" onclick="clkForca('${l}')">${l}</button>`).join('')}
+          </div>
+          <div id="forcamsg" class="forca-msg"></div>
+        </div>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn baz" onclick="proxForca()">⏭️ Próxima Palavra</button>
+        <button class="btn bci" onclick="buildForca()">🔄 Reiniciar</button>
+      </div>
+    </div>`;
+  renderForcaSlots();
+}
+function renderForcaSlots(){
+  const pa=D[SERIE].forca[forcaIdx].pa;
+  document.getElementById('fslots').innerHTML=pa.split('').map(l=>`
+    <div class="forca-slot">${forcaLetrasCert.has(l)||l===' '?l:''}</div>
+  `).join('');
+  document.getElementById('forcasvg').innerHTML=svgForca(forcaErros);
+}
+function clkForca(l){
+  if(forcaBl)return;
+  const pa=D[SERIE].forca[forcaIdx].pa;
+  const btn=document.getElementById('fl_'+l);btn.disabled=true;
+  if(pa.includes(l)){
+    forcaLetrasCert.add(l);btn.classList.add('cert');
+    renderForcaSlots();
+    if(pa.split('').every(c=>forcaLetrasCert.has(c)||c===' ')){
+      forcaBl=true;pts(25);
+      const m=document.getElementById('forcamsg');m.className='forca-msg ok';m.textContent='🎉 Você acertou! Parabéns, '+NOME+'!';
+    }
+  }else{
+    forcaLetrasErr.add(l);btn.classList.add('err');forcaErros++;
+    renderForcaSlots();
+    if(forcaErros>=6){
+      forcaBl=true;
+      const m=document.getElementById('forcamsg');m.className='forca-msg nok';m.textContent='😢 Fim de jogo! A palavra era: '+D[SERIE].forca[forcaIdx].pa;
+    }
   }
-  return arr;
+}
+function proxForca(){
+  forcaIdx=(forcaIdx+1)%D[SERIE].forca.length;renderForca();
+}
+
+/* ══════════════════════════════════════
+   VERDADEIRO OU FALSO
+══════════════════════════════════════ */
+function buildVF(){vfIdx=0;vfAc=0;renderVF();}
+function renderVF(){
+  const d=D[SERIE];
+  document.getElementById('c-vf').innerHTML=d.vf.map((v,i)=>`
+    <div class="card" id="vfc${i}">
+      <p style="font-size:.82rem;color:#6B7280;font-weight:700;margin-bottom:10px">Afirmação ${i+1} de ${d.vf.length}</p>
+      <div class="vf-afirm">${v.af}</div>
+      <div class="vfbts">
+        <button class="vfbt v" onclick="respVF(${i},true)">✅ Verdadeiro</button>
+        <button class="vfbt f" onclick="respVF(${i},false)">❌ Falso</button>
+      </div>
+      <div class="vffb" id="vffb${i}"></div>
+    </div>
+  `).join('');
+  document.getElementById('c-vf').innerHTML+=`<div id="vfscore" style="display:none"></div>`;
+}
+function respVF(i,resp){
+  const v=D[SERIE].vf[i];
+  const fb=document.getElementById('vffb'+i);
+  const btns=document.querySelectorAll(`#vfc${i} .vfbt`);btns.forEach(b=>b.style.pointerEvents='none');
+  if(resp===v.co){
+    fb.className='vffb ok';fb.textContent='✅ Correto! '+v.ex;pts(10);vfAc++;
+  }else{
+    fb.className='vffb nok';fb.textContent='❌ Errado! '+v.ex;
+  }
+  // checar se todos respondidos
+  setTimeout(()=>{
+    const todos=D[SERIE].vf.every((_,j)=>document.getElementById('vffb'+j).style.display!=='none'&&document.getElementById('vffb'+j).className!=='vffb');
+    // verificar se acabou
+  },100);
+}
+
+/* ══════════════════════════════════════
+   RELACIONE
+══════════════════════════════════════ */
+let relSelEsq=null, relSelDir=null;
+function buildRel(){
+  relSelEsq=null;relSelDir=null;relAcertos=new Set();
+  const d=D[SERIE];
+  const esq=d.rel.map(r=>r.es);
+  const dir=emb(d.rel.map(r=>r.di));
+  document.getElementById('c-rel').innerHTML=`
+    <div class="card">
+      <p style="font-size:.9rem;color:#6B7280;font-weight:700;margin-bottom:16px">Clique em um item da esquerda e depois o correspondente da direita!</p>
+      <div class="rel-area">
+        <div class="rel-col">
+          <h4>Emoji</h4>
+          ${d.rel.map((r,i)=>`<button class="relbt" id="re${i}" onclick="selRel('esq',${i},'${r.es}','${r.di}')">${r.es}</button>`).join('')}
+        </div>
+        <div class="rel-col">
+          <h4>Palavra</h4>
+          ${dir.map((w,i)=>`<button class="relbt" id="rd${i}" onclick="selRel('dir',${i},'','')" data-w="${w}">${w}</button>`).join('')}
+        </div>
+      </div>
+      <div id="relfb" style="margin-top:14px;font-weight:800;display:none"></div>
+      <div id="relwin" class="win" style="margin-top:14px"></div>
+      <button class="btn baz" style="margin-top:12px" onclick="buildRel()">🔄 Novo Jogo</button>
+    </div>`;
+}
+function selRel(lado,idx,emoji,correto){
+  if(lado==='esq'){
+    document.querySelectorAll('[id^="re"]').forEach(b=>b.classList.remove('sel'));
+    const btn=document.getElementById('re'+idx);
+    if(btn.classList.contains('cert'))return;
+    btn.classList.add('sel');
+    relSelEsq={idx,emoji,correto};
+  }else{
+    if(!relSelEsq)return;
+    const dBtn=document.getElementById('rd'+idx);
+    if(dBtn.classList.contains('cert'))return;
+    const palavra=dBtn.dataset.w;
+    if(palavra===relSelEsq.correto){
+      document.getElementById('re'+relSelEsq.idx).classList.remove('sel');
+      document.getElementById('re'+relSelEsq.idx).classList.add('cert');
+      dBtn.classList.add('cert');pts(15);relAcertos.add(relSelEsq.idx);
+      relSelEsq=null;
+      if(relAcertos.size===D[SERIE].rel.length){
+        const w=document.getElementById('relwin');w.classList.add('sh');
+        w.textContent='🎉 Perfeito, '+NOME+'! Você relacionou tudo! 🏆';pts(20);
+      }
+    }else{
+      dBtn.classList.add('err');
+      setTimeout(()=>dBtn.classList.remove('err'),500);
+      document.getElementById('re'+relSelEsq.idx).classList.remove('sel');
+      relSelEsq=null;
+    }
+  }
 }
 </script>
 </body>
